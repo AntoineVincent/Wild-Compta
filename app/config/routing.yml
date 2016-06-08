@@ -1,18 +1,6 @@
-typeclient:
-    resource: "@TypeclientBundle/Resources/config/routing.yml"
-    prefix:   /
-
-compta:
-    resource: "@ComptaBundle/Resources/config/routing.yml"
-    prefix:   /
-
-client:
-    resource: "@ClientBundle/Resources/config/routing.yml"
-    prefix:   /
-
-document:
-    resource: "@DocumentBundle/Resources/config/routing.yml"
-    prefix:   /
+user_login:
+    path:     /
+    defaults: { _controller: AppBundle:Security:login }
 
 app:
     resource: "@AppBundle/Controller/"
@@ -20,3 +8,11 @@ app:
 
 fos_user:
     resource: "@FOSUserBundle/Resources/config/routing/all.xml"
+
+user_login_check:
+    path:    /user/login/check
+    defaults: { _controller: AppBundle:Security:check }
+
+dashboard:
+    path:   /dashboard
+    defaults: { _controller: AppBundle:Dashboard:dashboard}

@@ -1,1 +1,50 @@
-Hello World!
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+<div class="col-md-6 col-md-offset-3">
+	<div class="col-md-12">
+		<h3 class="">CONNEXION</h3>
+	</div>
+	<div class="col-md-12">
+		{% if error %}
+		    <div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+		{% endif %}
+	</div>
+		<form action="{{ path("user_login_check") }}" method="post">
+		    <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
+			<div class="col-md-12">
+				<div class="col-md-5">
+				    <label for="username"><span>Pseudo :</span></label>
+				</div>
+				<div class="col-md-6">
+				    <input type="text" id="username" name="_username" value="{{ last_username }}" required="required" />
+				</div>
+			</div>
+			<div class"col-md-12">
+				<div class="col-md-5">
+				    <label for="password"><span>Mot de Passe :</span></label>
+				</div>
+				<div class="col-md-6">
+				    <input type="password" id="password" name="_password" required="required" />
+				</div>
+			</div>
+			<div class="col-md-12">
+				<div class="col-md-3"></div>
+				<div class="col-md-4 tilti">
+				    <label for="remember_me"><span>Se souvenir de moi :</span></label>
+				</div>
+				<div class="col-md-1">
+				    <input type="checkbox" id="remember_me" name="_remember_me" value="on" />
+				</div>
+			</div>
+			<div class="col-md-12">
+				<div class="col-md-4"></div>
+				<div class="col-md-4">
+				    <input type="submit" class="btnlogin" id="_submit" name="_submit" value="Envoyer" />
+				</div>
+			</div>
+		</form>
+</div>
+
+{% endblock %} 
