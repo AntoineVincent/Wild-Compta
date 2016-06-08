@@ -1,0 +1,3 @@
+compta_homepage:
+    path:     /
+    defaults: { _controller: ComptaBundle:Default:index }

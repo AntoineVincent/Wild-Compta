@@ -1,0 +1,4 @@
+services:
+#    typeclient.example:
+#        class: TypeclientBundle\Example
+#        arguments: ["@service_id", "plain_value", %parameter%]
