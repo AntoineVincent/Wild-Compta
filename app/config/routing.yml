@@ -14,5 +14,9 @@ user_login_check:
     defaults: { _controller: AppBundle:Security:check }
 
 dashboard:
-    path:   /dashboard
-    defaults: { _controller: AppBundle:Dashboard:dashboard}
+    path:    /dashboard
+    defaults: { _controller: AppBundle:Dashboard:dashboard }
+
+new_product:
+    path:    /new/product
+    defaults: { _controller: DocumentBundle:Product:newproduct }
