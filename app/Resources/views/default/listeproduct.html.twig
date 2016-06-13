@@ -8,6 +8,15 @@
 <div class="col-md-12">
 	<div class="col-md-2"></div>
 	<div class="col-md-8">
+		<div class="col-md-12">
+	        {% for label, flashes in app.session.flashbag.all %}
+	            {% for flash in flashes %}
+	                <div class="alert alert-{{ label }}">
+	                    {{ flash }}
+	                </div>
+	            {% endfor %}
+	        {% endfor %}
+    	</div>
 		<table>
 		   <tr>
 		       <th>Type</th>
@@ -21,6 +30,7 @@
 			       <td>{{ product.nom }}</td>
 			       <td class="contenu-tab">{{ product.contenu }}</td>
 			       <td> <a href="{{ path('edit_product', { 'idproduct': product.id }) }}">Editer</a> </td>
+			       <td> <a href="{{ path('supr_product', { 'idproduct': product.id }) }}">Supprimer</a> </td>
 			   </tr>
 			{% endfor %}
 		</table>

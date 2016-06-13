@@ -20,6 +20,11 @@ class ProductController extends Controller
         $form->handleRequest($request);
 
         if ($form->isValid()) {
+            $request->getSession()
+            ->getFlashBag()
+            ->add('success', 'Produit Prédéfini Créé !')
+            ;
+
             $em->persist($product);
             $em->flush();
         }
@@ -46,7 +51,6 @@ class ProductController extends Controller
         $em = $this->getDoctrine()->getManager();
         $user = $this->container->get('security.context')->getToken()->getUser();
 
-        $type = $request->request->get('type');
         $nom = $request->request->get('nom');
         $contenu = $request->request->get('contenu');
 
@@ -55,15 +59,17 @@ class ProductController extends Controller
         $product = $em->getRepository('DocumentBundle:Product')->findOneById($idproduct);
 
         if ($hidden == 1){
-            if (!empty($type)) {
-                $product->setType($type);
-            }
             if (!empty($nom)) {
                 $product->setNom($nom);
             }
             if (!empty($contenu)) {
                 $product->setContenu($contenu);
             }
+
+            $request->getSession()
+            ->getFlashBag()
+            ->add('success', 'Modification enregistré !')
+            ;
 
             $em->persist($product);
             $em->flush();
@@ -72,6 +78,22 @@ class ProductController extends Controller
         return $this->render('default/editproduct.html.twig', array(
             'product' => $product,
         ));
+    }
+
+    public function suprproductAction(Request $request, $idproduct)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $user = $this->container->get('security.context')->getToken()->getUser();
+
+        $deleting = $em->getRepository('DocumentBundle:Product')->findOneById($idproduct);
+        
+        $em->remove($deleting);
+        $em->flush();
+        $request->getSession()
+        ->getFlashBag()
+        ->add('warning', 'Produit Supprimé !')
+    ;
+        return $this->redirect($this->generateUrl('liste_product'));
     }
 
 }
