@@ -21,6 +21,7 @@ security:
                 check_path:    user_login_check 
                 default_target_path:    dashboard
 
+
             logout:       true
             anonymous:    true
 
