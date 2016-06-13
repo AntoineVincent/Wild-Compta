@@ -23,7 +23,7 @@ class ProductType extends AbstractType
         'autre' => 'autre',
     ),
     'required'    => false,
-    'placeholder' => 'Choix',
+    'placeholder' => '',
     'empty_data'  => null
     ))
         ;

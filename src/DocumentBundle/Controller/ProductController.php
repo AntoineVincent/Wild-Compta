@@ -19,6 +19,9 @@ class ProductController extends Controller
         $form = $this->createForm('DocumentBundle\Form\ProductType', $product);
         $form->handleRequest($request);
 
+        $em->persist($product);
+        $em->flush();
+
         return $this->render('default/newproduct.html.twig', array(
             'form' => $form->createView(),
         ));
