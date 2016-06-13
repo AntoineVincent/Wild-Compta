@@ -1,0 +1,50 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+
+<div class="col-md-3"></div>
+<div class="col-md-6 edit-prod-form">
+	<form action="{{ path('edit_product', { 'idproduct': product.id }) }}" method="post">
+		<div class="col-md-12">
+			<h2 class="list-product-title"> Editer Un Produit </h2>
+		</div>
+        <div class="col-md-12 edit-line">
+            <div class="col-md-4">
+                <label for="type">Type :</label>
+            </div>
+            <div class="col-md-8">
+                <input type="string" id="type" name="type" value="{{ product.type }}"/>
+            </div>
+        </div>
+        <div class="col-md-12 edit-line">
+            <div class="col-md-4">
+                <label for="nom">Nom :</label>
+            </div>
+            <div class="col-md-8">
+                <input type="string" id="nom" name="nom" value="{{ product.nom }}"/>
+            </div>
+        </div>
+        <div class="col-md-12 edit-line">
+            <div class="col-md-4">
+                <label for="contenu">Contenu :</label>
+            </div>
+            <div class="col-md-8">
+                <textarea class="contenu-input" type="text"  id="contenu" name="contenu" value="{{ product.contenu }}">{{ product.contenu }}</textarea>
+            </div>
+        </div>
+        <div class="col-md-12">
+            <input type="hidden" name="hidden" value="1"/>
+        </div>
+        <div class="col-md-12">
+        	<div class="col-md-5"></div>
+        	<div class="col-md-2">
+            	<input type="submit" class="btn btn-primary" id="_submit" name="submit" value="Envoyer" />
+            </div>
+            <div class="col-md-5"></div>
+        </div>
+    </form>
+</div>
+<div class="col-md-3"></div>
+
+{% endblock %}

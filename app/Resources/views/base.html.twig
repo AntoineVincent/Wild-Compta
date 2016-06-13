@@ -26,8 +26,8 @@
     <!-- Collection of nav links, forms, and other content for toggling -->
     <div id="navbarCollapse" class="collapse navbar-collapse">
         <ul class="nav navbar-nav">
-            <li><a href="#">Dashboard</a></li>
-            <li><a href="#">Liste Clients</a></li>
+            <li class="active"><a href="{{ path('dashboard') }}">Dashboard</a></li>
+            <li><a href="#">Liste Client</a></li>
             <li class="dropdown">
                 <a data-toggle="dropdown" class="dropdown-toggle" href="#">Créer <b class="caret"></b></a>
                 <ul role="menu" class="dropdown-menu">
@@ -45,7 +45,7 @@
                         <li><a href="#"> Organisme</a></li>
                         <li><a href="#"> École</a></li>
                         <li><a href="#">Document</a></li>
-                        <li><a href="#">Produit</a></li>                
+                        <li><a href="{{ path('liste_product') }}">Produit</a></li>                
                     </ul>
                 </li>
         </ul>
