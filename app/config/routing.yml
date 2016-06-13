@@ -20,3 +20,7 @@ dashboard:
 new_product:
     path:    /new/product
     defaults: { _controller: DocumentBundle:Product:newproduct }
+
+new_document:
+    path:    /new/document
+    defaults: { _controller: DocumentBundle:Document:newdocument }
