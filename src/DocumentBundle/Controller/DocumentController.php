@@ -19,4 +19,19 @@ class DocumentController extends Controller
             
         ));
     }
+
+public function newdevisAction(Request $request)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $user = $this->container->get('security.context')->getToken()->getUser();
+
+
+        return $this->render('default/newdevis.html.twig', array(
+            
+        ));
+    }
+
+
+
+
 }
