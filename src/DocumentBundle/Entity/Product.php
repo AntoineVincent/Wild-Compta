@@ -36,7 +36,7 @@ class Product
     private $nom;
 
     /**
-     * @var string
+     * @var text
      *
      * @ORM\Column(name="contenu", type="text", nullable=true)
      */
@@ -102,7 +102,7 @@ class Product
     /**
      * Set contenu
      *
-     * @param string $contenu
+     * @param text $contenu
      * @return Product
      */
     public function setContenu($contenu)
@@ -115,7 +115,7 @@ class Product
     /**
      * Get contenu
      *
-     * @return string 
+     * @return text 
      */
     public function getContenu()
     {
