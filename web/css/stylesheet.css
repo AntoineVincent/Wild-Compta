@@ -1,3 +1,15 @@
+/*------------->    NAVBAR   <------------*/
+.navbar-header img {
+	width: 30%;
+	height: 30%;
+	padding-top: 1px;
+}
+nav {
+	
+}
+
+
+
 /* -------->     LOGIN PAGE      <--------- */
 .font-log {
 	background-color: rgba(241,241,241,1);
