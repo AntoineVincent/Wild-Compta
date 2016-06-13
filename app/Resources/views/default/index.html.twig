@@ -4,7 +4,7 @@
 
 <div class="col-md-6 col-md-offset-3 font-log">
 	<div class="col-md-12">
-		<h3 class="log-title">CONNEXION</h3>
+		<h2 class="log-title">CONNEXION</h2>
 	</div>
 	<div class="col-md-12">
 		{% if error %}
@@ -18,7 +18,7 @@
 				    <label for="username"><span>Pseudo :</span></label>
 				</div>
 				<div class="col-md-6">
-				    <input type="text" id="username" name="_username" value="{{ last_username }}" required="required" />
+				    <input class="champ-log" type="text" id="username" name="_username" value="{{ last_username }}" required="required" />
 				</div>
 			</div>
 			<div class"col-md-12">
@@ -26,7 +26,7 @@
 				    <label for="password"><span>Mot de Passe :</span></label>
 				</div>
 				<div class="col-md-6">
-				    <input type="password" id="password" name="_password" required="required" />
+				    <input class="champ-log" type="password" id="password" name="_password" required="required" />
 				</div>
 			</div>
 			<div class="col-md-12">
