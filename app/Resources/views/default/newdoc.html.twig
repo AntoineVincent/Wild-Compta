@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+<div class="row">
+	<div class="col-md-12">
+		<div class="col-md-offset-5 col-md-7">
+    		<form method="post" action="document.php">
+				<p><label for="type">type de document    </label>
+				<select name="type" id="document">
+					<option value="devis">Devis</option>
+					<option value="facture">Facture</option>
+					<option value="avoir">Avoir</option>
+				</select>
+				</p></br>
+				<p><label for="référence">référence du document </label> <input type="text" name="référence" /></p></br>
+				<p><label for="date création">date de création du document </label> <input type="date" name="date création" /></p></br>
+				<p><label for="état">état du document </label> <input type="boolean" name="état" /></p></br>
+				<p><label for="nombre d'échéances">nombre d'échéances </label> <input type="int" name="nombre d'échéances" /></p></br>
+				<p><label for="valeur">montant </label> <input type="number" name="valeur" />
+				</p></br>
+
+			</form>
+
+	<input type="submit" value="Enregistrer"/>
+		</div>
+	</div>
+</div>
+
+
+{% endblock %}
+
