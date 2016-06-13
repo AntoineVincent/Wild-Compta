@@ -36,3 +36,7 @@ supr_product:
 new_document:
     path:    /new/document
     defaults: { _controller: DocumentBundle:Document:newdocument }
+
+new_devis:
+    path:    /new/devis
+    defaults: { _controller: DocumentBundle:Document:newdevis }

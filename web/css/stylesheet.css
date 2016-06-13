@@ -42,6 +42,7 @@ nav {
 .prod-widg {
 	margin-top: 5px;
 }
+
 /* -------->     LISTE PRODUCT PAGE      <--------- */
 tr, td, th {
 	border: solid black 2px;
@@ -66,4 +67,19 @@ th {
 }
 .edit-line {
 	margin-top: 5px;
+}
+
+/* ------->    NEW DOCUMENT  PAGE      <--------- */
+
+.entete2 {
+	width : 800px;
+	box-sizing: border-box;
+}
+.adresse {
+	border: solid black 1px;
+	height: 150px;
+}
+
+.tableau {
+	width : 800px;
 }
