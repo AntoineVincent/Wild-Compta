@@ -21,6 +21,14 @@ new_product:
     path:    /new/product
     defaults: { _controller: DocumentBundle:Product:newproduct }
 
+liste_product:
+    path:    /liste/product
+    defaults: { _controller: DocumentBundle:Product:listeproduct }
+
+edit_product:
+    path:    /edit/product/{idproduct}
+    defaults: { _controller: DocumentBundle:Product:editproduct }
+
 new_document:
     path:    /new/document
     defaults: { _controller: DocumentBundle:Document:newdocument }
