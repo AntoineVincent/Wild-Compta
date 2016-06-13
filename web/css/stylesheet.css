@@ -72,7 +72,7 @@ th {
 /* ------->    NEW DOCUMENT  PAGE      <--------- */
 
 .entete2 {
-	width : 800px;
+	width : 100%;
 	box-sizing: border-box;
 }
 .adresse {
@@ -81,5 +81,5 @@ th {
 }
 
 .tableau {
-	width : 800px;
+	width : 100%;
 }
