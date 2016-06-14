@@ -4,38 +4,43 @@
 
 <div class="row">
 	<div class="col-md-12 ">
-		<div class="col-md-offset-4 col-md-3 dd">
-    		<form method="post" action="{{ path("new_organisme")}}">
-				
-				<div class="col-md-12">
-					<div class="col-md-8"> 
-						<p><label for="nom">Nom de l'organisme </label>
-					
-					</div>
-						
-						<div class="col-md-4">
-							<input type="text" id="nom" name="nom" /></p></br>
+		
+			<div class="col-md-offset-4 col-md-5 prod-form">
+	    		<form method="post" action="{{ path("new_organisme")}}">
+					 <h2> Créer Organisme</h2>  
+						<div class="col-md-12">
+							<div class="col-md-4"> 
+								<p><label for="nom">Nom de l'organisme </label>
+							
+							</div>
+								
+								<div class="col-md-4">
+									<input type="text" id="nom" name="nom" /></p></br>
+								</div>
 						</div>
-				</div> 
-					
 
-					
-				 
-				 
-				
-				
+							
 
-				
-					<p><label for="adresse">Adresse </label></br> 
 
-					<input type="text" id="adresse" name="adresse" /></p></br>
-				
-						<input type="submit" class="btn btn-primary" id="_submit" value="Enregistrer"/>
+							<div class="col-md-12">
+								<div class="col-md-4"> 
+									<p><label for="adresse">Adresse </label>
+							
+							</div>
+								
+								<div class="col-md-4">
+									<input type="text" id="adresse" name="adresse" /></p></br>
+								</div>
+							</div> 
+						
+								<div class="col-md-offset-6">
+									<input type="submit" class="btn btn-primary" id="_submit" value="Enregistrer"/>
+								</div>	
 
-		     </form>
+				     </form>
+				</div>
+			</div>
 		</div>
-	</div>
-</div>
 
 
 {% endblock %}
