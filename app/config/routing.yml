@@ -29,6 +29,10 @@ edit_product:
     path:    /edit/product/{idproduct}
     defaults: { _controller: DocumentBundle:Product:editproduct }
 
+supr_product:
+    path:    /supr/product/{idproduct}
+    defaults: { _controller: DocumentBundle:Product:suprproduct }
+
 new_document:
     path:    /new/document
     defaults: { _controller: DocumentBundle:Document:newdocument }
@@ -36,3 +40,8 @@ new_document:
 new_organisme:
     path:    /new/organisme
     defaults: { _controller: ClientBundle:Organisme:neworganisme }
+
+new_devis:
+    path:    /new/devis
+    defaults: { _controller: DocumentBundle:Document:newdevis }
+
