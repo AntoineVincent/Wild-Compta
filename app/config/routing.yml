@@ -45,3 +45,6 @@ new_devis:
     path:    /new/devis
     defaults: { _controller: DocumentBundle:Document:newdevis }
 
+new_ecole:
+    path:    /new/ecole
+    defaults: { _controller: ClientBundle:Ecole:newecole }

@@ -86,11 +86,9 @@ th {
 
 /* -------->     NEW ORGANISME PAGE      <--------- */
 
-.dd {
-	background-color: rgba(241,241,241,1);
-	border-radius: 5px;
-	border: solid #1fa597 2px;
-	padding: 15px;
+h2{
+	text-align: center;
+	color: #1fa597;
 }
 /* ------->    NEW DOCUMENT  PAGE      <--------- */
 .entete {
