@@ -93,7 +93,9 @@ th {
 	padding: 15px;
 }
 /* ------->    NEW DOCUMENT  PAGE      <--------- */
-
+.entete {
+	text-align: right;
+}
 .entete2 {
 	width : 100%;
 	box-sizing: border-box;
@@ -105,4 +107,9 @@ th {
 
 .tableau {
 	width : 100%;
+}
+.phrase {
+	text-align: right;
+	margin-right: 150px;
+	padding-: 40px;
 }
