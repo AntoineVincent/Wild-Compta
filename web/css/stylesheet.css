@@ -3,8 +3,9 @@
 	width: 30%;
 	height: 30%;
 	padding-top: 1px;
+	padding-bottom: 1px;
 }
-nav {
+.navbar-collapse {
 	
 }
 /* -------->     LOGIN PAGE      <--------- */
@@ -21,6 +22,16 @@ nav {
 .champ-log {
 	margin: 3px;
 }
+/* -------->     DASHBOARD      <--------- */
+.retard, .annuel, .mensuel {
+	text-align: center;
+
+
+}
+.vide {
+	height: 100px;
+}
+
 /* -------->     NEW PRODUCT PAGE      <--------- */
 .new-prod-title {
 	text-align: center;
