@@ -89,6 +89,7 @@ class ProductController extends Controller
         
         $em->remove($deleting);
         $em->flush();
+        
         $request->getSession()
         ->getFlashBag()
         ->add('warning', 'Produit Supprimé !')
