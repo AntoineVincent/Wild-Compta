@@ -30,4 +30,16 @@ class EcoleController extends Controller
             
         ));
     }
+    public function listeecoleAction(Request $request)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $user = $this->container->get('security.context')->getToken()->getUser();
+
+        $ecoles = $em->getRepository('ClientBundle:Ecole')->findAll();
+
+        return $this->render('default/listeecole.html.twig', array(
+            'ecoles' => $ecoles,
+        ));
+    }
+
 }
