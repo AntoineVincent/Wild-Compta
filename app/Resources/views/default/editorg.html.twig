@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+
+<div class="col-md-3"></div>
+<div class="col-md-6 edit-orga-form">
+    <div class="col-md-12">
+        {% for label, flashes in app.session.flashbag.all %}
+            {% for flash in flashes %}
+                <div class="alert alert-{{ label }}">
+                    {{ flash }}
+                </div>
+            {% endfor %}
+        {% endfor %}
+    </div>
+	<form action="{{ path('edit_organisme', { 'idorganisme': organisme.id }) }}" method="post">
+		<div class="col-md-12">
+			<h2 class="list-organisme-title"> Editer un organisme </h2>
+		</div>
+        <div class="col-md-12 edit-line">
+            <div class="col-md-4">
+                <label for="nom">Nom :</label>
+            </div>
+            <div class="col-md-8">
+                <input type="string" id="nom" name="nom" value="{{ organisme.nom }}"/>
+            </div>
+        </div>
+        <div class="col-md-12 edit-line">
+            <div class="col-md-4">
+                <label for="adresse">Adresse:</label>
+            </div>
+            <div class="col-md-8">
+                <textarea class="adresse-input" type="text"  id="adresse" name="adresse" value="{{ organisme.adresse }}">{{ organisme.adresse }}</textarea>
+            </div>
+        </div>
+        <div class="col-md-12">
+            <input type="hidden" name="hidden" value="1"/>
+        </div>
+        <div class="col-md-12">
+        	<div class="col-md-5"></div>
+        	<div class="col-md-2">
+            	<input type="submit" class="btn btn-primary" id="_submit" name="submit" value="Envoyer" />
+            </div>
+            <div class="col-md-5"></div>
+        </div>
+    </form>
+</div>
+<div class="col-md-3"></div>
+
+{% endblock %}

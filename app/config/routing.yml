@@ -41,6 +41,18 @@ new_organisme:
     path:    /new/organisme
     defaults: { _controller: ClientBundle:Organisme:neworganisme }
 
+liste_organisme:
+    path:    /liste/organisme
+    defaults: { _controller: ClientBundle:Organisme:listeorganisme }
+
+edit_organisme:
+    path:    /edit/organisme/{idorganisme}
+    defaults: { _controller: ClientBundle:Organisme:editorganisme }
+
+supr_organisme:
+    path:    /supr/organisme/{idorganisme}
+    defaults: { _controller: ClientBundle:Organisme:suprorganisme }
+
 new_devis:
     path:    /new/devis
     defaults: { _controller: DocumentBundle:Document:newdevis }
