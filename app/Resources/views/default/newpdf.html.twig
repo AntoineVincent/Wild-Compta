@@ -29,7 +29,7 @@
 				<p>DEVIS<br/>
 				Réf. : numéro devis<br/>
 				Date : {{ "now"|date("d/m/Y") }}<br/>
-				Date de fin de validité : {# {{ post.published_at|date_modify("+1 month")|date("d/m/Y") }} #}<br/>
+				Date de fin de validité : {{ "now"|date_modify("+1 month")|date("d/m/Y") }}<br/>
 				Code client : CU1509-0052
 				</p>
 
