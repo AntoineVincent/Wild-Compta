@@ -65,7 +65,16 @@ new_pdf:
     path:    /new/pdf
     defaults: { _controller: DocumentBundle:Document:pdf }
 
+liste_ecole:
+    path:    /liste/ecole
+    defaults: { _controller: ClientBundle:Ecole:listeecole }
 
+edit_ecole:
+    path:    /edit/ecole/{idecole}
+    defaults: { _controller: ClientBundle:Ecole:editproduct }
 
+supr_ecole:
+    path:    /supr/ecole/{idecole}
+    defaults: { _controller: ClientBundle:Ecole:suprproduct }
 
 
