@@ -48,3 +48,16 @@ new_devis:
 new_ecole:
     path:    /new/ecole
     defaults: { _controller: ClientBundle:Ecole:newecole }
+
+liste_ecole:
+    path:    /liste/ecole
+    defaults: { _controller: ClientBundle:Ecole:listeecole }
+
+edit_ecole:
+    path:    /edit/ecole/{idecole}
+    defaults: { _controller: ClientBundle:Ecole:editproduct }
+
+supr_ecole:
+    path:    /supr/ecole/{idecole}
+    defaults: { _controller: ClientBundle:Ecole:suprproduct }
+
