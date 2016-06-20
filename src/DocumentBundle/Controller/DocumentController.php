@@ -44,7 +44,7 @@ class DocumentController extends Controller
         //le sens de la page "portrait" => p ou "paysage" => l
         //le format A4,A5...
         //la langue du document fr,en,it...
-        $html2pdf = new \Html2Pdf_Html2Pdf('P','A4','fr');
+        $html2pdf = new Html2Pdf_Html2Pdf('P','A4','fr');
  
         //SetDisplayMode définit la manière dont le document PDF va être affiché par l’utilisateur
         //fullpage : affiche la page entière sur l'écran
@@ -56,7 +56,8 @@ class DocumentController extends Controller
         $html2pdf->writeHTML($html);
  
         //Output envoit le document PDF au navigateur internet avec un nom spécifique qui aura un rapport avec le contenu à convertir (exemple : Facture, Règlement…)
-        $html2pdf->Output('devis.pdf');
+        $html2pdf->Output('document.pdf');
+        exit;
          
      
         return new Response();

@@ -12,7 +12,7 @@
 			<p>DEVIS</br>
 				Réf. : numéro devis</br>
 				Date : {{ "now"|date("d/m/Y") }}</br>
-				Date de fin de validité : {# {{ post.published_at|date_modify("+1 month")|date("d/m/Y") }} #}</br>
+				Date de fin de validité : {{ "now"|date_modify("+1 month")|date("d/m/Y") }}</br>
 				Code client : CU1509-0052
 			</p>
 				</br></br>
@@ -73,7 +73,7 @@
 				<div class="col-md-12">
 		<div class="col-md-5"></div>
 		<div class="col-md-2">
-	        <button class="btn-danger btn-lg"><a href="{{ path('new_pdf') }}">PDF</a></button> 
+	        <a href="{{ path('new_pdf') }}" class="btn-danger btn-lg">PDF</a>
 	    </div>
 	    <div class="col-md-5"></div>
 	</div> 
