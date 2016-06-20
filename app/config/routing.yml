@@ -41,6 +41,18 @@ new_organisme:
     path:    /new/organisme
     defaults: { _controller: ClientBundle:Organisme:neworganisme }
 
+liste_organisme:
+    path:    /liste/organisme
+    defaults: { _controller: ClientBundle:Organisme:listeorganisme }
+
+edit_organisme:
+    path:    /edit/organisme/{idorganisme}
+    defaults: { _controller: ClientBundle:Organisme:editorganisme }
+
+supr_organisme:
+    path:    /supr/organisme/{idorganisme}
+    defaults: { _controller: ClientBundle:Organisme:suprorganisme }
+
 new_devis:
     path:    /new/devis
     defaults: { _controller: DocumentBundle:Document:newdevis }
@@ -48,6 +60,10 @@ new_devis:
 new_ecole:
     path:    /new/ecole
     defaults: { _controller: ClientBundle:Ecole:newecole }
+
+new_pdf:
+    path:    /new/pdf
+    defaults: { _controller: DocumentBundle:Document:pdf }
 
 liste_ecole:
     path:    /liste/ecole
@@ -60,4 +76,5 @@ edit_ecole:
 supr_ecole:
     path:    /supr/ecole/{idecole}
     defaults: { _controller: ClientBundle:Ecole:suprproduct }
+
 
