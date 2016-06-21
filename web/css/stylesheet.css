@@ -62,17 +62,6 @@
 }
 
 /* -------->     LISTE PRODUCT PAGE      <--------- */
-
-tr, td, th {
-	border: solid black 2px;
-	padding: 5px;
-}
-th {
-	text-align: center;
-}
-.type-line {
-	text-align: center;
-}
 .list-product-title {
 	text-align: center;
 	color: #1fa597;
@@ -84,9 +73,6 @@ th {
 	border-radius: 5px;
 	border: solid #1fa597 2px;
 	padding: 10px;
-}
-.edit-line {
-	margin-top: 5px;
 }
 
 /* -------->     NEW ORGANISME PAGE      <--------- */
@@ -110,13 +96,6 @@ h2{
 
 /* --------->    LISTE ORGANISMES ------> */
 
-tr, td, th {
-	border: solid black 2px;
-	padding: 5px;
-}
-th {
-	text-align: center;
-}
 .list-org-title {
 	text-align: center;
 	color: #1fa597;
@@ -148,4 +127,10 @@ th {
 	text-align: right;
 	margin-right: 150px;
 	padding-: 40px;
+}
+.ui-widget-header {
+	color: black !important;
+}
+#myTable {
+	width: 100%;
 }
