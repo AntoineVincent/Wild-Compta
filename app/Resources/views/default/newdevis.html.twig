@@ -64,21 +64,27 @@
 						</tr> 
 					</table>
 					<div class="col-md-12 ligne">
-						<div class="col-md-4">Conditions de reglements</div>
-						<div class="col-md-4">Payée au vue des heures réalisées</div>
-						<div class="col-md-2">Total HT</br>Total TTC</div>
-						<div class="col-md-2">6000</div></br>6000</div>
+						<div class="col-md-6">Conditions de reglements : Payée au vue des heures réalisées</div>
+						<div class="col-md-3">Total HT</br>Total TTC</div>
+						<div class="col-md-3">6000</div></br>6000</div>
 					</div>
 				</div>
-				<div class="col-md-12">
-		<div class="col-md-5"></div>
-		<div class="col-md-2">
-	        <a href="{{ path('new_pdf') }}" class="btn-danger btn-lg">PDF</a>
-	    </div>
-	    <div class="col-md-5"></div>
-	</div> 
 		</div>
+		<div class="col-md-1"></div>
+	</div>		
+	<div class="col-md-12 bouton">
+		<div class="col-md-9"></div>
+		<div class="col-md-2">
+	       	<a href="{{ path('new_pdf') }}" class="btn-danger btn-lg">PDF</a>
+	   	</div>
+	    <div class="col-md-1"></div>
 	</div>
+	<div class="col-md-12 vide">AJOUTER ICI LES PENALITES DE RETARD</div>
+	<div class="col-md-12 pied"> 
+		<p>Société par actions simplifiée (SAS) - Capital de 7000€ - SIRET 794 925 063 00023</br>NAF-APE: 8560Z + Num. TVA: FR 27 794 926 063</p>
+	</div>
+		
+
 		
 
 {% endblock %}

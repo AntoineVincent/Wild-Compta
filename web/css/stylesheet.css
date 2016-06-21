@@ -149,3 +149,16 @@ th {
 	margin-right: 150px;
 	padding-: 40px;
 }
+
+/* ------->    NEW DEVIS  PAGE      <--------- */
+.bouton {
+	height:100px;
+}
+.pied {
+	text-align: center;
+
+}
+.vide {
+	height: 100px;
+	text-align: center;
+}
