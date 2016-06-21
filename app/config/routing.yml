@@ -61,7 +61,6 @@ new_ecole:
     path:    /new/ecole
     defaults: { _controller: ClientBundle:Ecole:newecole }
 
-
 new_pdf:
     path:    /new/pdf
     defaults: { _controller: DocumentBundle:Document:pdf }
