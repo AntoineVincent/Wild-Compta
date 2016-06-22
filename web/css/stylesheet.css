@@ -104,7 +104,16 @@ h2{
 .tab_orga {
 	width: 100%;
 }
+/* --------->    LISTE ECOLES ------> */
 
+.list-ecole-title {
+	text-align: center;
+	color: #1fa597;
+}
+
+.tab_ecole {
+	width: 100%;
+}
 
 /* ------->    NEW DOCUMENT  PAGE      <--------- */
 

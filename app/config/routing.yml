@@ -21,17 +21,33 @@ new_product:
     path:    /new/product
     defaults: { _controller: DocumentBundle:Product:newproduct }
 
+new_client:
+    path:    /new/client
+    defaults: { _controller: ClientBundle:Client:newclient }
+
 liste_product:
     path:    /liste/product
     defaults: { _controller: DocumentBundle:Product:listeproduct }
+
+liste_client:
+    path:    /liste/client
+    defaults: { _controller: ClientBundle:Client:listeclient }
 
 edit_product:
     path:    /edit/product/{idproduct}
     defaults: { _controller: DocumentBundle:Product:editproduct }
 
+edit_client:
+    path:    /edit/client/{idclient}
+    defaults: { _controller: ClientBundle:Client:editclient }
+
 supr_product:
     path:    /supr/product/{idproduct}
     defaults: { _controller: DocumentBundle:Product:suprproduct }
+
+supr_client:
+    path:    /supr/client/{idclient}
+    defaults: { _controller: ClientBundle:Client:suprclient }
 
 new_document:
     path:    /new/document
