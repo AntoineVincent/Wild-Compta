@@ -24,7 +24,7 @@ class ClientType extends AbstractType
             ->add('portable')
             ->add('type', ChoiceType::class, array(
     'choices' => array(
-        'éléve' => 'élève',
+        'élève' => 'élève',
         'projet site' => 'projet site',
         'kids' => 'kids',
         'autre' => 'autre',

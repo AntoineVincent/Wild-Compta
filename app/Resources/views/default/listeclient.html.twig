@@ -23,7 +23,8 @@
 		       		<th class="search-table-title">Nom</th>
 		       		<th class="search-table-title">Typologie</th>
 		       		<th class="search-table-title">Ecole</th>
-		       		<th class="search-table-title">Dernière MAJ</th>
+		       		<th>Modifier</th>
+		       		<th>Supprimer</th>
 		   		</tr>
 		   	</thead>
 		   	<tfoot>
@@ -31,7 +32,8 @@
 		       		<th class="search-table-title">Nom</th>
 		       		<th class="search-table-title">Typologie</th>
 		       		<th class="search-table-title">Ecole</th>
-		       		<th class="search-table-title">Dernière mise à jour</th>
+		       		<th>Modifier</th>
+		       		<th>Supprimer</th>
 		   		</tr>
 		   	</tfoot>
     		<tbody>
@@ -40,6 +42,8 @@
 			   		<td class="type-line">{{ client.nom }}</td>
 			   		<td>{{ client.type }}</td>
 			    	<td class="contenu-tab">{{ client.idecole }}</td>
+			    	<td> <a href="{{ path('edit_client', { 'idclient': client.id }) }}">Editer</a> </td>
+			       	<td> <a href="{{ path('supr_client', { 'idclient': client.id }) }}">Supprimer</a> </td>
 			   	</tr>
 			{% endfor %}
 			</tbody>

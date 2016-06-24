@@ -36,9 +36,9 @@ class Client
     private $nom;
 
     /**
-     * @var int
+     * @var string
      *
-     * @ORM\Column(name="type", type="integer", nullable=true)
+     * @ORM\Column(name="type", type="string", length=255, nullable=true)
      */
     private $type;
 
@@ -92,9 +92,9 @@ class Client
     private $portable;
 
     /**
-     * @var int
+     * @var string
      *
-     * @ORM\Column(name="idecole", type="integer", nullable=true)
+     * @ORM\Column(name="idecole", type="string", nullable=true)
      */
     private $idecole;
 
@@ -165,7 +165,7 @@ class Client
     /**
      * Set type
      *
-     * @param integer $type
+     * @param string $type
      * @return Client
      */
     public function setType($type)
@@ -178,7 +178,7 @@ class Client
     /**
      * Get type
      *
-     * @return integer 
+     * @return string 
      */
     public function getType()
     {
@@ -349,7 +349,7 @@ class Client
     /**
      * Set idecole
      *
-     * @param integer $idecole
+     * @param string $idecole
      * @return Client
      */
     public function setIdecole($idecole)
@@ -362,7 +362,7 @@ class Client
     /**
      * Get idecole
      *
-     * @return integer 
+     * @return string 
      */
     public function getIdecole()
     {

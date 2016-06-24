@@ -74,7 +74,7 @@ class ClientController extends Controller
             $em->flush();
         }
 
-        return $this->render('default/ficheclient.html.twig', array(
+        return $this->render('default/editclient.html.twig', array(
             'client' => $client,
         ));
     }
