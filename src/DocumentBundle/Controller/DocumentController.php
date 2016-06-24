@@ -7,6 +7,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use DocumentBundle\Entity\Documents;
 use Html2Pdf_Html2Pdf;
+use DocumentBundle\Form\DocumentType;
 
 
 
@@ -17,9 +18,22 @@ class DocumentController extends Controller
         $em = $this->getDoctrine()->getManager();
         $user = $this->container->get('security.context')->getToken()->getUser();
 
+        $document = new Documents();
+        $form = $this->createForm('DocumentBundle\Form\DocumentType', $document);
+        $form->handleRequest($request);
+
+        if ($form->isValid()) {
+            $request->getSession()
+            ->getFlashBag()
+            ->add('success', 'Document Créé !')
+            ;
+
+            $em->persist($document);
+            $em->flush();
+        }
 
         return $this->render('default/newdoc.html.twig', array(
-            
+            'form' => $form->createView(),
         ));
     }
 
@@ -28,10 +42,10 @@ class DocumentController extends Controller
         $em = $this->getDoctrine()->getManager();
         $user = $this->container->get('security.context')->getToken()->getUser();
 
-
+        $documents = $em->getRepository('DocumentBundle:Documents')->findAll();
 
         return $this->render('default/newdevis.html.twig', array(
-            
+            'documents' => $documents,
         ));
     }
 

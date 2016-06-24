@@ -7,19 +7,23 @@
 		<div class="col-md-3"></div> 
 		<div class="col-md-6 prod-form">
 			<div class="col-md-12">
+				{% for label, flashes in app.session.flashbag.all %}
+	    			{% for flash in flashes %}
+	        			<div class="alert alert-{{ label }}">
+	            			{{ flash }}
+	        			</div>
+	    			{% endfor %}
+				{% endfor %}
 				<h2 class="new-prod-title"> Créer un Document </h2>
 			</div>
-    		<form method="post" action="document.php">
+    		{{ form_start(form) }}
     			<div class="col-md-12">
     				<div class="col-md-5">
 						<p><label for="type">type de document  </label>
 					</div>
 					<div class="col-md-7">
-						<select name="type" id="document">
-							<option value="devis">Devis</option>
-							<option value="facture">Facture</option>
-							<option value="avoir">Avoir</option>
-						</select>
+						{{ form_widget(form.type) }}
+						
 					</div>
 				</div>
 						</p></br>
@@ -36,7 +40,7 @@
 						<p><label for="référence">date de création du document </label>
 					</div> 
 					<div class="col-md-7">
-						<input type="date" name="date de création" /></p></br>
+						<input type="date" name="date de création"  /></p></br>
 					</div>
 				</div>
 				<div class="col-md-12">
@@ -63,7 +67,7 @@
 						<input type="number" name="valeur" /></p></br>
 					</div>
 				</div>
-			</form>
+			{{ form_end(form) }}
 				<div class="col-md-12">
 					<div class="col-md-7">
 						<input type="submit" class="btn btn-primary" value="Enregistrer"/>
@@ -71,7 +75,8 @@
 					<div class="col-md-5">
 						<a href="{{ path('new_devis') }}"><input type="submit" class="btn btn-primary" value="Ouvrir"/></a>	
 					</div>
-				</div>	
+				</div>
+
 	</div>
 </div>
 
