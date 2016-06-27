@@ -36,9 +36,9 @@ class Client
     private $nom;
 
     /**
-     * @var int
+     * @var string
      *
-     * @ORM\Column(name="type", type="integer", nullable=true)
+     * @ORM\Column(name="type", type="string", length=255, nullable=true)
      */
     private $type;
 
@@ -64,37 +64,37 @@ class Client
     private $email;
 
     /**
-     * @var int
+     * @var string
      *
-     * @ORM\Column(name="orgapayeur", type="integer", nullable=true)
+     * @ORM\Column(name="orgapayeur", type="string", nullable=true)
      */
     private $orgapayeur;
 
     /**
-     * @var int
+     * @var string
      *
-     * @ORM\Column(name="bourse", type="integer", nullable=true)
+     * @ORM\Column(name="bourse", type="string", nullable=true)
      */
     private $bourse;
 
     /**
-     * @var int
+     * @var string
      *
-     * @ORM\Column(name="telephonefixe", type="integer", nullable=true)
+     * @ORM\Column(name="telephonefixe", type="string", nullable=true)
      */
     private $telephonefixe;
 
     /**
-     * @var int
+     * @var string
      *
-     * @ORM\Column(name="portable", type="integer", nullable=true)
+     * @ORM\Column(name="portable", type="string", nullable=true)
      */
     private $portable;
 
     /**
-     * @var int
+     * @var string
      *
-     * @ORM\Column(name="idecole", type="integer", nullable=true)
+     * @ORM\Column(name="idecole", type="string", nullable=true)
      */
     private $idecole;
 
@@ -165,7 +165,7 @@ class Client
     /**
      * Set type
      *
-     * @param integer $type
+     * @param string $type
      * @return Client
      */
     public function setType($type)
@@ -178,7 +178,7 @@ class Client
     /**
      * Get type
      *
-     * @return integer 
+     * @return string 
      */
     public function getType()
     {
@@ -257,7 +257,7 @@ class Client
     /**
      * Set orgapayeur
      *
-     * @param integer $orgapayeur
+     * @param string $orgapayeur
      * @return Client
      */
     public function setOrgapayeur($orgapayeur)
@@ -270,7 +270,7 @@ class Client
     /**
      * Get orgapayeur
      *
-     * @return integer 
+     * @return string 
      */
     public function getOrgapayeur()
     {
@@ -280,7 +280,7 @@ class Client
     /**
      * Set bourse
      *
-     * @param integer $bourse
+     * @param string $bourse
      * @return Client
      */
     public function setBourse($bourse)
@@ -293,7 +293,7 @@ class Client
     /**
      * Get bourse
      *
-     * @return integer 
+     * @return string 
      */
     public function getBourse()
     {
@@ -303,7 +303,7 @@ class Client
     /**
      * Set telephonefixe
      *
-     * @param integer $telephonefixe
+     * @param string $telephonefixe
      * @return Client
      */
     public function setTelephonefixe($telephonefixe)
@@ -316,7 +316,7 @@ class Client
     /**
      * Get telephonefixe
      *
-     * @return integer 
+     * @return string 
      */
     public function getTelephonefixe()
     {
@@ -326,7 +326,7 @@ class Client
     /**
      * Set portable
      *
-     * @param integer $portable
+     * @param string $portable
      * @return Client
      */
     public function setPortable($portable)
@@ -339,7 +339,7 @@ class Client
     /**
      * Get portable
      *
-     * @return integer 
+     * @return string 
      */
     public function getPortable()
     {
@@ -349,7 +349,7 @@ class Client
     /**
      * Set idecole
      *
-     * @param integer $idecole
+     * @param string $idecole
      * @return Client
      */
     public function setIdecole($idecole)
@@ -362,7 +362,7 @@ class Client
     /**
      * Get idecole
      *
-     * @return integer 
+     * @return string 
      */
     public function getIdecole()
     {

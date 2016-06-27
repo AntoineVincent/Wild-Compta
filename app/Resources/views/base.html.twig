@@ -7,8 +7,18 @@
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
         <link rel="stylesheet" type="text/css" href="{{ asset('css/bootstrap.min.css') }}">
         <link rel="stylesheet" type="text/css" href="{{ asset('css/stylesheet.css') }}">
+
         <script type="text/javascript" src="{{ asset('js/jquery.js') }}" ></script>
         <script type="text/javascript" src="{{ asset('js/bootstrap.min.js') }}" ></script> 
+
+        <link rel="stylesheet" type="text/css" href="{{ asset('datable/datatables.min.css') }}"/>
+        <link rel="stylesheet" type="text/css" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css"/>
+        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.12/css/dataTables.jqueryui.min.css"/>
+        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/1.2.1/css/buttons.jqueryui.min.css"/>
+        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/keytable/2.1.2/css/keyTable.dataTables.min.css"/>
+
+        <script type="text/javascript" src="{{ asset('datable/datatables.min.js') }}"></script>
+        <script type="text/javascript" src="https://cdn.datatables.net/colreorder/1.3.2/js/dataTables.colReorder.min.js"></script>
     </head>
     <body>
         <nav role="navigation" class="navbar navbar-default">
@@ -27,11 +37,11 @@
     <div id="navbarCollapse" class="collapse navbar-collapse">
         <ul class="nav navbar-nav">
             <li class=""><a href="{{ path('dashboard') }}">Dashboard</a></li>
-            <li><a href="#">Liste Clients</a></li>
+            <li><a href="{{ path('liste_client') }}">Liste Clients</a></li>
             <li class="dropdown">
                 <a data-toggle="dropdown" class="dropdown-toggle" href="#">Créer <b class="caret"></b></a>
                 <ul role="menu" class="dropdown-menu">
-                    <li><a href="#"> Client </a></li>
+                    <li><a href="{{ path('new_client') }}"> Client </a></li>
                     <li><a href="{{ path('new_organisme') }}"> Organisme</a></li>
                     <li><a href="{{ path("new_ecole")}}"> École</a></li>
                     <li><a href="{{ path('new_document') }}">Document</a></li>
@@ -41,9 +51,9 @@
                 <li class="dropdown">
                     <a data-toggle="dropdown" class="dropdown-toggle" href="#">Éditer <b class="caret"></b></a>
                     <ul role="menu" class="dropdown-menu">
-                        <li><a href="#"> Client </a></li>
+                        <li><a href="{{ path('liste_client') }}"> Client </a></li>
                         <li><a href="{{ path('liste_organisme') }}"> Organisme</a></li>
-                        <li><a href="#"> École</a></li>
+                        <li><a href="{{ path('liste_ecole') }}"> École</a></li>
                         <li><a href="#">Document</a></li>
                         <li><a href="{{ path('liste_product') }}">Produit</a></li>                
                     </ul>

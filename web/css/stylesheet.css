@@ -62,17 +62,6 @@
 }
 
 /* -------->     LISTE PRODUCT PAGE      <--------- */
-
-tr, td, th {
-	border: solid black 2px;
-	padding: 5px;
-}
-th {
-	text-align: center;
-}
-.type-line {
-	text-align: center;
-}
 .list-product-title {
 	text-align: center;
 	color: #1fa597;
@@ -84,9 +73,6 @@ th {
 	border-radius: 5px;
 	border: solid #1fa597 2px;
 	padding: 10px;
-}
-.edit-line {
-	margin-top: 5px;
 }
 
 /* -------->     NEW ORGANISME PAGE      <--------- */
@@ -110,13 +96,6 @@ h2{
 
 /* --------->    LISTE ORGANISMES ------> */
 
-tr, td, th {
-	border: solid black 2px;
-	padding: 5px;
-}
-th {
-	text-align: center;
-}
 .list-org-title {
 	text-align: center;
 	color: #1fa597;
@@ -125,7 +104,16 @@ th {
 .tab_orga {
 	width: 100%;
 }
+/* --------->    LISTE ECOLES ------> */
 
+.list-ecole-title {
+	text-align: center;
+	color: #1fa597;
+}
+
+.tab_ecole {
+	width: 100%;
+}
 
 /* ------->    NEW DOCUMENT  PAGE      <--------- */
 
@@ -148,4 +136,25 @@ th {
 	text-align: right;
 	margin-right: 150px;
 	padding-: 40px;
+}
+
+
+/* ------->    NEW DEVIS  PAGE      <--------- */
+.bouton {
+	height:100px;
+}
+.pied {
+	text-align: center;
+
+}
+.vide {
+	height: 100px;
+	text-align: center;
+
+.ui-widget-header {
+	color: black !important;
+}
+#myTable {
+	width: 100%;
+
 }
