@@ -99,7 +99,7 @@ class ClientController extends Controller
         $em = $this->getDoctrine()->getManager();
         $user = $this->container->get('security.context')->getToken()->getUser();
 
-        $file = $this->get('kernel')->getRootDir().'/../web/stub/candidats.json';
+        $file = $this->get('kernel')->getRootDir().'/../web/stub/deals.json';
         $object = json_decode(file_get_contents($file), true);
 
         $candidats = [];

@@ -16,7 +16,7 @@ class StubController extends Controller
     	$dirs = $this->get('kernel')->getRootDir().'/../web/stub';
 
     	$finder = new Finder();
-		$finder->files()->name('candidats.json')->in($dirs);
+		$finder->files()->name('deals.json')->in($dirs);
 
 		foreach ($finder as $file) {
     		$contents = json_decode($file->getContents(), true);
