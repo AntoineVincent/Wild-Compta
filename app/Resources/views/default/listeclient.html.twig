@@ -42,8 +42,8 @@
 			   		<td class="type-line">{{ client.nom }}</td>
 			   		<td>{{ client.type }}</td>
 			    	<td class="contenu-tab">{{ client.idecole }}</td>
-			    	<td> <a href="{{ path('edit_client', { 'idclient': client.id }) }}">Editer</a> </td>
-			       	<td> <a href="{{ path('supr_client', { 'idclient': client.id }) }}">Supprimer</a> </td>
+			    	<td> <a href="{{ path('edit_client', { 'idclient': client.idpipedrive }) }}">Editer</a> </td>
+			       	<td> <a href="{{ path('supr_client', { 'idclient': client.idpipedrive }) }}">Supprimer</a> </td>
 			   	</tr>
 			{% endfor %}
 			</tbody>

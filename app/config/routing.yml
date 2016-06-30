@@ -93,4 +93,8 @@ supr_ecole:
     path:    /supr/ecole/{idecole}
     defaults: { _controller: ClientBundle:Ecole:suprproduct }
 
+stub:
+    path:    /stub
+    defaults: { _controller: ClientBundle:Stub:getStub}
+
 
