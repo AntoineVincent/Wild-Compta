@@ -35,12 +35,7 @@ class ClientController extends Controller
 
     public function listeclientAction(Request $request)
     {
-    	
-        $candidats = $this->getCandidats();
-
-        return $this->render('default/listeclient.html.twig', array(
-        	'clients' => $candidats,
-        ));
+        return $this->render('default/listeclient.html.twig');
     }
 
     public function editclientAction(Request $request, $idclient)

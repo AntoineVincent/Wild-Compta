@@ -37,15 +37,6 @@
 		   		</tr>
 		   	</tfoot>
     		<tbody>
-		   	{% for client in clients %}
-				<tr>
-			   		<td class="type-line">{{ client.nom }}</td>
-			   		<td>{{ client.type }}</td>
-			    	<td class="contenu-tab">{{ client.idecole }}</td>
-			    	<td> <a href="{{ path('edit_client', { 'idclient': client.idpipedrive }) }}">Editer</a> </td>
-			       	<td> <a href="{{ path('supr_client', { 'idclient': client.idpipedrive }) }}">Supprimer</a> </td>
-			   	</tr>
-			{% endfor %}
 			</tbody>
 		</table>
 
@@ -55,48 +46,31 @@
 
 		<script>
 			$(document).ready(function () {
-
-				$('#myTable tfoot .search-table-title').each( function () {
-        			var title = $('#myTable thead .search-table-title').eq( $(this).index() ).text();
-        			$(this).html( '<input style="width:160px; color:black;" type="text" placeholder="Search '+title+'" />' );
-    			});
-
-    			var table = $('#myTable').DataTable( {
-    				select: {
-            			style: 'multi'
-        			},
-    				responsive: true,
-    				keys: true,
-    				autoFill: true,
-    				rowReorder: true,
-    				columnDefs: [
-            			{ orderable: true, className: 'reorder', targets: [0,1,2] },
-            			{ orderable: false, targets: '_all' }
-        			],
-    				dom: 'Bfrtip',
-    				lengthMenu: [
-            			[ 10, 25, 50, -1 ],
-            			[ '10 lignes', '25 lignes', '50 lignes', 'Tout voir' ]
-        			],
-    				buttons: [
-    					'pageLength',
-        				{
-            				extend: 'copy',
-            				text: 'Copier'
-        				},
-        				'excel',
-        				'pdf',
-        				'colvis'
-    				],
-    				colReorder: true
+				$.ajax('{{ asset("stub/deals.json") }}').done(function (data) {
+					data.data.forEach(function(deal){
+						console.log(deal);
+						var typo = "unknown";
+						switch (deal.pipeline_id){
+							case 1:
+								typo = "projet";
+								break;
+							case 7:
+								typo = "élève";
+								break;
+							default:
+								break;
+						}
+						$('tbody').append("" +
+								"<tr>" +
+								"	<td>"+deal.title+"</td>" +
+								"	<td>"+typo+"</td>" +
+								"	<td>"+deal.dc8169a887137f530107d12b3c547b830a39046d+"</td>" +
+								"	<td><a href=''>Modifier</a></td>" +
+								"	<td><a href=''>Supprimer</a></td>" +
+								"</tr>"
+						);
+					})
 				});
-
-				$("#myTable tfoot input").on( 'keyup change', function () {
-        			table
-            			.column( $(this).parent().index()+':visible' )
-            			.search( this.value )
-            			.draw();
-            	});
 			});
 		</script>
 
