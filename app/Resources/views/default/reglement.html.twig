@@ -1,0 +1,101 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+<div class="col-md-12">
+	<div class="col-md-3"></div>
+	<div class="col-md-6 prod-form">
+		<div class="col-md-12">
+			{% for label, flashes in app.session.flashbag.all %}
+	    		{% for flash in flashes %}
+	        		<div class="alert alert-{{ label }}">
+	            		{{ flash }}
+	        		</div>
+	    		{% endfor %}
+			{% endfor %}
+		</div>
+		<div class="col-md-12">
+			<h2 class="new-reglement-title"> Enregistrer un Nouveau Réglement </h2>
+		</div>
+		
+		<div class="col-md-12 cli-widg">
+			<div class="col-md-2"></div>
+			<div class="col-md-4">
+				<h5> Société/Nom : </h5>
+			</div>
+			<div class="col-md-4">
+				<h5>{{ client.nom }}</h5>
+			</div>
+			<div class="col-md-2"></div>
+		</div>
+		<div class="col-md-12 cli-widg">
+			<div class="col-md-2"></div>
+			<div class="col-md-4">
+				<h5> Date : </h5>
+			</div>
+			<div class="col-md-4">
+				<h5>{{ "now"|date("d/m/Y") }}</h5>
+			</div>
+		</div>
+		{{ form_start(form) }}
+		<form action="{{ path('reglement', { 'idclient': client.id }) }}" method="post">
+		<div class="col-md-12 cli-widg">
+			<div class="col-md-2"></div>
+			<div class="col-md-4">
+				<h5> Mode de réglement : </h5>
+			</div>
+			<div class="col-md-4">
+				<h5>{{ form_widget(form.modereg) }}</h5>
+			</div>
+			<div class="col-md-2"></div>
+		</div>
+		<div class="col-md-12 cli-widg">
+			<div class="col-md-2"></div>
+			<div class="col-md-4">
+				<h5> N de Chèque : </h5>
+			</div>
+			<div class="col-md-4">
+				<h5>{{ form_widget(form.numerochq) }}</h5>
+			</div>
+			<div class="col-md-2"></div>
+		</div>
+		<div class="col-md-12 cli-widg">
+			<div class="col-md-2"></div>
+			<div class="col-md-4">
+				<h5> Emetteur : </h5>
+			</div>
+			<div class="col-md-4">
+				<h5>{{ form_widget(form.emetteur) }}</h5>
+			</div>
+			<div class="col-md-2"></div>
+		</div>
+		<div class="col-md-12 cli-widg">
+			<div class="col-md-2"></div>
+			<div class="col-md-4">
+				<h5> Banque : </h5>
+			</div>
+			<div class="col-md-4">
+				<h5>{{ form_widget(form.banque) }}</h5>
+			</div>
+			<div class="col-md-2"></div>
+		</div>
+		<div class="col-md-12 cli-widg">
+			<div class="col-md-2"></div>
+			<div class="col-md-4">
+				<h5> Montant : </h5>
+			</div>
+			<div class="col-md-4">
+				<h5>{{ form_widget(form.montant) }}</h5>
+			</div>
+			<div class="col-md-2"></div>
+		</div>
+		<div class="col-md-12">
+				<h2><input type="submit" class="btn btn-primary" id="_submit" name="submit" value="Payer" /></h2>
+		</div>
+		</form>
+		{{ form_end(form) }}
+	</div>
+	<div class="col-md-3"></div>
+</div>
+
+{% endblock %}

@@ -35,13 +35,26 @@ class ClientController extends Controller
 
     public function listeclientAction(Request $request)
     {
-    	$em = $this->getDoctrine()->getManager();
+    	
+        $em = $this->getDoctrine()->getManager();
         $user = $this->container->get('security.context')->getToken()->getUser();
 
         $clients = $em->getRepository('ClientBundle:Client')->findAll();
 
-        return $this->render('Default/listeclient.html.twig', array(
+        return $this->render('default/listeclient.html.twig', array(
         	'clients' => $clients,
+        ));
+    }
+
+    public function ficheclientAction(Request $request, $idclient)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $user = $this->container->get('security.context')->getToken()->getUser();
+
+        $client = $em->getRepository('ClientBundle:Client')->findOneById($idclient);
+
+        return $this->render('Default/ficheclient.html.twig', array(
+            'client' => $client,
         ));
     }
 
@@ -95,5 +108,27 @@ class ClientController extends Controller
     ;
         return $this->redirect($this->generateUrl('liste_client'));
     }
+
+    /*private function getCandidats()
+    {
+        $em = $this->getDoctrine()->getManager();
+        $user = $this->container->get('security.context')->getToken()->getUser();
+
+        $file = $this->get('kernel')->getRootDir().'/../web/stub/deals.json';
+        $object = json_decode(file_get_contents($file), true);
+
+        $candidats = [];
+
+        foreach ($object['data'] as $value) {
+            $candidat = new Client();
+            $candidat->setNom($value['title']);
+            $candidat->setIdpipedrive($value['id']);
+            $candidat->setIdecole($value['value']);
+            $candidat->setType($value['value']);
+            array_push($candidats, $candidat);
+        }
+
+        return $candidats;
+    }*/
 
 }

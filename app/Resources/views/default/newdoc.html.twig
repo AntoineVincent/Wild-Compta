@@ -32,7 +32,7 @@
 						<p><label for="référence">référence du document </label>
 					</div> 
 					<div class="col-md-7">
-						<input type="text" name="référence" /></p></br>
+						{{ form_widget(form.reference) }}</br>
 					</div>
 				</div>
 				<div class="col-md-12">
@@ -40,15 +40,15 @@
 						<p><label for="référence">date de création du document </label>
 					</div> 
 					<div class="col-md-7">
-						<input type="date" name="date de création"  /></p></br>
+						{{ form_widget(form.datecreation) }}</br>
 					</div>
 				</div>
 				<div class="col-md-12">
 					<div class="col-md-5">
-						<p><label for="référence">état du document </label>
+						<p><label for="référence">nom client </label>
 					</div> 
 					<div class="col-md-7">
-						<input type="boolean" name="etat" /></p></br>
+						{{ form_widget(form.etat) }}</br>
 					</div>
 				</div>
 				<div class="col-md-12">
@@ -56,15 +56,15 @@
 						<p><label for="référence">nombre d'échéances </label>
 					</div> 
 					<div class="col-md-7">
-						<input type="number" name="nombre d'échéances" /></p></br>
+						{{ form_widget(form.nbreecheance) }}</br>
 					</div>
 				</div>
 				<div class="col-md-12">
 					<div class="col-md-5">
-						<p><label for="référence">montant </label>
+						<p><label for="référence">montant HT </label>
 					</div> 
 					<div class="col-md-7">
-						<input type="number" name="valeur" /></p></br>
+						{{ form_widget(form.value) }}</br>
 					</div>
 				</div>
 			{{ form_end(form) }}
@@ -72,8 +72,9 @@
 					<div class="col-md-7">
 						<input type="submit" class="btn btn-primary" value="Enregistrer"/>
 					</div>
+					
 					<div class="col-md-5">
-						<a href="{{ path('new_devis') }}"><input type="submit" class="btn btn-primary" value="Ouvrir"/></a>	
+						{# <a href="{{ path('new_devis') }}"><input type="submit" class="btn btn-primary" value="Ouvrir"/></a>	 #}
 					</div>
 				</div>
 

@@ -46,10 +46,13 @@
 	border: solid #1fa597 2px;
 	padding: 10px;
 }
+
+
 .btn {
 	background-color: #1fa597;
 	border: none;
 }
+
 .btn:hover {
 	background-color: #f9a02e;
 }
@@ -150,11 +153,96 @@ h2{
 .vide {
 	height: 100px;
 	text-align: center;
+}
 
 .ui-widget-header {
 	color: black !important;
 }
 #myTable {
 	width: 100%;
+
+}
+
+/* -------->     FICHE CLIENT      <--------- */
+
+.row1 {
+	height:200px;
+	
+}
+.row2 {
+	height:50px;
+	text-align: center;
+}
+.row3 {
+	height:200px;
+}
+.vide {
+	height:50px;
+}
+.client {
+	background-color: rgba(241,241,241,1);
+	border-radius: 5px;
+	border: solid #1fa597 2px;
+	padding: 10px;
+	height:220px;
+	line-height: 18px;
+}
+.echeancier {
+	background-color: rgba(241,241,241,1);
+	border-radius: 5px;
+	border: solid #1fa597 2px;
+	padding: 10px;
+	height:100px;
+}
+/*.reglement {
+	background-color: rgba(241,241,241,1);
+	border-radius: 5px;
+	border: solid #1fa597 2px;
+	padding: 10px;
+	height:50px;
+}*/
+.onglet {
+	background-color: rgba(241,241,241,1);
+	border-radius: 5px;
+	border: solid #1fa597 2px;
+	padding: 0px;
+	height:200px;
+}
+.but {
+	cursor: pointer;
+}
+.pageother {
+	height: 150px;
+	overflow: auto;
+	border-radius: 5px;
+}
+.case1 {
+	background-color: rgb(246, 246, 246);
+}
+.case2 {
+	display:none;
+	background-color: rgb(220, 220, 220);
+}
+.case3 {
+	display:none;
+	background-color: rgb(200, 200, 200);
+}
+.but1 {
+	background-color: rgb(246, 246, 246);
+	color: #1fa597;
+	font-size: 15px;
+}
+.but2 {
+	background-color: rgb(220, 220, 220);
+	color: #1fa597;
+	font-size: 15px;
+}
+.but3 {
+	background-color: rgb(200, 200, 200);
+	color: #1fa597;
+	font-size: 15px;
+}
+.reglement {
+	text-align: center;
 
 }

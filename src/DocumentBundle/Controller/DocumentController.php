@@ -22,6 +22,8 @@ class DocumentController extends Controller
         $form = $this->createForm('DocumentBundle\Form\DocumentType', $document);
         $form->handleRequest($request);
 
+
+
         if ($form->isValid()) {
             $request->getSession()
             ->getFlashBag()
@@ -37,22 +39,29 @@ class DocumentController extends Controller
         ));
     }
 
-    public function newdevisAction(Request $request)
+    public function newdevisAction(Request $request, $idclient)
     {
         $em = $this->getDoctrine()->getManager();
         $user = $this->container->get('security.context')->getToken()->getUser();
+
+        $client = $em->getRepository('ClientBundle:Client')->findOneById($idclient);
 
         $documents = $em->getRepository('DocumentBundle:Documents')->findAll();
 
         return $this->render('default/newdevis.html.twig', array(
             'documents' => $documents,
+            'client' => $client
         ));
     }
 
-    public function pdfAction()
+    public function pdfAction(Request $request, $idclient)
     {
+        $em = $this->getDoctrine()->getManager();
+        $client = $em->getRepository('ClientBundle:Client')->findOneById($idclient);
         //on stocke la vue à convertir en PDF, en n'oubliant pas les paramètres twig si la vue comporte des données dynamiques
-        $html = $this->renderView('default/newpdf.html.twig'/*, array('name' => $name)*/);
+        $html = $this->renderView('default/newdevis.html.twig', array('client' => $client));
+
+        
          
         //on instancie la classe Html2Pdf_Html2Pdf en lui passant en paramètre
         //le sens de la page "portrait" => p ou "paysage" => l
@@ -70,7 +79,9 @@ class DocumentController extends Controller
         $html2pdf->writeHTML($html);
  
         //Output envoit le document PDF au navigateur internet avec un nom spécifique qui aura un rapport avec le contenu à convertir (exemple : Facture, Règlement…)
-        $html2pdf->Output('document.pdf');
+        $html2pdf->Output('document.pdf', array(
+            /*'client' => $client*/
+            ));
         exit;
          
      
