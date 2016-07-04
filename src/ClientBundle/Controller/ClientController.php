@@ -124,6 +124,7 @@ class ClientController extends Controller
             $candidat->setNom($value['title']);
             $candidat->setIdpipedrive($value['id']);
             $candidat->setIdecole($value['value']);
+            $candidat->setType($value['value']);
             array_push($candidats, $candidat);
         }
 
