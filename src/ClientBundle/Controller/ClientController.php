@@ -5,7 +5,7 @@ namespace ClientBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Httpfoundation\Request;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
-use ClientBundle\Entity\Client;
+use ClientBundle\Model\Client;
 use ClientBundle\Form\ClientType;
 class ClientController extends Controller
 {
@@ -35,13 +35,11 @@ class ClientController extends Controller
 
     public function listeclientAction(Request $request)
     {
-    	$em = $this->getDoctrine()->getManager();
-        $user = $this->container->get('security.context')->getToken()->getUser();
+    	
+        $candidats = $this->getCandidats();
 
-        $clients = $em->getRepository('ClientBundle:Client')->findAll();
-
-        return $this->render('Default/listeclient.html.twig', array(
-        	'clients' => $clients,
+        return $this->render('default/listeclient.html.twig', array(
+        	'clients' => $candidats,
         ));
     }
 
@@ -106,6 +104,27 @@ class ClientController extends Controller
         ->add('warning', 'Client Supprimé !')
     ;
         return $this->redirect($this->generateUrl('liste_client'));
+    }
+
+    private function getCandidats()
+    {
+        $em = $this->getDoctrine()->getManager();
+        $user = $this->container->get('security.context')->getToken()->getUser();
+
+        $file = $this->get('kernel')->getRootDir().'/../web/stub/deals.json';
+        $object = json_decode(file_get_contents($file), true);
+
+        $candidats = [];
+
+        foreach ($object['data'] as $value) {
+            $candidat = new Client();
+            $candidat->setNom($value['title']);
+            $candidat->setIdpipedrive($value['id']);
+            $candidat->setIdecole($value['value']);
+            array_push($candidats, $candidat);
+        }
+
+        return $candidats;
     }
 
 }

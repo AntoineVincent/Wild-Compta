@@ -1,30 +1,23 @@
 <?php
 
-namespace ClientBundle\Entity;
+namespace ClientBundle\Model;
 
-use Doctrine\ORM\Mapping as ORM;
 
 /**
  * Client
  *
- * @ORM\Table(name="client")
- * @ORM\Entity(repositoryClass="ClientBundle\Repository\ClientRepository")
  */
 class Client
 {
     /**
      * @var int
      *
-     * @ORM\Column(name="id", type="integer")
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
 
     /**
      * @var int
      *
-     * @ORM\Column(name="idpipedrive", type="integer", nullable=true)
      */
     private $idpipedrive;
 
@@ -105,7 +98,18 @@ class Client
      */
     private $value;
 
+    /**
+     * Set id
+     *
+     * @param integer $id
+     * @return Client
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
 
+        return $this;
+    }
     /**
      * Get id
      *

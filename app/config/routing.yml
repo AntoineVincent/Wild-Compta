@@ -97,7 +97,14 @@ supr_ecole:
     path:    /supr/ecole/{idecole}
     defaults: { _controller: ClientBundle:Ecole:suprproduct }
 
+
 reglement:
     path:    /reglement/{idclient}
     defaults: { _controller: ComptaBundle:Compta:reglement }
+
+stub:
+    path:    /stub
+    defaults: { _controller: ClientBundle:Stub:getStub}
+
+
 
