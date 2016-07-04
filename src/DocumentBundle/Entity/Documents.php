@@ -57,9 +57,9 @@ class Documents
     private $datecreation;
 
     /**
-     * @var bool
+     * @var string
      *
-     * @ORM\Column(name="etat", type="boolean", nullable=true)
+     * @ORM\Column(name="etat", type="string", nullable=true)
      */
     private $etat;
 
@@ -206,7 +206,7 @@ class Documents
     /**
      * Set etat
      *
-     * @param boolean $etat
+     * @param string $etat
      * @return Document
      */
     public function setEtat($etat)
@@ -219,7 +219,7 @@ class Documents
     /**
      * Get etat
      *
-     * @return boolean 
+     * @return string 
      */
     public function getEtat()
     {

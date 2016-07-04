@@ -50,9 +50,9 @@ class Reglement
     private $modereg;
 
     /**
-     * @var int
+     * @var string
      *
-     * @ORM\Column(name="numerochq", type="integer", nullable=true)
+     * @ORM\Column(name="numerochq", type="string", nullable=true)
      */
     private $numerochq;
 
@@ -176,7 +176,7 @@ class Reglement
     /**
      * Set numerochq
      *
-     * @param integer $numerochq
+     * @param string $numerochq
      * @return Reglement
      */
     public function setNumerochq($numerochq)
@@ -189,7 +189,7 @@ class Reglement
     /**
      * Get numerochq
      *
-     * @return integer 
+     * @return string 
      */
     public function getNumerochq()
     {

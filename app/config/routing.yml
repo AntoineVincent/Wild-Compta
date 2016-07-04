@@ -25,6 +25,10 @@ new_client:
     path:    /new/client
     defaults: { _controller: ClientBundle:Client:newclient }
 
+fiche_client:
+    path:    /fiche/client/{idclient}
+    defaults: { _controller: ClientBundle:Client:ficheclient }
+
 liste_product:
     path:    /liste/product
     defaults: { _controller: DocumentBundle:Product:listeproduct }
@@ -70,7 +74,7 @@ supr_organisme:
     defaults: { _controller: ClientBundle:Organisme:suprorganisme }
 
 new_devis:
-    path:    /new/devis
+    path:    /new/devis/{idclient}
     defaults: { _controller: DocumentBundle:Document:newdevis }
 
 new_ecole:
@@ -78,7 +82,7 @@ new_ecole:
     defaults: { _controller: ClientBundle:Ecole:newecole }
 
 new_pdf:
-    path:    /new/pdf
+    path:    /new/pdf/{idclient}
     defaults: { _controller: DocumentBundle:Document:pdf }
 
 liste_ecole:
@@ -93,8 +97,14 @@ supr_ecole:
     path:    /supr/ecole/{idecole}
     defaults: { _controller: ClientBundle:Ecole:suprproduct }
 
+
+reglement:
+    path:    /reglement/{idclient}
+    defaults: { _controller: ComptaBundle:Compta:reglement }
+
 stub:
     path:    /stub
     defaults: { _controller: ClientBundle:Stub:getStub}
+
 
 
