@@ -7,45 +7,47 @@
 		<div class="col-md-6">
 			<img src="{{ asset('../web/img/big_logo_text.png') }}" width="45%" alt="grand logo Wild Code School" class="logo-brand" />
 		</div>
-			</br>
+			<br/>
 		<div class="col-md-5 entete" >
-			<p>DEVIS</br>
-				Réf. : numéro devis</br>
-				Date : {{ "now"|date("d/m/Y") }}</br>
-				Date de fin de validité : {{ "now"|date_modify("+1 month")|date("d/m/Y") }}</br>
+			<p>DEVIS<br/>
+				Réf. : numéro devis<br/>
+				Date : {{ "now"|date("d/m/Y") }}<br/>
+				Date de fin de validité : {{ "now"|date_modify("+1 month")|date("d/m/Y") }}<br/>
 				Code client : CU1509-0052
 			</p>
-				</br></br>
+				<br/><br/>
 		</div>
 		<div class="col-md-1"></div>
 	</div>
 	<div class="col-md-12 entete2">
 		<div class="col-md-1"></div>
 		<div class="col-md-5">
-			<p>Emetteur : </br></br>
-				INNOV'EDUC</br>
-				18, rue de la gare</br>
-				28240 LA LOUPE</br></br>
-				Téléphone : 09-72-52-63-94</br>
-				Email : contact@wildcodeschool.fr</br>
-				web : http://wildcodeschool.fr</br>
+			<p>Emetteur : <br/><br/>
+				INNOV'EDUC<br/>
+				18, rue de la gare<br/>
+				28240 LA LOUPE<br/><br/>
+				Téléphone : 09-72-52-63-94<br/>
+				Email : contact@wildcodeschool.fr<br/>
+				web : http://wildcodeschool.fr<br/>
 			</p>
 		</div>
 		<p>Adressé à :</p>
 		<div class="col-md-5 adresse">
-			<p>ADRESSE CLIENT A COMPLETER...</br>
-			Peut-être différente de l'adresse client</p>
+			<h5>{{ client.nom }}</h5>
+			<h5>{{ client.adresse }}</h5>
 		</div>
 		<div class="col-md-1"></div>
-		</br>
+		<br/>
 	</div>
 	<div class="phrase">
 		<p>Montants exprimés en euros</p>
 	</div>
 	<div class="col-md-12">
-		<div class="col-md-1"></div>
+		<div class="col-md-1">
+			
+		</div>
 		<div class="col-md-10 tableau">
-			</br></br>
+			<br/><br/>
 				<div align="CENTER"> 
 					<table width=1000px cellpadding=3 border="1">
 						<tr valign="baseline">
@@ -56,7 +58,7 @@
 							<td align="right"> Total HT</td>
 						</tr> 
 						<tr height=500px valign="baseline">
-							<td align="left"></td> 
+							<td align="left"><textarea name="designation" style="width: 500px; height: 500px"></textarea></td> 
 							<td align="center"></td> 
 							<td align="center" colspan=2></td> 
 							<td align="right"></td>
@@ -65,24 +67,31 @@
 					</table>
 					<div class="col-md-12 ligne">
 						<div class="col-md-6">Conditions de reglements : Payée au vue des heures réalisées</div>
-						<div class="col-md-3">Total HT</br>Total TTC</div>
-						<div class="col-md-3">6000</div></br>6000</div>
+						<div class="col-md-3">Total HT<br/>Total TTC</div>
+						<div class="col-md-3">6000<br/>6000</div>
 					</div>
 				</div>
 		</div>
-		<div class="col-md-1"></div>
+		<div class="col-md-1">
+			
+		</div>
 	</div>		
 	<div class="col-md-12 bouton">
-		<div class="col-md-9"></div>
+		<div class="col-md-9">
+			
+		</div>
 		<div class="col-md-2">
-	       	<a href="{{ path('new_pdf') }}" class="btn-danger btn-lg">PDF</a>
+	       	<a href="{{ path('new_pdf',{ 'idclient': client.id }) }}" class="btn-danger btn-lg">PDF</a>
 	   	</div>
-	    <div class="col-md-1"></div>
+	    <div class="col-md-1">
+	    	
+	    </div>
 	</div>
 	<div class="col-md-12 vide">AJOUTER ICI LES PENALITES DE RETARD</div>
 	<div class="col-md-12 pied"> 
-		<p>Société par actions simplifiée (SAS) - Capital de 7000€ - SIRET 794 925 063 00023</br>NAF-APE: 8560Z + Num. TVA: FR 27 794 926 063</p>
+		<p>Société par actions simplifiée (SAS) - Capital de 7000€ - SIRET 794 925 063 00023<br/>NAF-APE: 8560Z + Num. TVA: FR 27 794 926 063</p>
 	</div>
+	
 		
 
 		

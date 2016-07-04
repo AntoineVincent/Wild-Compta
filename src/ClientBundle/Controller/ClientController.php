@@ -45,6 +45,18 @@ class ClientController extends Controller
         ));
     }
 
+    public function ficheclientAction(Request $request, $idclient)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $user = $this->container->get('security.context')->getToken()->getUser();
+
+        $client = $em->getRepository('ClientBundle:Client')->findOneById($idclient);
+
+        return $this->render('Default/ficheclient.html.twig', array(
+            'client' => $client,
+        ));
+    }
+
     public function editclientAction(Request $request, $idclient)
     {
         $em = $this->getDoctrine()->getManager();

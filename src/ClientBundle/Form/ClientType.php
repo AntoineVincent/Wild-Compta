@@ -1,13 +1,10 @@
 <?php
-
 // src/ClientBundle/Form/ClientType.php
 namespace ClientBundle\Form;
-
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
-
 class ClientType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
@@ -17,11 +14,12 @@ class ClientType extends AbstractType
             ->add('nom')
             ->add('adresse')
             ->add('adressefactu')
-            ->add('email')
+            ->add('email', 'email')
             ->add('orgapayeur')
             ->add('bourse')
             ->add('telephonefixe')
             ->add('portable')
+            /*->add('envoyer','submit')*/
             ->add('type', ChoiceType::class, array(
     'choices' => array(
         'élève' => 'élève',
@@ -35,7 +33,6 @@ class ClientType extends AbstractType
     ))
         ;
     }
-
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
