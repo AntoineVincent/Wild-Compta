@@ -29,7 +29,7 @@ class ProductController extends Controller
             $em->flush();
         }
 
-        return $this->render('default/newproduct.html.twig', array(
+        return $this->render('default/product/newproduct.html.twig', array(
             'form' => $form->createView(),
         ));
     }
@@ -41,7 +41,7 @@ class ProductController extends Controller
 
         $products = $em->getRepository('DocumentBundle:Product')->findAll();
 
-        return $this->render('default/listeproduct.html.twig', array(
+        return $this->render('default/product/listeproduct.html.twig', array(
             'products' => $products,
         ));
     }
@@ -75,7 +75,7 @@ class ProductController extends Controller
             $em->flush();
         }
 
-        return $this->render('default/editproduct.html.twig', array(
+        return $this->render('default/product/editproduct.html.twig', array(
             'product' => $product,
         ));
     }

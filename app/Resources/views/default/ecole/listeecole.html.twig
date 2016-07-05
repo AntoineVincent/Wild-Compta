@@ -1,0 +1,109 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+<div class="col-md-12">
+	<h2 class="list-ecole-title"> Liste des Écoles Existantes </h2>
+</div>
+<div class="col-md-12">
+	<div class="col-md-2"></div>
+	<div class="col-md-8">
+		<div class="col-md-12">
+	        {% for label, flashes in app.session.flashbag.all %}
+	            {% for flash in flashes %}
+	                <div class="alert alert-{{ label }}">
+	                    {{ flash }}
+	                </div>
+	            {% endfor %}
+	        {% endfor %}
+    	</div>
+		<table id="myTable" class="display" cellspacing="0" width="100%">
+			<thead>
+			   <tr>
+			       <th class="search-table-title">Ville</th>
+			       <th class="search-table-title">Adresse</th>
+			       <th>Modifier</th>
+		       	   <th>Supprimer</th>
+			   </tr>
+			</thead>
+			<tfoot>
+			   <tr>
+			       <th class="search-table-title">Ville</th>
+			       <th class="search-table-title">Adresse</th>
+			       <th>Modifier</th>
+		       	   <th>Supprimer</th>
+			   </tr>
+			</tfoot>
+			<tbody>
+			   {% for ecole in ecoles %}
+					<tr>
+				       <td class="type-line">{{ ecole.ville }}</td>
+				       <td class="contenu-tab">{{ ecole.adresse }}</td>
+				       <td> <a href="{{ path('edit_ecole', { 'idecole': ecole.id }) }}">Editer</a> </td>
+				       <td> <a href="{{ path('supr_ecole', { 'idecole': ecole.id }) }}">Supprimer</a> </td>
+				   </tr>
+				{% endfor %}
+			</tbody>
+		</table>
+		</div>
+	<div class="col-md-2"></div>
+</div>
+
+		<script>
+			$(document).ready(function () {
+
+				$('#myTable tfoot .search-table-title').each( function () {
+        			var title = $('#myTable thead .search-table-title').eq( $(this).index() ).text();
+        			$(this).html( '<input style="width:160px; color:black;" type="text" placeholder="Search '+title+'" />' );
+    			});
+
+    			var table = $('#myTable').DataTable( {
+    				select: {
+            			style: 'multi'
+        			},
+    				responsive: true,
+    				keys: true,
+    				autoFill: true,
+    				rowReorder: true,
+    				columnDefs: [
+            			{ orderable: true, className: 'reorder', targets: [0,1] },
+            			{ orderable: false, targets: [2,3] }
+        			],
+    				dom: 'Bfrtip',
+    				lengthMenu: [
+            			[ 10, 25, 50, -1 ],
+            			[ '10 lignes', '25 lignes', '50 lignes', 'Tout voir' ]
+        			],
+    				buttons: [
+            			{
+                			extend: 'copyHtml5',
+                			exportOptions: {
+                    			columns: [ 0, 1 ]
+                			}
+            			},
+            			{
+                			extend: 'excelHtml5',
+                			exportOptions: {
+                    			columns: [ 0, 1 ]
+                			}
+            			},
+            			{
+                			extend: 'pdfHtml5',
+                			exportOptions: {
+                    			columns: [ 0, 1 ]
+                			}
+            			},
+            			'colvis'
+        			]
+				});
+
+				$("#myTable tfoot input").on( 'keyup change', function () {
+        			table
+            			.column( $(this).parent().index()+':visible' )
+            			.search( this.value )
+            			.draw();
+            	});
+			});
+		</script>
+
+{% endblock %}

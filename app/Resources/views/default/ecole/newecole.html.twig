@@ -6,6 +6,13 @@
 	<div class="col-md-12 ">
 		
 			<div class="col-md-offset-4 col-md-5 prod-form">
+				{% for label, flashes in app.session.flashbag.all %}
+		    		{% for flash in flashes %}
+		        		<div class="alert alert-{{ label }}">
+		            		{{ flash }}
+		        		</div>
+		    		{% endfor %}
+				{% endfor %}
 	    		<form method="post" action="{{ path("new_ecole")}}">
 					 <h2> Créer École</h2>  
 						<div class="col-md-12">
