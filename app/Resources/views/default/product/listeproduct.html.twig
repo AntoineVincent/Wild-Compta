@@ -79,16 +79,26 @@
             			[ '10 lignes', '25 lignes', '50 lignes', 'Tout voir' ]
         			],
     				buttons: [
-    					'pageLength',
-        				{
-            				extend: 'copy',
-            				text: 'Copier'
-        				},
-        				'excel',
-        				'pdf',
-        				'colvis'
-    				],
-    				colReorder: true
+            			{
+                			extend: 'copyHtml5',
+                			exportOptions: {
+                    			columns: [ 0, 1, 2 ]
+                			}
+            			},
+            			{
+                			extend: 'excelHtml5',
+                			exportOptions: {
+                    			columns: [ 0, 1, 2 ]
+                			}
+            			},
+            			{
+                			extend: 'pdfHtml5',
+                			exportOptions: {
+                    			columns: [ 0, 1, 2 ]
+                			}
+            			},
+            			'colvis'
+        			]
 				});
 
 				$("#myTable tfoot input").on( 'keyup change', function () {

@@ -1,5 +1,6 @@
+# ---------------------> LOGIN/NEW USER <---------------------
 user_login:
-    path:     /connect
+    path:     /
     defaults: { _controller: AppBundle:Security:login }
 
 app:
@@ -13,14 +14,29 @@ user_login_check:
     path:    /user/login/check
     defaults: { _controller: AppBundle:Security:check }
 
+# ---------------------> INDEX <---------------------
 dashboard:
-    path:    /
+    path:    /dashboard
     defaults: { _controller: AppBundle:Dashboard:dashboard }
 
+# ---------------------> PRODUCT <---------------------
 new_product:
     path:    /new/product
     defaults: { _controller: DocumentBundle:Product:newproduct }
 
+liste_product:
+    path:    /liste/product
+    defaults: { _controller: DocumentBundle:Product:listeproduct }
+
+edit_product:
+    path:    /edit/product/{idproduct}
+    defaults: { _controller: DocumentBundle:Product:editproduct }
+
+supr_product:
+    path:    /supr/product/{idproduct}
+    defaults: { _controller: DocumentBundle:Product:suprproduct }
+
+# ---------------------> CLIENTS <---------------------
 new_client:
     path:    /new/client
     defaults: { _controller: ClientBundle:Client:newclient }
@@ -29,34 +45,32 @@ fiche_client:
     path:    /fiche/client/{idclient}
     defaults: { _controller: ClientBundle:Client:ficheclient }
 
-liste_product:
-    path:    /liste/product
-    defaults: { _controller: DocumentBundle:Product:listeproduct }
-
 liste_client:
     path:    /liste/client
     defaults: { _controller: ClientBundle:Client:listeclient }
-
-edit_product:
-    path:    /edit/product/{idproduct}
-    defaults: { _controller: DocumentBundle:Product:editproduct }
 
 edit_client:
     path:    /edit/client/{idclient}
     defaults: { _controller: ClientBundle:Client:editclient }
 
-supr_product:
-    path:    /supr/product/{idproduct}
-    defaults: { _controller: DocumentBundle:Product:suprproduct }
-
 supr_client:
     path:    /supr/client/{idclient}
     defaults: { _controller: ClientBundle:Client:suprclient }
 
+# ---------------------> DOCUMENTS <---------------------
 new_document:
     path:    /new/document
     defaults: { _controller: DocumentBundle:Document:newdocument }
 
+new_devis:
+    path:    /new/devis/{idclient}
+    defaults: { _controller: DocumentBundle:Document:newdevis }
+
+new_pdf:
+    path:    /new/pdf/{idclient}
+    defaults: { _controller: DocumentBundle:Document:pdf }
+
+# ---------------------> ORGANISME <---------------------
 new_organisme:
     path:    /new/organisme
     defaults: { _controller: ClientBundle:Organisme:neworganisme }
@@ -73,17 +87,10 @@ supr_organisme:
     path:    /supr/organisme/{idorganisme}
     defaults: { _controller: ClientBundle:Organisme:suprorganisme }
 
-new_devis:
-    path:    /new/devis/{idclient}
-    defaults: { _controller: DocumentBundle:Document:newdevis }
-
+# ---------------------> ECOLE <---------------------
 new_ecole:
     path:    /new/ecole
     defaults: { _controller: ClientBundle:Ecole:newecole }
-
-new_pdf:
-    path:    /new/pdf/{idclient}
-    defaults: { _controller: DocumentBundle:Document:pdf }
 
 liste_ecole:
     path:    /liste/ecole
@@ -91,20 +98,16 @@ liste_ecole:
 
 edit_ecole:
     path:    /edit/ecole/{idecole}
-    defaults: { _controller: ClientBundle:Ecole:editproduct }
+    defaults: { _controller: ClientBundle:Ecole:editecole }
 
 supr_ecole:
     path:    /supr/ecole/{idecole}
-    defaults: { _controller: ClientBundle:Ecole:suprproduct }
+    defaults: { _controller: ClientBundle:Ecole:suprecole }
 
-
+# ---------------------> REGLEMENTS <---------------------
 reglement:
     path:    /reglement/{idclient}
     defaults: { _controller: ComptaBundle:Compta:reglement }
-
-stub:
-    path:    /stub
-    defaults: { _controller: ClientBundle:Stub:getStub}
 
 
 

@@ -96,7 +96,7 @@ class Client
      *
      * @ORM\Column(name="idecole", type="string", nullable=true)
      */
-    private $idecole;
+    private $ecole;
 
     /**
      * @var int
@@ -358,26 +358,26 @@ class Client
     }
 
     /**
-     * Set idecole
+     * Set ecole
      *
-     * @param string $idecole
+     * @param string $ecole
      * @return Client
      */
-    public function setIdecole($idecole)
+    public function setEcole($ecole)
     {
-        $this->idecole = $idecole;
+        $this->ecole = $ecole;
 
         return $this;
     }
 
     /**
-     * Get idecole
+     * Get ecole
      *
      * @return string 
      */
-    public function getIdecole()
+    public function getEcole()
     {
-        return $this->idecole;
+        return $this->ecole;
     }
 
     /**
