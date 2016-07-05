@@ -89,7 +89,13 @@
             				text: 'Copier'
         				},
         				'excel',
-        				'pdf',
+        				{
+                			extend: 'pdfHtml5',
+                			exportOptions: {
+                    			columns: [ 0, 1, 2 ]
+                			}
+            			},
+        				,
         				'colvis'
     				],
     				colReorder: true

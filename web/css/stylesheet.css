@@ -172,7 +172,7 @@ h2{
 .row2 {
 	height:50px;
 	text-align: center;
-	margin-top: 130px;
+	margin-top: 270px;
 }
 .row3 {
 	height:200px;
@@ -180,42 +180,44 @@ h2{
 .vide {
 	height:50px;
 }
-.client {
+.col1 {
 	background-color: rgba(241,241,241,1);
 	border-radius: 5px;
 	border: solid #1fa597 2px;
 	padding: 10px;
-	height:330px;
-	line-height: 30px;
+	height:335px;
+	line-height: 27px;
 }
-.echeancier1 {
+.devis {
 	background-color: rgba(241,241,241,1);
 	border-radius: 5px;
 	border: solid #1fa597 2px;
 	padding: 10px;
 	height:150px;
 }
-.echeancier2 {
+.facture {
 	background-color: rgba(241,241,241,1);
 	border-radius: 5px;
 	border: solid #1fa597 2px;
 	padding: 10px;
 	height:180px;
+	margin-top: 5px;
 }
-.echeancier3 {
+.avoir {
 	background-color: rgba(241,241,241,1);
 	border-radius: 5px;
 	border: solid #1fa597 2px;
 	padding: 10px;
 	height:150px;
+	margin-top: 5px;
 }
-/*.reglement {
+.echeancier {
 	background-color: rgba(241,241,241,1);
 	border-radius: 5px;
 	border: solid #1fa597 2px;
-	padding: 10px;
-	height:50px;
-}*/
+	height:150px;
+	margin-top: 5px;
+}
 .onglet {
 	background-color: rgba(241,241,241,1);
 	border-radius: 5px;
@@ -271,4 +273,7 @@ h2{
 }
 .bas {
 	height: 25%;
+}
+.bout {
+	margin-top: 15px;
 }
