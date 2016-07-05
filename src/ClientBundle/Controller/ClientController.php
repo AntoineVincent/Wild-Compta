@@ -5,7 +5,7 @@ namespace ClientBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Httpfoundation\Request;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
-use ClientBundle\Model\Client;
+use ClientBundle\Entity\Client;
 use ClientBundle\Form\ClientType;
 class ClientController extends Controller
 {
@@ -36,10 +36,13 @@ class ClientController extends Controller
     public function listeclientAction(Request $request)
     {
     	
-        $candidats = $this->getCandidats();
+        $em = $this->getDoctrine()->getManager();
+        $user = $this->container->get('security.context')->getToken()->getUser();
+
+        $clients = $em->getRepository('ClientBundle:Client')->findAll();
 
         return $this->render('default/listeclient.html.twig', array(
-        	'clients' => $candidats,
+        	'clients' => $clients,
         ));
     }
 
@@ -106,7 +109,7 @@ class ClientController extends Controller
         return $this->redirect($this->generateUrl('liste_client'));
     }
 
-    private function getCandidats()
+    /*private function getCandidats()
     {
         $em = $this->getDoctrine()->getManager();
         $user = $this->container->get('security.context')->getToken()->getUser();
@@ -126,6 +129,6 @@ class ClientController extends Controller
         }
 
         return $candidats;
-    }
+    }*/
 
 }
