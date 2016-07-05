@@ -109,7 +109,8 @@ reglement:
     path:    /reglement/{idclient}
     defaults: { _controller: ComptaBundle:Compta:reglement }
 
-
-
+new_user:
+    path:    /new/user
+    defaults: { _controller: AppBundle:Registration:newuser }
 
 
