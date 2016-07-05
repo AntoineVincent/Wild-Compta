@@ -38,7 +38,6 @@
 			</div>
 		</div>
 		{{ form_start(form) }}
-		<form action="{{ path('reglement', { 'idclient': client.id }) }}" method="post">
 		<div class="col-md-12 cli-widg">
 			<div class="col-md-2"></div>
 			<div class="col-md-4">
@@ -89,10 +88,20 @@
 			</div>
 			<div class="col-md-2"></div>
 		</div>
+		<div class="col-md-12 cli-widg">
+			<div class="col-md-2"></div>
+			<div class="col-md-4">
+				<h5> Scan du règlement : </h5>
+			</div>
+			<div class="col-md-4">
+				<h5>{{ form_widget(form.uploadscan) }}</h5>
+			</div>
+			<div class="col-md-2"></div>
+			<input type="hidden" name="date" value="{{ "now"|date("d/m/Y") }}"/>
+		</div>
 		<div class="col-md-12">
 				<h2><input type="submit" class="btn btn-primary" id="_submit" name="submit" value="Payer" /></h2>
 		</div>
-		</form>
 		{{ form_end(form) }}
 	</div>
 	<div class="col-md-3"></div>

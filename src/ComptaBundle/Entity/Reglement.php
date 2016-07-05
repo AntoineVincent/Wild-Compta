@@ -36,9 +36,9 @@ class Reglement
     private $montant;
 
     /**
-     * @var \DateTime
+     * @var string
      *
-     * @ORM\Column(name="datereg", type="datetime", nullable=true)
+     * @ORM\Column(name="datereg", type="string", length=255, nullable=true)
      */
     private $datereg;
 
@@ -69,6 +69,13 @@ class Reglement
      * @ORM\Column(name="banque", type="string", length=255, nullable=true)
      */
     private $banque;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="uploadscan", type="string", length=255, nullable=true)
+     */
+    private $uploadscan;
 
 
     /**
@@ -130,7 +137,7 @@ class Reglement
     /**
      * Set datereg
      *
-     * @param \DateTime $datereg
+     * @param string $datereg
      * @return Reglement
      */
     public function setDatereg($datereg)
@@ -143,7 +150,7 @@ class Reglement
     /**
      * Get datereg
      *
-     * @return \DateTime 
+     * @return string 
      */
     public function getDatereg()
     {
@@ -240,5 +247,28 @@ class Reglement
     public function getBanque()
     {
         return $this->banque;
+    }
+
+    /**
+     * Set uploadscan
+     *
+     * @param string $uploadscan
+     * @return Reglement
+     */
+    public function setUploadscan($uploadscan)
+    {
+        $this->uploadscan = $uploadscan;
+
+        return $this;
+    }
+
+    /**
+     * Get uploadscan
+     *
+     * @return string 
+     */
+    public function getUploadscan()
+    {
+        return $this->uploadscan;
     }
 }
