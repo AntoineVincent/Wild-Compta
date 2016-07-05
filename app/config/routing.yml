@@ -1,5 +1,5 @@
 user_login:
-    path:     /
+    path:     /connect
     defaults: { _controller: AppBundle:Security:login }
 
 app:
@@ -14,7 +14,7 @@ user_login_check:
     defaults: { _controller: AppBundle:Security:check }
 
 dashboard:
-    path:    /dashboard
+    path:    /
     defaults: { _controller: AppBundle:Dashboard:dashboard }
 
 new_product:
