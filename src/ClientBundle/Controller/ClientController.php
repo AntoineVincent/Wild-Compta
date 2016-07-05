@@ -53,7 +53,7 @@ class ClientController extends Controller
 
         $client = $em->getRepository('ClientBundle:Client')->findOneById($idclient);
 
-        return $this->render('Default/ficheclient.html.twig', array(
+        return $this->render('default/ficheclient.html.twig', array(
             'client' => $client,
         ));
     }

@@ -70,6 +70,13 @@ class Reglement
      */
     private $banque;
 
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="uploadscan", type="string", length=255, nullable=true)
+     */
+    private $uploadscan;
+
 
     /**
      * Get id
@@ -240,5 +247,28 @@ class Reglement
     public function getBanque()
     {
         return $this->banque;
+    }
+
+    /**
+     * Set uploadscan
+     *
+     * @param string $uploadscan
+     * @return Reglement
+     */
+    public function setUploadscan($uploadscan)
+    {
+        $this->uploadscan = $uploadscan;
+
+        return $this;
+    }
+
+    /**
+     * Get uploadscan
+     *
+     * @return string 
+     */
+    public function getUploadscan()
+    {
+        return $this->uploadscan;
     }
 }

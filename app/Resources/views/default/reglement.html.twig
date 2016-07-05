@@ -38,7 +38,7 @@
 			</div>
 		</div>
 		{{ form_start(form) }}
-		<form action="{{ path('reglement', { 'idclient': client.id }) }}" method="post">
+		<form action="{{ path('reglement', { 'idclient': client.id }) }}" method="POST">
 		<div class="col-md-12 cli-widg">
 			<div class="col-md-2"></div>
 			<div class="col-md-4">
@@ -86,6 +86,16 @@
 			</div>
 			<div class="col-md-4">
 				<h5>{{ form_widget(form.montant) }}</h5>
+			</div>
+			<div class="col-md-2"></div>
+		</div>
+		<div class="col-md-12 cli-widg">
+			<div class="col-md-2"></div>
+			<div class="col-md-4">
+				<h5> Scan du règlement : </h5>
+			</div>
+			<div class="col-md-4">
+				<h5>{{ form_widget(form.uploadscan) }}</h5>
 			</div>
 			<div class="col-md-2"></div>
 		</div>
