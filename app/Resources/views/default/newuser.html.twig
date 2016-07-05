@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>{% block title %}Wild Facture{% endblock %}</title>
+        <link rel="icon" type="image/png" href="{{ asset('yourFavIcon.png') }}">
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+        <link rel="stylesheet" type="text/css" href="{{ asset('css/bootstrap.min.css') }}">
+        <link rel="stylesheet" type="text/css" href="{{ asset('css/stylesheet.css') }}">
+
+        <script type="text/javascript" src="{{ asset('js/jquery.js') }}" ></script>
+        <script type="text/javascript" src="{{ asset('js/bootstrap.min.js') }}" ></script> 
+
+        <link rel="stylesheet" type="text/css" href="{{ asset('datable/datatables.min.css') }}"/>
+        <link rel="stylesheet" type="text/css" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css"/>
+        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.12/css/dataTables.jqueryui.min.css"/>
+        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/1.2.1/css/buttons.jqueryui.min.css"/>
+        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/keytable/2.1.2/css/keyTable.dataTables.min.css"/>
+
+        <script type="text/javascript" src="{{ asset('datable/datatables.min.js') }}"></script>
+        <script type="text/javascript" src="https://cdn.datatables.net/colreorder/1.3.2/js/dataTables.colReorder.min.js"></script>
+        <script type="text/javascript" src="{{ asset('js/onglet.js') }}" ></script>
+    </head>
+{% block body %}
+
+{% trans_default_domain 'FOSUserBundle' %}
+
+
+<div class="row ">
+	<div class="col-md-5 col-md-offset-3 font-user">
+		<h2> Créer un nouveau campus manager</h2>
+		
+		{{ form_start(form, {'method': 'post', 'action': path('new_user'), 'attr': {'class': 'fos_user_registration_register'}}) }}
+		<div class="row">
+			<div class="col-md-6">
+				<label>Nom d'utilisateur :</label>
+			</div>
+			<div class="col-md-6">
+				{{ form_widget(form.username) }}
+				{{ form_errors(form.username) }}	
+			</div>
+		</div>
+
+
+		<div class="row champ-log">
+			<div class="col-md-6">
+				<label>Adresse email :</label>
+			</div>
+			<div class="col-md-6">
+				{{ form_widget(form.email) }}
+				{{ form_errors(form.email) }}	
+			</div>
+		</div>
+
+		<div class="row champ-log">
+			<div class="col-md-6">
+				<label>Mot de passe :</label>
+			</div>
+			<div class="col-md-6">
+				{{ form_widget(form.plainPassword.first) }}
+				{{ form_errors(form.plainPassword.first) }}	
+			</div>
+		</div>
+		<div class="row champ-log">
+			<div class="col-md-6">
+				<label>Confirmation :</label>
+			</div>
+			<div class="col-md-6">
+				{{ form_widget(form.plainPassword.second) }}
+				{{ form_errors(form.plainPassword.second) }}	
+			</div>
+		</div>
+		<div class="row">
+		    <div class="col-md-5 col-md-offset-6 btn-register">
+		        <input class="btn btn-info" type="submit" value="{{ 'Créer Campus Manager'|trans }}" />
+		    </div>
+		</div>
+				
+		{{ form_end(form) }}
+	</div>
+</div>
+{% endblock %}

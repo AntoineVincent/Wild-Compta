@@ -83,6 +83,7 @@
             			[ '10 lignes', '25 lignes', '50 lignes', 'Tout voir' ]
         			],
     				buttons: [
+
     					'pageLength',
         				{
             				extend: 'copy',
@@ -90,14 +91,30 @@
         				},
         				'excel',
         				{
-                			extend: 'pdfHtml5',
+
+            			{
+                			extend: 'copyHtml5',
                 			exportOptions: {
                     			columns: [ 0, 1, 2 ]
                 			}
             			},
+            			{
+                			extend: 'excelHtml5',
+                			exportOptions: {
+                    			columns: [ 0, 1, 2 ]
+                			}
+            			},
+            			{
+
+                			extend: 'pdfHtml5',
+                			exportOptions: {
+                    			columns: [ 0, 1, 2 ]
+                			}
+            			}
         				,
         				'colvis'
     				],
+
     				colReorder: true
 				});
 

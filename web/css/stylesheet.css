@@ -274,6 +274,16 @@ h2{
 .bas {
 	height: 25%;
 }
+
 .bout {
 	margin-top: 15px;
 }
+
+.font-user {
+	background-color: rgba(241,241,241,1);
+	border-radius: 5px;
+	border: solid #1fa597 2px;
+	color: #35383a;
+	margin-top: 150px;
+}
+
