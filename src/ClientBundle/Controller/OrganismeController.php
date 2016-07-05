@@ -15,18 +15,23 @@ class OrganismeController extends Controller
         $user = $this->container->get('security.context')->getToken()->getUser();
 
         $neworga = new Organisme;
-
         $nom = $request->request->get('nom');
         $adresse = $request->request->get('adresse');
 
         $neworga->setNom($nom);
         $neworga->setAdresse($adresse);
 
-        $em->persist($neworga);
-        $em->flush();
+        if ($request->request->get('nom') != NULL) {
+            $request->getSession()
+            ->getFlashBag()
+            ->add('success', 'Organisme Créé !')
+            ;
 
+            $em->persist($neworga);
+            $em->flush();
+        }
 
-        return $this->render('default/neworg.html.twig', array(
+        return $this->render('default/orga/neworg.html.twig', array(
             
         ));
     }
@@ -37,7 +42,7 @@ class OrganismeController extends Controller
 
         $organismes = $em->getRepository('ClientBundle:Organisme')->findAll();
 
-        return $this->render('default/listeorg.html.twig', array(
+        return $this->render('default/orga/listeorg.html.twig', array(
             'organismes' => $organismes,
         ));
     }
@@ -71,7 +76,7 @@ class OrganismeController extends Controller
             $em->flush();
         }
 
-        return $this->render('default/editorg.html.twig', array(
+        return $this->render('default/orga/editorg.html.twig', array(
             'organisme' => $organisme,
         ));
     }

@@ -24,11 +24,15 @@ class ClientController extends Controller
             ->add('success', 'Client Créé !')
             ;
 
+            if ($client->getType() == 'élève') {
+                $client->setValue(6000);
+            }
+
             $em->persist($client);
             $em->flush();
         }
 
-        return $this->render('default/newclient.html.twig', array(
+        return $this->render('default/client/newclient.html.twig', array(
             'form' => $form->createView(),
         ));
     }
@@ -41,7 +45,7 @@ class ClientController extends Controller
 
         $clients = $em->getRepository('ClientBundle:Client')->findAll();
 
-        return $this->render('default/listeclient.html.twig', array(
+        return $this->render('default/client/listeclient.html.twig', array(
         	'clients' => $clients,
         ));
     }
@@ -53,7 +57,7 @@ class ClientController extends Controller
 
         $client = $em->getRepository('ClientBundle:Client')->findOneById($idclient);
 
-        return $this->render('Default/ficheclient.html.twig', array(
+        return $this->render('default/client/ficheclient.html.twig', array(
             'client' => $client,
         ));
     }
@@ -87,7 +91,7 @@ class ClientController extends Controller
             $em->flush();
         }
 
-        return $this->render('default/editclient.html.twig', array(
+        return $this->render('default/client/editclient.html.twig', array(
             'client' => $client,
         ));
     }
@@ -108,27 +112,5 @@ class ClientController extends Controller
     ;
         return $this->redirect($this->generateUrl('liste_client'));
     }
-
-    /*private function getCandidats()
-    {
-        $em = $this->getDoctrine()->getManager();
-        $user = $this->container->get('security.context')->getToken()->getUser();
-
-        $file = $this->get('kernel')->getRootDir().'/../web/stub/deals.json';
-        $object = json_decode(file_get_contents($file), true);
-
-        $candidats = [];
-
-        foreach ($object['data'] as $value) {
-            $candidat = new Client();
-            $candidat->setNom($value['title']);
-            $candidat->setIdpipedrive($value['id']);
-            $candidat->setIdecole($value['value']);
-            $candidat->setType($value['value']);
-            array_push($candidats, $candidat);
-        }
-
-        return $candidats;
-    }*/
 
 }
