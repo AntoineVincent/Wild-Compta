@@ -172,6 +172,7 @@ h2{
 .row2 {
 	height:50px;
 	text-align: center;
+	margin-top: 130px;
 }
 .row3 {
 	height:200px;
@@ -184,15 +185,29 @@ h2{
 	border-radius: 5px;
 	border: solid #1fa597 2px;
 	padding: 10px;
-	height:220px;
-	line-height: 18px;
+	height:330px;
+	line-height: 30px;
 }
-.echeancier {
+.echeancier1 {
 	background-color: rgba(241,241,241,1);
 	border-radius: 5px;
 	border: solid #1fa597 2px;
 	padding: 10px;
-	height:100px;
+	height:150px;
+}
+.echeancier2 {
+	background-color: rgba(241,241,241,1);
+	border-radius: 5px;
+	border: solid #1fa597 2px;
+	padding: 10px;
+	height:180px;
+}
+.echeancier3 {
+	background-color: rgba(241,241,241,1);
+	border-radius: 5px;
+	border: solid #1fa597 2px;
+	padding: 10px;
+	height:150px;
 }
 /*.reglement {
 	background-color: rgba(241,241,241,1);
@@ -245,4 +260,15 @@ h2{
 .reglement {
 	text-align: center;
 
+}
+.haut {
+	height: 15%;
+	text-align: center;
+}
+.milieu {
+	height: 60%;
+	background-color: white;
+}
+.bas {
+	height: 25%;
 }
