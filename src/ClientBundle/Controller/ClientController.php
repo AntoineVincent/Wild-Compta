@@ -6,6 +6,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Httpfoundation\Request;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use ClientBundle\Entity\Client;
+use ClientBundle\Entity\Ecole;
 use ClientBundle\Form\ClientType;
 class ClientController extends Controller
 {
@@ -14,9 +15,15 @@ class ClientController extends Controller
         $em = $this->getDoctrine()->getManager();
         $user = $this->container->get('security.context')->getToken()->getUser();
 
+        $ecoles = $em->getRepository('ClientBundle:Ecole')->findAll();
+        $orgas = $em->getRepository('ClientBundle:Organisme')->findAll();
+
         $client = new Client();
         $form = $this->createForm('ClientBundle\Form\ClientType', $client);
         $form->handleRequest($request);
+
+        $ecolerslt = $request->request->get('ecole');
+        $orgarslt = $request->request->get('orga');
 
         if ($form->isValid()) {
             $request->getSession()
@@ -28,12 +35,17 @@ class ClientController extends Controller
                 $client->setValue(6000);
             }
 
+            $client->setEcole($ecolerslt);
+            $client->setOrgapayeur($orgarslt);
+
             $em->persist($client);
             $em->flush();
         }
 
         return $this->render('default/client/newclient.html.twig', array(
             'form' => $form->createView(),
+            'ecoles' => $ecoles,
+            'orgas' => $orgas,
         ));
     }
 
