@@ -60,8 +60,14 @@ class RegistrationController extends Controller
 
             $userManager->updateUser($user);
 
+        // if ($form->isValid()) {
+        //     $request->getSession()
+        //     ->getFlashBag()
+        //     ->add('success', 'Client Créé !')
+        //     ;
+    
             if (null === $response = $event->getResponse()) {
-                $url = $this->generateUrl('fos_user_registration_confirmed');
+                $url = $this->generateUrl('dashboard');
                 $response = new RedirectResponse($url);
             }
 
@@ -118,14 +124,9 @@ class RegistrationController extends Controller
 
         $userManager->updateUser($user);
 
-        if (null === $response = $event->getResponse()) {
-            $url = $this->generateUrl('fos_user_registration_confirmed');
-            $response = new RedirectResponse($url);
-        }
-
-        $dispatcher->dispatch(FOSUserEvents::REGISTRATION_CONFIRMED, new FilterUserResponseEvent($user, $request, $response));
-
-        return $response;
+        return $this->render('default/dashboard.html.twig', array(
+            'form' => $form->createView(),
+        ));
     }
 
     /**
@@ -138,7 +139,8 @@ class RegistrationController extends Controller
             throw new AccessDeniedException('This user does not have access to this section.');
         }
 
-        return $this->render('FOSUserBundle:Registration:confirmed.html.twig', array(
+        return $this->render('default/dashboard.html.twig', array(
+          
             'user' => $user,
             'targetUrl' => $this->getTargetUrlFromSession(),
         ));
