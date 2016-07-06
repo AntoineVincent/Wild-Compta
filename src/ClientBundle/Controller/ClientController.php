@@ -29,6 +29,7 @@ class ClientController extends Controller
             $request->getSession()
             ->getFlashBag()
             ->add('success', 'Client Créé !')
+            
             ;
 
             if ($client->getType() == 'élève') {
