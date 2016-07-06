@@ -45,6 +45,13 @@ class Documents
     /**
      * @var string
      *
+     * @ORM\Column(name="justif", type="string", length=255, nullable=true)
+     */
+    private $justif;
+
+    /**
+     * @var string
+     *
      * @ORM\Column(name="reference", type="string", length=255, nullable=true)
      */
     private $reference;
@@ -155,6 +162,29 @@ class Documents
     public function getType()
     {
         return $this->type;
+    }
+
+    /**
+     * Set justif
+     *
+     * @param string $justif
+     * @return Document
+     */
+    public function setJustif($justif)
+    {
+        $this->justif = $justif;
+
+        return $this;
+    }
+
+    /**
+     * Get justif
+     *
+     * @return string 
+     */
+    public function getJustif()
+    {
+        return $this->justif;
     }
 
     /**
