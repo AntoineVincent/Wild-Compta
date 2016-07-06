@@ -6,6 +6,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use ClientBundle\Entity\Client;
 use ComptaBundle\Entity\Reglement;
+use DocumentBundle\Entity\Documents;
 use ComptaBundle\Form\ReglementType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorage;
@@ -18,12 +19,11 @@ class ComptaController extends Controller
     	$em = $this->getDoctrine()->getManager();
 
         $client = $em->getRepository('ClientBundle:Client')->findOneById($idclient);
+        $document = $em->getRepository('DocumentBundle:Documents')->findOneByIdclient($idclient);
 
         $reglement = new Reglement();
         $form = $this->createForm('ComptaBundle\Form\ReglementType', $reglement);
         $form->handleRequest($request);
-
-        $reglement->setDatereg($request->request->get('date'));
 
         if ($form->isValid()) {
 
@@ -34,6 +34,7 @@ class ComptaController extends Controller
             $scan->move($scanDir, $scanName);
 
             $reglement->setUploadscan($scanName);
+            $reglement->setIddocument($document->getId());
             $reglement->setIdclient($idclient);
 
             $request->getSession()
@@ -47,6 +48,7 @@ class ComptaController extends Controller
 
         return $this->render('default/reglement.html.twig', array(
         	'client' => $client,
+            'document' => $document,
             'form' => $form->createView()
         ));
     }
