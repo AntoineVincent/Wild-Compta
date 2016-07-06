@@ -37,7 +37,24 @@
 				<h5>{{ "now"|date("d/m/Y") }}</h5>
 			</div>
 		</div>
-		{{ form_start(form) }}
+
+		<div class="col-md-12 cli-widg">
+			<div class="col-md-2"></div>
+			<div class="col-md-4">
+				<h5> Référence de facture : </h5>
+			</div>
+			<div class="col-md-4">
+				<h5>
+					{% if document is empty %}
+						<input name="reference" value=""/>
+					{% else %}
+						{{ document.reference }}
+					{% endif %}
+				</h5>
+			</div>
+			<div class="col-md-2"></div>
+		</div>
+
 		<div class="col-md-12 cli-widg">
 			<div class="col-md-2"></div>
 			<div class="col-md-4">
