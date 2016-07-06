@@ -286,4 +286,10 @@ h2{
 	color: #35383a;
 	margin-top: 150px;
 }
-
+.btn-register {
+	margin-bottom: 20px;
+	margin-top: 10px;
+}
+.champ-log {
+	margin-bottom: 10px;
+}
