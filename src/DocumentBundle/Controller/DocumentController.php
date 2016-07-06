@@ -38,22 +38,7 @@ class DocumentController extends Controller
             'form' => $form->createView(),
         ));
     }
-
-    public function newdevisAction(Request $request, $idclient)
-    {
-        $em = $this->getDoctrine()->getManager();
-        $user = $this->container->get('security.context')->getToken()->getUser();
-
-        $client = $em->getRepository('ClientBundle:Client')->findOneById($idclient);
-
-        $documents = $em->getRepository('DocumentBundle:Documents')->findAll();
-
-        return $this->render('default/newdevis.html.twig', array(
-            'documents' => $documents,
-            'client' => $client
-        ));
-    }
-
+    
     public function pdfAction(Request $request, $idclient)
     {
         $em = $this->getDoctrine()->getManager();
@@ -87,18 +72,4 @@ class DocumentController extends Controller
      
         return new Response();
     }
-    public function listedocAction(Request $request, $idclient)
-    {
-        $em = $this->getDoctrine()->getManager();
-        $user = $this->container->get('security.context')->getToken()->getUser();
-
-        $document = $em->getRepository('DocumentBundle:Documents')->findAll($idclient);
-
-        return $this->render('Default/ficheclient.html.twig', array(
-            'client' => $client,
-            'document' => $document,
-        ));
-    }
-
-
 }
