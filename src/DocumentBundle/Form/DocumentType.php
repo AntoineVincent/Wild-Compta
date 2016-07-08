@@ -13,23 +13,7 @@ class DocumentType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('reference')
-            ->add('datecreation', 'date')
-            ->add('etat')
-            ->add('nbreecheance')
-            ->add('value')
-            ->add('type', ChoiceType::class, array(
-    'choices' => array(
-        'devis' => 'devis',
-        'facture' => 'facture',
-        'avoir' => 'avoir',
-        
-    ),
-    'required'    => false,
-    'placeholder' => '',
-    'empty_data'  => null
-    ))
-        ;
+            ->add('nbreecheance');
     }
 
     public function configureOptions(OptionsResolver $resolver)

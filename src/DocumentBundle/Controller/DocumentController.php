@@ -6,6 +6,9 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use DocumentBundle\Entity\Documents;
+use DocumentBundle\Entity\Product;
+use DocumentBundle\Entity\Counter;
+use ClientBundle\Entity\Client;
 use Html2Pdf_Html2Pdf;
 use DocumentBundle\Form\DocumentType;
 
@@ -13,16 +16,58 @@ use DocumentBundle\Form\DocumentType;
 
 class DocumentController extends Controller
 {
-    public function newdocumentAction(Request $request)
+    public function newdocumentAction(Request $request, $idclient, $type)
     {
         $em = $this->getDoctrine()->getManager();
         $user = $this->container->get('security.context')->getToken()->getUser();
+
+        $client = $em->getRepository('ClientBundle:Client')->findOneById($idclient);
+        $typeclient = $client->getType();
+        $products = $em->getRepository('DocumentBundle:Product')->findAll();
+        $counter = $em->getRepository('DocumentBundle:Counter')->findOneById(1);
 
         $document = new Documents();
         $form = $this->createForm('DocumentBundle\Form\DocumentType', $document);
         $form->handleRequest($request);
 
 
+        // RECUPERATION CHAMPS FORMULAIRE MAIN
+        $idproduct = $request->request->get('produit');
+        $date = $request->request->get('date');
+        $tva = $request->request->get('tva');
+
+
+        // ALGORYTHME CALCUL REFERENCE DOCUMENT
+        $reference = "";
+        $counts = $counter->getCount();
+        $month = $request->request->get('month');
+        $year = $request->request->get('year');
+        $refdate = $year.'-'.$month;
+
+        if ($counts < 10) {
+            $count = '0'.'0'.$counts;
+        }
+        if ($counts < 100 && $counts > 9) {
+            $count = '0'.$counts;
+        }
+
+        if ($type == 'devis') {
+            $reference = 'DE-'.$refdate.'-'.$count;
+        }
+        elseif ($type == 'facture') {
+            $reference = 'FA-'.$refdate.'-'.$count;
+        }
+        else {
+            $reference = 'AV-'.$refdate.'-'.$count;
+        }
+
+        // ALGORYTHME POUR SAVOIR SI VALUE EXISTE OU SI A REMPLIR
+        if ($typeclient == 'élève') {
+            $value = $client->getValue();
+        }
+        else {
+            $value = $request->request->get('value');
+        }
 
         if ($form->isValid()) {
             $request->getSession()
@@ -30,27 +75,34 @@ class DocumentController extends Controller
             ->add('success', 'Document Créé !')
             ;
 
+            // MAJ DU COMPTEUR VARIABLE DES REFERENCE
+            $counts = $counts++;
+
+            $counter->setCount($counts);
+
+
+            // ATTRIBUTION DES VALEURS A LOBJET
+            $document->setIdclient($idclient);
+            $document->setIdproduct($idproduct);
+            $document->setType($type);
+            $document->setDatecreation($date);
+            $document->setEtat('ouvert');
+            $document->setValue($value);
+            $document->setTva($tva);
+            $document->setReference($reference);
+
+            $em->persist($counter);
             $em->persist($document);
             $em->flush();
         }
 
         return $this->render('default/newdoc.html.twig', array(
             'form' => $form->createView(),
-        ));
-    }
-
-    public function newdevisAction(Request $request, $idclient)
-    {
-        $em = $this->getDoctrine()->getManager();
-        $user = $this->container->get('security.context')->getToken()->getUser();
-
-        $client = $em->getRepository('ClientBundle:Client')->findOneById($idclient);
-
-        $documents = $em->getRepository('DocumentBundle:Documents')->findAll();
-
-        return $this->render('default/newdevis.html.twig', array(
-            'documents' => $documents,
-            'client' => $client
+            'type' => $type,
+            'client' => $client,
+            'products' => $products,
+            'reference' => $reference,
+            'value' => $value,
         ));
     }
 
@@ -87,18 +139,4 @@ class DocumentController extends Controller
      
         return new Response();
     }
-    public function listedocAction(Request $request, $idclient)
-    {
-        $em = $this->getDoctrine()->getManager();
-        $user = $this->container->get('security.context')->getToken()->getUser();
-
-        $document = $em->getRepository('DocumentBundle:Documents')->findAll($idclient);
-
-        return $this->render('Default/ficheclient.html.twig', array(
-            'client' => $client,
-            'document' => $document,
-        ));
-    }
-
-
 }

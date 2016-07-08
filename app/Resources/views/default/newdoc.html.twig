@@ -22,17 +22,20 @@
 						<p><label for="type">type de document  </label>
 					</div>
 					<div class="col-md-7">
-						{{ form_widget(form.type) }}
+						<p>{{ type }}</p>
 						
 					</div>
 				</div>
-						</p></br>
 				<div class="col-md-12">
 					<div class="col-md-5">
-						<p><label for="référence">référence du document </label>
+						<p><label for="produit">Produit Prédéfini </label>
 					</div> 
 					<div class="col-md-7">
-						{{ form_widget(form.reference) }}</br>
+						<select name="produit" id="produit">
+							{% for product in products %}
+		 		        		<option value="{{ product.id }}">{{ product.nom }}</option>
+		 		         	{% endfor %}
+						</select>
 					</div>
 				</div>
 				<div class="col-md-12">
@@ -40,7 +43,8 @@
 						<p><label for="référence">date de création du document </label>
 					</div> 
 					<div class="col-md-7">
-						{{ form_widget(form.datecreation) }}</br>
+						<p>{{ "now"|date("d/m/Y") }}</p>
+						<input type="hidden" name="date" value="{{ "now"|date("d/m/Y") }}"/>
 					</div>
 				</div>
 				<div class="col-md-12">
@@ -48,7 +52,7 @@
 						<p><label for="référence">nom client </label>
 					</div> 
 					<div class="col-md-7">
-						{{ form_widget(form.etat) }}</br>
+						{{ client.nom }}</br>
 					</div>
 				</div>
 				<div class="col-md-12">
@@ -61,17 +65,36 @@
 				</div>
 				<div class="col-md-12">
 					<div class="col-md-5">
-						<p><label for="référence">montant HT </label>
+						<p><label for="value">montant HT </label>
 					</div> 
 					<div class="col-md-7">
-						{{ form_widget(form.value) }}</br>
+						{% if value is empty %}
+							<input name="value" value=""/>
+						{% else %}
+							{{ value }}
+						{% endif %}
 					</div>
 				</div>
-			{{ form_end(form) }}
+				<div class="col-md-12">
+					<div class="col-md-5">
+						<p><label for="tva">TVA</label>
+					</div> 
+					<div class="col-md-7">
+						<input type="float "name="tva" value=""/>%
+					</div>
+				</div>
+				<div class="col-md-12">
+					<div class="col-md-5">
+						<input type="hidden" name="month" value="{{ "now"|date("m") }}"/>
+						<input type="hidden" name="year" value="{{ "now"|date("Y") }}"/>
+					</div> 
+				</div>
 				<div class="col-md-12">
 					<div class="col-md-7">
 						<input type="submit" class="btn btn-primary" value="Enregistrer"/>
 					</div>
+				</div>
+				{{ form_end(form) }}
 					
 					<div class="col-md-5">
 						{# <a href="{{ path('new_devis') }}"><input type="submit" class="btn btn-primary" value="Ouvrir"/></a>	 #}
