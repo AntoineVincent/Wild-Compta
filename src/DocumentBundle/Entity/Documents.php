@@ -57,9 +57,9 @@ class Documents
     private $reference;
 
     /**
-     * @var \DateTime
+     * @var \string
      *
-     * @ORM\Column(name="datecreation", type="date", nullable=true)
+     * @ORM\Column(name="datecreation", type="string", nullable=true)
      */
     private $datecreation;
 
@@ -83,6 +83,13 @@ class Documents
      * @ORM\Column(name="value", type="integer", nullable=true)
      */
     private $value;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="tva", type="integer", nullable=true)
+     */
+    private $tva;
 
 
     /**
@@ -213,7 +220,7 @@ class Documents
     /**
      * Set datecreation
      *
-     * @param \DateTime $datecreation
+     * @param \string $datecreation
      * @return Document
      */
     public function setDatecreation($datecreation)
@@ -226,7 +233,7 @@ class Documents
     /**
      * Get datecreation
      *
-     * @return \DateTime 
+     * @return \string 
      */
     public function getDatecreation()
     {
@@ -300,5 +307,28 @@ class Documents
     public function getValue()
     {
         return $this->value;
+    }
+
+    /**
+     * Set tva
+     *
+     * @param integer $tva
+     * @return Document
+     */
+    public function setTva($tva)
+    {
+        $this->tva = $tva;
+
+        return $this;
+    }
+
+    /**
+     * Get tva
+     *
+     * @return integer 
+     */
+    public function getTva()
+    {
+        return $this->tva;
     }
 }
