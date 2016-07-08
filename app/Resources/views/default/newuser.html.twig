@@ -9,7 +9,7 @@
 				
 		<h2> Créer un nouveau campus manager</h2>
 		
-		{{ form_start(form, {'method': 'post', 'action': path('new_user'), 'attr': {'class': 'fos_user_registration_register'}}) }}
+		{{ form_start(form, {'method': 'post', 'action': path('new_user'), 'attr': {'class': 'fos_user_registration_register', 'novalidate':'novalidate'}}) }}
 		<div class="row champ-log">
 			<div class="col-md-6">
 				<label>Nom d'utilisateur :</label>
@@ -25,8 +25,7 @@
 				<label>Ecole</label>
 			</div>
 			<div class="col-md-6">
-				{{ form_widget(form.ecole) }}
-				{{ form_errors(form.ecole) }}	
+				<input name="ecole" id="ecole" type="string">	
 			</div>
 		</div>
 		<div hidden class="row champ-log">
@@ -34,7 +33,7 @@
 				<label>Adresse email :</label>
 			</div>
 			<div hidden class="col-md-6">
-				{{ form_widget(form.email) }}
+				{{ form_widget(form.email, {'value':'alttt@gmail.com'}) }}
 				{{ form_errors(form.email) }}	
 			</div>
 		</div>

@@ -5,13 +5,19 @@ namespace AppBundle\Entity;
 
 use FOS\UserBundle\Model\User as BaseUser;
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\ORM\Mapping\AttributeOverrides;
+use Doctrine\ORM\Mapping\AttributeOverride;
 
 /**
  * @ORM\Entity
  * @ORM\Table(name="fos_user")
+ * @ORM\AttributeOverrides({
+ *      @ORM\AttributeOverride(name="email", column=@ORM\Column(type="string", name="email", length=255, unique=false, nullable=true)),
+ *      @ORM\AttributeOverride(name="emailCanonical", column=@ORM\Column(type="string", name="email_canonical", length=255, unique=false, nullable=true))
+ * })
  */
-class User extends BaseUser
-{
+class User extends BaseUser // inheritance from fosUserBundle
+{   
     /**
      * @ORM\Id
      * @ORM\Column(type="integer")
@@ -30,12 +36,6 @@ class User extends BaseUser
      * @ORM\Column(name="ecole", type="string", length=255, nullable=true)
      */
     public $ecole;
-
-    public function __construct()
-    {
-        parent::__construct();
-        // your own logic
-    }
 
     /**
      * Set nom
@@ -83,5 +83,11 @@ class User extends BaseUser
     public function getEcole()
     {
         return $this->ecole;
+    }
+
+        public function __construct()
+    {
+        parent::__construct();
+        // your own logic
     }
 }
