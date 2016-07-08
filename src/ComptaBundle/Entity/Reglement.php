@@ -77,6 +77,15 @@ class Reglement
      */
     private $uploadscan;
 
+       /**
+     * @var int
+     *
+     * @ORM\Column(name="iddocument", type="integer", nullable=true)
+     */
+    private $iddocument;
+
+
+
 
     /**
      * Get id
@@ -271,4 +280,28 @@ class Reglement
     {
         return $this->uploadscan;
     }
+
+    /**
+     * Set iddocument
+     *
+     * @param integer $iddocument
+     * @return Reglement
+     */
+    public function setIddocument($iddocument)
+    {
+        $this->iddocument = $iddocument;
+
+        return $this;
+    }
+
+    /**
+     * Get iddocument
+     *
+     * @return integer 
+     */
+    public function getIddocument()
+    {
+        return $this->iddocument;
+    }
+
 }

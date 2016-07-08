@@ -59,12 +59,8 @@ supr_client:
 
 # ---------------------> DOCUMENTS <---------------------
 new_document:
-    path:    /new/document
+    path:    /new/document/{idclient}/{type}
     defaults: { _controller: DocumentBundle:Document:newdocument }
-
-new_devis:
-    path:    /new/devis/{idclient}
-    defaults: { _controller: DocumentBundle:Document:newdevis }
 
 new_pdf:
     path:    /new/pdf/{idclient}
