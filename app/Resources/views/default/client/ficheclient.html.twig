@@ -74,7 +74,7 @@
 		<div class="col-md-12 devis">
 			<div class="col-md-12 haut">Devis </div>
 			<div class="col-md-12 milieu">devis1<br/>devis2{# {{ document.reference }} #}</div>
-			<div class="col-md-12 bas"><a href="{{ path('reglement', { 'idclient': client.id }) }}"><input type="submit" class="btn-primary " value="generer la facture"/></a><a href="{{ path('reglement', { 'idclient': client.id }) }}"><input type="submit" class=" btn-primary" value="modifier"/></a><a {# href="{{ path('reglement', { 'idclient': client.id }) }} #}" onclick="return(prompt('merci de justifier le refus'));"><input type="submit" class="btn-primary" value="refusé"  /></a><a href="{{ path('reglement', { 'idclient': client.id }) }}"><input type="submit" class="btn-primary" value="supprimer"/></a></div>
+			<div class="col-md-12 bas"><a href="{{ path('reglement', { 'idclient': client.id }) }}"><input type="submit" class="btn-primary " value="generer la facture"/></a><a href="{{ path('reglement', { 'idclient': client.id }) }}"><input type="submit" class=" btn-primary" value="modifier"/></a><a {# href="{{ path('reglement', { 'idclient': client.id }) }}" #} onclick="return(prompt('merci de justifier le refus'));"><input type="submit" class="btn-primary" value="refusé"  /></a><a href="{{ path('reglement', { 'idclient': client.id }) }}"><input type="submit" class="btn-primary" value="supprimer"/></a></div>
 		</div>
 		<div class="col-md-12 facture">
 			<div class="col-md-12 haut">Facture</div>
