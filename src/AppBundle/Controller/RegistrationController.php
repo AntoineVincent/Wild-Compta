@@ -54,17 +54,19 @@ class RegistrationController extends Controller
 
         $form->handleRequest($request);
 
+        $ecole = $request->request->get('ecole');
+
         if ($form->isValid()) {
             $event = new FormEvent($form, $request);
             $dispatcher->dispatch(FOSUserEvents::REGISTRATION_SUCCESS, $event);
 
+            $user->setEcole($ecole);
             $userManager->updateUser($user);
 
-        // if ($form->isValid()) {
-        //     $request->getSession()
-        //     ->getFlashBag()
-        //     ->add('success', 'Client Créé !')
-        //     ;
+            $request->getSession()
+            ->getFlashBag()
+            ->add('success', 'Client Créé !')
+            ;
     
             if (null === $response = $event->getResponse()) {
                 $url = $this->generateUrl('dashboard');
