@@ -87,18 +87,7 @@ class DocumentController extends Controller
      
         return new Response();
     }
-    public function listedocAction(Request $request, $idclient)
-    {
-        $em = $this->getDoctrine()->getManager();
-        $user = $this->container->get('security.context')->getToken()->getUser();
-
-        $document = $em->getRepository('DocumentBundle:Documents')->findAll($idclient);
-
-        return $this->render('Default/ficheclient.html.twig', array(
-            'client' => $client,
-            'document' => $document,
-        ));
-    }
+    
 
 
 }

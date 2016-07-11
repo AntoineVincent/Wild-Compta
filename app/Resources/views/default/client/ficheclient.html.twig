@@ -4,62 +4,65 @@
 
 <div class="col-md-12">
 	<div class="col-md-1"></div>
-	<div class="col-md-4 ">
+	<div class="col-md-5 ">
 		<div class="col-md-12 col1">
-			<div class="col-md-12 cli-widg">
-				<div class="col-md-6">
-					<label for="nom">Nom :</label>
+			<div class="col-md-12 haut">Fiche client </div>
+			<div class="col-md-12 milieu2">
+				<div class="col-md-12 cli-widg">
+					<div class="col-md-6">
+						<label for="nom">Nom :</label>
+					</div>
+						<div class="col-md-6">	{{ client.nom }}
+					</div>
 				</div>
-					<div class="col-md-6">	{{ client.nom }}
+				<div class="col-md-12 cli-widg">
+					<div class="col-md-6">
+						<label for="nom">Type :</label>
+					</div>
+					<div class="col-md-6">	{{ client.type }}
+					</div>
 				</div>
-			</div>
-			<div class="col-md-12 cli-widg">
-				<div class="col-md-6">
-					<label for="nom">Type :</label>
+				<div class="col-md-12 cli-widg">
+					<div class="col-md-6">
+						<label for="nom">Adresse :</label>
+					</div>
+					<div class="col-md-6">	{{ client.adresse }}
+					</div>
 				</div>
-				<div class="col-md-6">	{{ client.type }}
+				<div class="col-md-12 cli-widg">
+					<div class="col-md-6">
+						<label for="nom">Ad. de facturation :</label>
+					</div>
+					<div class="col-md-6">	{{ client.adressefactu }}
+					</div>
 				</div>
-			</div>
-			<div class="col-md-12 cli-widg">
-				<div class="col-md-6">
-					<label for="nom">Adresse :</label>
+				<div class="col-md-12 cli-widg">
+					<div class="col-md-6">
+						<label for="nom">Email :</label>
+					</div>
+					<div class="col-md-6">	{{ client.email }}
+					</div>
 				</div>
-				<div class="col-md-6">	{{ client.adresse }}
+				<div class="col-md-12 cli-widg">
+					<div class="col-md-6">
+						<label for="nom">Portable :</label>
+					</div>
+					<div class="col-md-6">	{{ client.portable }}
+					</div>
 				</div>
-			</div>
-			<div class="col-md-12 cli-widg">
-				<div class="col-md-6">
-					<label for="nom">Ad. de facturation :</label>
+				<div class="col-md-12 cli-widg">
+					<div class="col-md-6">
+						<label for="nom">Fixe :</label>
+					</div>
+					<div class="col-md-6">	{{ client.telephonefixe }}
+					</div>
 				</div>
-				<div class="col-md-6">	{{ client.adressefactu }}
-				</div>
-			</div>
-			<div class="col-md-12 cli-widg">
-				<div class="col-md-6">
-					<label for="nom">Email :</label>
-				</div>
-				<div class="col-md-6">	{{ client.email }}
-				</div>
-			</div>
-			<div class="col-md-12 cli-widg">
-				<div class="col-md-6">
-					<label for="nom">Portable :</label>
-				</div>
-				<div class="col-md-6">	{{ client.portable }}
-				</div>
-			</div>
-			<div class="col-md-12 cli-widg">
-				<div class="col-md-6">
-					<label for="nom">Fixe :</label>
-				</div>
-				<div class="col-md-6">	{{ client.telephonefixe }}
-				</div>
-			</div>
-			<div class="col-md-12 cli-widg">
-				<div class="col-md-6">
-					<label for="nom">Ecole :</label>
-				</div>
-				<div class="col-md-6">	{{ client.ecole }}
+				<div class="col-md-12 cli-widg">
+					<div class="col-md-6">
+						<label for="nom">Ecole :</label>
+					</div>
+					<div class="col-md-6">	{{ client.ecole }}
+					</div>
 				</div>
 			</div>		
 		</div>
@@ -69,30 +72,115 @@
 		</div>
 	</div>
 
-	<div class="col-md-1"></div>
+	{# <div class="col-md-1"></div> #}
 	<div class="col-md-5 col2">
-		<div class="col-md-12 devis">
+		{# <div class="col-md-12 devis">
 			<div class="col-md-12 haut">Devis </div>
-			<div class="col-md-12 milieu">devis1<br/>devis2{# {{ document.reference }} #}</div>
-			<div class="col-md-12 bas"><a href="{{ path('reglement', { 'idclient': client.id }) }}"><input type="submit" class="btn-primary " value="generer la facture"/></a><a href="{{ path('reglement', { 'idclient': client.id }) }}"><input type="submit" class=" btn-primary" value="modifier"/></a><a {# href="{{ path('reglement', { 'idclient': client.id }) }} #}" onclick="return(prompt('merci de justifier le refus'));"><input type="submit" class="btn-primary" value="refusé"  /></a><a href="{{ path('reglement', { 'idclient': client.id }) }}"><input type="submit" class="btn-primary" value="supprimer"/></a></div>
+			<div class="col-md-12 milieu">devis1<br/>devis2{{ document.reference }}</div>
+			<div class="col-md-12 bas"><a href="{{ path('reglement', { 'idclient': client.id }) }}"><input type="submit" class="btn-primary " value="generer la facture"/></a><a href="{{ path('reglement', { 'idclient': client.id }) }}"><input type="submit" class=" btn-primary" value="modifier"/></a><a href="{{ path('reglement', { 'idclient': client.id }) }}onclick="return(prompt('merci de justifier le refus'));"><input type="submit" class="btn-primary" value="refusé"  /></a><a href="{{ path('reglement', { 'idclient': client.id }) }}"><input type="submit" class="btn-primary" value="supprimer"/></a></div>
+		</div> #}
+		<div class="col-md-12 devis btn-group">
+			<div class="col-md-12 haut">Devis </div>
+			<div class="col-md-12 milieu">
+				<div class="col-md-9">devis1</div>
+				<div class="col-md-3">
+					<button type="button" class="btn btn-xs btn-info">Action</button>
+					<button type="button" class="btn btn-xs btn-info 	dropdown-toggle" data-toggle="dropdown">
+						<span class="caret"></span>
+						<span class="sr-only">Toggle Dropdown</span>
+					</button>
+					<ul class="dropdown-menu" role="menu">
+						<li><a href="{{ path('reglement', { 'idclient': client.id }) }}">Generer la facture</a></li>
+						<li><a href="{{ path('reglement', { 'idclient': client.id }) }}">Editer</a></li>
+						<li><a href="{{ path('reglement', { 'idclient': client.id }) }}" onclick="return(prompt('merci de justifier le refus'))";>Refusé</a></li>
+						<li class="divider"></li>
+						<li><a href="{{ path('reglement', { 'idclient': client.id }) }}">Supprimer</a></li>
+					</ul><br/>
+				</div>
+				<div class="col-md-9">devis2{# {{ document.reference }} #}</div>
+				<div class="col-md-3">
+						<button type="button" class="btn btn-xs btn-info">Action</button>
+						<button type="button" class="btn btn-xs btn-info 	dropdown-toggle" data-toggle="dropdown">
+						<span class="caret"></span>
+						{# <span class="sr-only">Toggle Dropdown</span> #}
+						</button>
+					<ul class="dropdown-menu" role="menu">
+						<li><a href="{{ path('reglement', { 'idclient': client.id }) }}">Generer la facture</a></li>
+						<li><a href="{{ path('reglement', { 'idclient': client.id }) }}">Editer</a></li>
+						<li><a href="{{ path('reglement', { 'idclient': client.id }) }}">Refusé</a></li>
+						<li class="divider"></li>
+						<li><a href="{{ path('reglement', { 'idclient': client.id }) }}">Supprimer</a></li>
+				</div>
+			</div>
 		</div>
 		<div class="col-md-12 facture">
-			<div class="col-md-12 haut">Facture</div>
-			<div class="col-md-12 milieu">facture1<br/>facture2{# {{ document.reference }} #}</div>
-			<div class="col-md-12 bas"><a href="{{ path('reglement', { 'idclient': client.id }) }}"><input type="submit" class="btn-success" value="emettre un avoir"/></a><a href="{{ path('reglement', { 'idclient': client.id }) }}"><input type="submit" class=" btn-success" value="modifier"/></a><a href="{{ path('reglement', { 'idclient': client.id }) }}"><input type="submit" class="btn-success" value="envoyée"/></a><a href="{{ path('reglement', { 'idclient': client.id }) }}"><input type="submit" class="btn-success" value="supprimer"/></a><a href="{{ path('reglement', { 'idclient': client.id }) }}"><input type="submit" class="btn-success" value="réglement"/></a></div>
+			{# <div class="col-md-12 haut">Facture</div>
+			<div class="col-md-12 milieu">facture1<br/>facture2{{ document.reference }}</div>
+			<div class="col-md-12 bas"><a href="{{ path('reglement', { 'idclient': client.id }) }}"><input type="submit" class="btn-success" value="emettre un avoir"/></a><a href="{{ path('reglement', { 'idclient': client.id }) }}"><input type="submit" class=" btn-success" value="modifier"/></a><a href="{{ path('reglement', { 'idclient': client.id }) }}"><input type="submit" class="btn-success" value="envoyée"/></a><a href="{{ path('reglement', { 'idclient': client.id }) }}" onclick="return(confirm('vous allez supprimer cette facture!'));"><input type="submit" class="btn-success" value="supprimer"/></a><a href="{{ path('reglement', { 'idclient': client.id }) }}"><input type="submit" class="btn-success" value="réglement"/></a></div> #}
+			<div class="col-md-12 haut">Facture </div>
+			<div class="col-md-12 milieu">
+				<div class="col-md-9">facture1</div>
+				<div class="col-md-3">
+					<button type="button" class="btn btn-xs btn-info">Action</button>
+					<button type="button" class="btn btn-xs btn-info 	dropdown-toggle" data-toggle="dropdown">
+						<span class="caret"></span>
+						<span class="sr-only">Toggle Dropdown</span>
+					</button>
+					<ul class="dropdown-menu" role="menu">
+						<li><a href="{{ path('reglement', { 'idclient': client.id }) }}">Emettre un avoir</a></li>
+						<li><a href="{{ path('reglement', { 'idclient': client.id }) }}">Editer</a></li>
+						<li><a href="{{ path('reglement', { 'idclient': client.id }) }}">Classée comme envoyée</a></li>
+						<li><a href="{{ path('reglement', { 'idclient': client.id }) }}" onclick="return(prompt('Vous allez supprimer cette facture'))";>Supprimer</a></li>
+						<li class="divider"></li>
+						<li><a href="{{ path('reglement', { 'idclient': client.id }) }}">Réglement</a></li>
+					</ul><br/>
+				</div>
+				<div class="col-md-9">facture2{# {{ document.reference }} #}</div>
+				<div class="col-md-3">
+						<button type="button" class="btn btn-xs btn-info">Action</button>
+						<button type="button" class="btn btn-xs btn-info 	dropdown-toggle" data-toggle="dropdown">
+						<span class="caret"></span>
+						{# <span class="sr-only">Toggle Dropdown</span> #}
+						</button>
+					<ul class="dropdown-menu" role="menu">
+						<li><a href="{{ path('reglement', { 'idclient': client.id }) }}">Emettre un avoir</a></li>
+						<li><a href="{{ path('reglement', { 'idclient': client.id }) }}">Editer</a></li>
+						<li><a href="{{ path('reglement', { 'idclient': client.id }) }}">Classée comme envoyée</a></li>
+						<li><a href="{{ path('reglement', { 'idclient': client.id }) }}" onclick="return(prompt('Vous allez supprimer cette facture'))";>Supprimer</a></li>
+						<li class="divider"></li>
+						<li><a href="{{ path('reglement', { 'idclient': client.id }) }}">Réglement</a></li>
+					</ul>
+				</div>
+			</div>
 		</div>
-		<div class="col-md-12 avoir">
+		{# <div class="col-md-12 avoir">
 			<div class="col-md-12 haut">Avoir </div>
-			<div class="col-md-12 milieu">avoir1{# {{ document.reference }} #}</div>
+			<div class="col-md-12 milieu">avoir1{{ document.reference }}</div>
 			<div class="col-md-12 bas"><a href="{{ path('reglement', { 'idclient': client.id }) }}"><input type="submit" class="btn-danger" value="supprimer"/></a></div>
+		</div> #}
+		<div class="col-md-12 avoir btn-group">
+			<div class="col-md-12 haut">Avoir </div>
+			<div class="col-md-12 milieu">
+				<div class="col-md-9">avoir1</div>
+				<div class="col-md-3">
+					<button type="button" class="btn btn-xs btn-info">Action</button>
+					<button type="button" class="btn btn-xs btn-info 	dropdown-toggle" data-toggle="dropdown">
+						<span class="caret"></span>
+						<span class="sr-only">Toggle Dropdown</span>
+					</button>
+					<ul class="dropdown-menu" role="menu">
+						<li><a href="{{ path('reglement', { 'idclient': client.id }) }}">Supprimer</a></li>
+					</ul><br/>
+				</div>
+			</div>
 		</div>
 		<div class="col-md-12 bout">
 			<div class="col-md-8 ">
-				<a href="{{ path('new_devis',{ 'idclient': client.id }) }}"><input type="submit" class="btn-lg btn-primary" value="créer devis"/>
+				<a href="{{ path('new_devis',{ 'idclient': client.id }) }}"><input type="submit" class="btn-lg btn-info" value="créer devis"/>
 				</a>
 			</div>
 			<div class="col-md-4 ">
-				<a href="{{ path('new_devis', { 'idclient': client.id }) }}"><input type="submit" class="btn-lg btn-success" value="créer facture"/>
+				<a href="{{ path('new_devis', { 'idclient': client.id }) }}"><input type="submit" class="btn-lg btn-info" value="créer facture"/>
 				</a>
 			</div>
 		</div>
