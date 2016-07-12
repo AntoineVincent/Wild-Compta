@@ -7,7 +7,11 @@ use Symfony\Component\Httpfoundation\Request;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use ClientBundle\Entity\Client;
 use ClientBundle\Entity\Ecole;
+use ClientBundle\Entity\Organisme;
+use DocumentBundle\Entity\Documents;
 use ClientBundle\Form\ClientType;
+
+
 class ClientController extends Controller
 {
     public function newclientAction(Request $request)
@@ -69,9 +73,30 @@ class ClientController extends Controller
         $user = $this->container->get('security.context')->getToken()->getUser();
 
         $client = $em->getRepository('ClientBundle:Client')->findOneById($idclient);
+        $documents = $em->getRepository('DocumentBundle:Documents')->findByIdclient($idclient);
+
+        $tabde = [];
+        $tabfa = [];
+        $tabav = [];
+
+        foreach ($documents as $document) {
+            if ($document->getType() == 'devis') {
+                array_push($tabde, $document);
+            } 
+            elseif ($document->getType() == 'facture') {
+                array_push($tabfa, $document);
+            }
+            else {
+                array_push($tabav, $document);
+            }
+        }
+
 
         return $this->render('default/client/ficheclient.html.twig', array(
             'client' => $client,
+            'tabde' => $tabde,
+            'tabfa' => $tabfa,
+            'tabav' => $tabav,
         ));
     }
 

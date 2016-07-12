@@ -89,97 +89,77 @@
 		<div class="col-md-12 devis btn-group">
 			<div class="col-md-12 haut">Devis </div>
 			<div class="col-md-12 milieu">
-				<div class="col-md-8">devis1</div>
-				<div class="col-md-4">
-					<button type="button" class="btn btn-xs btn-info">Action</button>
-					<button type="button" class="btn btn-xs btn-info 	dropdown-toggle" data-toggle="dropdown">
-						<span class="caret"></span>
-						<span class="sr-only">Toggle Dropdown</span>
-					</button>
-					<ul class="dropdown-menu" role="menu">
-						<li><a href="{{ path('reglement', { 'idclient': client.id }) }}">Generer la facture</a></li>
-						<li><a href="{{ path('reglement', { 'idclient': client.id }) }}">Editer</a></li>
-						<li><a href="{{ path('reglement', { 'idclient': client.id }) }}" onclick="return(prompt('merci de justifier le refus'))";>Refusé</a></li>
-						<li class="divider"></li>
-						<li><a href="{{ path('reglement', { 'idclient': client.id }) }}">Supprimer</a></li>
-					</ul><br/>
-				</div>
-				<div class="col-md-8">devis2{# {{ document.reference }} #}</div>
-				<div class="col-md-4">
-						<button type="button" class="btn btn-xs btn-info">Action</button>
-						<button type="button" class="btn btn-xs btn-info 	dropdown-toggle" data-toggle="dropdown">
-						<span class="caret"></span>
-						{# <span class="sr-only">Toggle Dropdown</span> #}
-						</button>
-					<ul class="dropdown-menu" role="menu">
-						<li><a href="{{ path('reglement', { 'idclient': client.id }) }}">Generer la facture</a></li>
-						<li><a href="{{ path('reglement', { 'idclient': client.id }) }}">Editer</a></li>
-						<li><a href="{{ path('reglement', { 'idclient': client.id }) }}">Refusé</a></li>
-						<li class="divider"></li>
-						<li><a href="{{ path('reglement', { 'idclient': client.id }) }}">Supprimer</a></li>
-				</div>
+				{% if tabde is empty %}
+					<p>Aucun Devis en cours</p>
+				{% else %}
+					{% for devis in tabde %}
+						<div class="col-md-9">{{ devis.reference }} | {{ devis.datecreation }}</div>
+						<div class="col-md-3">
+							<button type="button" class="btn btn-xs btn-info">Action</button>
+							<button type="button" class="btn btn-xs btn-info 	dropdown-toggle" data-toggle="dropdown">
+								<span class="caret"></span>
+								<span class="sr-only">Toggle Dropdown</span>
+							</button>
+							<ul class="dropdown-menu" role="menu">
+								<li><a href="">Generer la facture</a></li>
+								<li><a href="">Editer</a></li>
+								<li><a href="{{ path('reglement', { 'idclient': client.id }) }}" onclick="return(prompt('merci de justifier le refus'))";>Refusé</a></li>
+								<li class="divider"></li>
+								<li><a href="">Supprimer</a></li>
+							</ul><br/>
+						</div>
+					{% endfor %}
+				{% endif %}
 			</div>
 		</div>
 		<div class="col-md-12 facture">
-			{# <div class="col-md-12 haut">Facture</div>
-			<div class="col-md-12 milieu">facture1<br/>facture2{{ document.reference }}</div>
-			<div class="col-md-12 bas"><a href="{{ path('reglement', { 'idclient': client.id }) }}"><input type="submit" class="btn-success" value="emettre un avoir"/></a><a href="{{ path('reglement', { 'idclient': client.id }) }}"><input type="submit" class=" btn-success" value="modifier"/></a><a href="{{ path('reglement', { 'idclient': client.id }) }}"><input type="submit" class="btn-success" value="envoyée"/></a><a href="{{ path('reglement', { 'idclient': client.id }) }}" onclick="return(confirm('vous allez supprimer cette facture!'));"><input type="submit" class="btn-success" value="supprimer"/></a><a href="{{ path('reglement', { 'idclient': client.id }) }}"><input type="submit" class="btn-success" value="réglement"/></a></div> #}
 			<div class="col-md-12 haut">Facture </div>
 			<div class="col-md-12 milieu">
-				<div class="col-md-8">facture1</div>
-				<div class="col-md-4">
-					<button type="button" class="btn btn-xs btn-info">Action</button>
-					<button type="button" class="btn btn-xs btn-info 	dropdown-toggle" data-toggle="dropdown">
-						<span class="caret"></span>
-						<span class="sr-only">Toggle Dropdown</span>
-					</button>
-					<ul class="dropdown-menu" role="menu">
-						<li><a href="{{ path('reglement', { 'idclient': client.id }) }}">Emettre un avoir</a></li>
-						<li><a href="{{ path('reglement', { 'idclient': client.id }) }}">Editer</a></li>
-						<li><a href="{{ path('reglement', { 'idclient': client.id }) }}">Classée comme envoyée</a></li>
-						<li><a href="{{ path('reglement', { 'idclient': client.id }) }}" onclick="return(confirm('Vous allez supprimer cette facture'))";>Supprimer</a></li>
-						<li class="divider"></li>
-						<li><a href="{{ path('reglement', { 'idclient': client.id }) }}">Réglement</a></li>
-					</ul><br/>
-				</div>
-				<div class="col-md-8">facture2{# {{ document.reference }} #}</div>
-				<div class="col-md-4">
-						<button type="button" class="btn btn-xs btn-info">Action</button>
-						<button type="button" class="btn btn-xs btn-info 	dropdown-toggle" data-toggle="dropdown">
-						<span class="caret"></span>
-						{# <span class="sr-only">Toggle Dropdown</span> #}
-						</button>
-					<ul class="dropdown-menu" role="menu">
-						<li><a href="{{ path('reglement', { 'idclient': client.id }) }}">Emettre un avoir</a></li>
-						<li><a href="{{ path('reglement', { 'idclient': client.id }) }}">Editer</a></li>
-						<li><a href="{{ path('reglement', { 'idclient': client.id }) }}">Classée comme envoyée</a></li>
-						<li><a href="{{ path('reglement', { 'idclient': client.id }) }}" onclick="return(confirm('Vous allez supprimer cette facture'))";>Supprimer</a></li>
-						<li class="divider"></li>
-						<li><a href="{{ path('reglement', { 'idclient': client.id }) }}">Réglement</a></li>
-					</ul>
-				</div>
+				{% if tabfa is empty %}
+					<p>Aucune facture en cours</p>
+				{% else %}
+					{% for facture in tabfa %}
+						<div class="col-md-9">{{ facture.reference }} | {{ facture.datecreation }}</div>
+						<div class="col-md-3">
+							<button type="button" class="btn btn-xs btn-info">Action</button>
+							<button type="button" class="btn btn-xs btn-info 	dropdown-toggle" data-toggle="dropdown">
+								<span class="caret"></span>
+								<span class="sr-only">Toggle Dropdown</span>
+							</button>
+							<ul class="dropdown-menu" role="menu">
+								<li><a href="{{ path('reglement', { 'idclient': client.id }) }}">Emettre un avoir</a></li>
+								<li><a href="{{ path('reglement', { 'idclient': client.id }) }}">Editer</a></li>
+								<li><a href="{{ path('reglement', { 'idclient': client.id }) }}">Classée comme envoyée</a></li>
+								<li><a href="{{ path('reglement', { 'idclient': client.id }) }}" onclick="return(prompt('Vous allez supprimer cette facture'))";>Supprimer</a></li>
+								<li class="divider"></li>
+								<li><a href="{{ path('reglement', { 'idclient': client.id }) }}">Réglement</a></li>
+							</ul><br/>
+						</div>
+					{% endfor %}
+				{% endif %}
 			</div>
 		</div>
-		{# <div class="col-md-12 avoir">
-			<div class="col-md-12 haut">Avoir </div>
-			<div class="col-md-12 milieu">avoir1{{ document.reference }}</div>
-			<div class="col-md-12 bas"><a href="{{ path('reglement', { 'idclient': client.id }) }}"><input type="submit" class="btn-danger" value="supprimer"/></a></div>
-		</div> #}
+
 		<div class="col-md-12 avoir btn-group">
 			<div class="col-md-12 haut">Avoir </div>
 			<div class="col-md-12 milieu">
-				<div class="col-md-8">avoir1</div>
-				<div class="col-md-4">
-					<button type="button" class="btn btn-xs btn-info">Action</button>
-					<button type="button" class="btn btn-xs btn-info 	dropdown-toggle" data-toggle="dropdown">
-						<span class="caret"></span>
-						<span class="sr-only">Toggle Dropdown</span>
-					</button>
-					<ul class="dropdown-menu" role="menu">
-						<li><a href="{{ path('reglement', { 'idclient': client.id }) }}">Supprimer</a></li>
-					</ul><br/>
-				</div>
-
+				{% if tabav is empty %}
+					<p>Aucun avoir en cours</p>
+				{% else %}
+					{% for avoir in tabav %}
+						<div class="col-md-9">{{ avoir.reference }} | {{ avoir.datecreation }}</div>
+						<div class="col-md-3">
+							<button type="button" class="btn btn-xs btn-info">Action</button>
+							<button type="button" class="btn btn-xs btn-info 	dropdown-toggle" data-toggle="dropdown">
+								<span class="caret"></span>
+								<span class="sr-only">Toggle Dropdown</span>
+							</button>
+							<ul class="dropdown-menu" role="menu">
+								<li><a href="{{ path('reglement', { 'idclient': client.id }) }}">Supprimer</a></li>
+							</ul><br/>
+						</div>
+					{% endfor %}
+				{% endif %}
 			</div>
 		</div>
 		<div class="col-md-12 bout">
