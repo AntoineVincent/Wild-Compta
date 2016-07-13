@@ -24,7 +24,9 @@ class DocumentController extends Controller
         $client = $em->getRepository('ClientBundle:Client')->findOneById($idclient);
         $typeclient = $client->getType();
         $products = $em->getRepository('DocumentBundle:Product')->findAll();
-        $counter = $em->getRepository('DocumentBundle:Counter')->findOneById(1);
+
+        $alldoc = $em->getRepository('DocumentBundle:Documents')->findAll();
+        $counter = count($alldoc);
 
         $document = new Documents();
         $form = $this->createForm('DocumentBundle\Form\DocumentType', $document);
@@ -39,16 +41,15 @@ class DocumentController extends Controller
 
         // ALGORYTHME CALCUL REFERENCE DOCUMENT
         $reference = "";
-        $counts = $counter->getCount();
         $month = $request->request->get('month');
         $year = $request->request->get('year');
         $refdate = $year.'-'.$month;
 
-        if ($counts < 10) {
-            $count = '0'.'0'.$counts;
+        if ($counter < 10) {
+            $count = '0'.'0'.$counter;
         }
-        if ($counts < 100 && $counts > 9) {
-            $count = '0'.$counts;
+        if ($counter < 100 && $counter > 9) {
+            $count = '0'.$counter;
         }
 
         if ($type == 'devis') {
@@ -75,11 +76,6 @@ class DocumentController extends Controller
             ->add('success', 'Document Créé !')
             ;
 
-            // MAJ DU COMPTEUR VARIABLE DES REFERENCE
-            $counts = $counts++;
-
-            $counter->setCount($counts);
-
 
             // ATTRIBUTION DES VALEURS A LOBJET
             $document->setIdclient($idclient);
@@ -91,7 +87,6 @@ class DocumentController extends Controller
             $document->setTva($tva);
             $document->setReference($reference);
 
-            $em->persist($counter);
             $em->persist($document);
             $em->flush();
         }

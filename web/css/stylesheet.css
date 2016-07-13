@@ -49,7 +49,7 @@
 
 
 .btn {
-	background-color: #1fa597;
+	/*background-color: #1fa597;*/
 	border: none;
 }
 
@@ -181,45 +181,48 @@ h2{
 	height:50px;
 }
 .col1 {
-	background-color: rgba(241,241,241,1);
+	background-color: rgba(213,211,213,0.8);
 	border-radius: 5px;
-	border: solid #1fa597 2px;
-	padding: 10px;
-	height:335px;
-	line-height: 27px;
+	/*border: solid #1fa597 2px;*/
+	padding: px;
+	height:380px;
+	line-height: 30px;
+}
+.col2 {
+	line-height: 25px;
 }
 .devis {
-	background-color: rgba(241,241,241,1);
+	background-color: rgba(213,211,213,0.8);
 	border-radius: 5px;
-	border: solid #1fa597 2px;
-	padding: 10px;
-	height:150px;
+	/*border: solid #1fa597 2px;*/
+	/*padding: 10px;*/
+	height:120px;
 }
 .facture {
-	background-color: rgba(241,241,241,1);
+	background-color: rgba(213,211,213,0.8);
 	border-radius: 5px;
-	border: solid #1fa597 2px;
-	padding: 10px;
-	height:180px;
+	/*border: solid #1fa597 2px;*/
+	/*padding: 10px;*/
+	height:130px;
 	margin-top: 5px;
 }
 .avoir {
-	background-color: rgba(241,241,241,1);
+	background-color: rgba(213,211,213,0.8);
 	border-radius: 5px;
-	border: solid #1fa597 2px;
-	padding: 10px;
-	height:150px;
+	/*border: solid #1fa597 2px;*/
+	/*padding: 10px;*/
+	height:120px;
 	margin-top: 5px;
 }
 .echeancier {
-	background-color: rgba(241,241,241,1);
+	background-color: rgba(213,211,213,0.8);
 	border-radius: 5px;
-	border: solid #1fa597 2px;
-	height:150px;
+	/*border: solid #1fa597 2px;*/
+	height:120px;
 	margin-top: 5px;
 }
 .onglet {
-	background-color: rgba(241,241,241,1);
+	background-color: rgba(241,241,241,0.8);
 	border-radius: 5px;
 	border: solid #1fa597 2px;
 	padding: 0px;
@@ -268,15 +271,18 @@ h2{
 	text-align: center;
 }
 .milieu {
-	height: 60%;
+	height: 75%;
 	background-color: white;
+	border-radius: 5px;
+	padding-top: 5px;
+	
 }
 .bas {
 	height: 25%;
 }
 
 .bout {
-	margin-top: 15px;
+	margin-top: 30px;
 }
 
 .font-user {
@@ -292,4 +298,12 @@ h2{
 }
 .champ-log {
 	margin-bottom: 10px;
+}
+.btn-xs{
+	text-align: right;
+}
+.milieu2 {
+	height: 80%;
+	background-color: white;
+	border-radius: 5px;
 }
