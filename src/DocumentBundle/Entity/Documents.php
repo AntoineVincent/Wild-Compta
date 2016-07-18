@@ -91,7 +91,18 @@ class Documents
      */
     private $tva;
 
+    /**
+     * Set id
+     *
+     * @param integer $id
+     * @return Document
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
 
+        return $this;
+    }
     /**
      * Get id
      *

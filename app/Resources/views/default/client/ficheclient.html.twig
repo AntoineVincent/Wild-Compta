@@ -79,13 +79,9 @@
 	</div>
 
 
-	{# <div class="col-md-1"></div> #}
+	
 	<div class="col-md-5 col2">
-		{# <div class="col-md-12 devis">
-			<div class="col-md-12 haut">Devis </div>
-			<div class="col-md-12 milieu">devis1<br/>devis2{{ document.reference }}</div>
-			<div class="col-md-12 bas"><a href="{{ path('reglement', { 'idclient': client.id }) }}"><input type="submit" class="btn-primary " value="generer la facture"/></a><a href="{{ path('reglement', { 'idclient': client.id }) }}"><input type="submit" class=" btn-primary" value="modifier"/></a><a href="{{ path('reglement', { 'idclient': client.id }) }}onclick="return(prompt('merci de justifier le refus'));"><input type="submit" class="btn-primary" value="refusé"  /></a><a href="{{ path('reglement', { 'idclient': client.id }) }}"><input type="submit" class="btn-primary" value="supprimer"/></a></div>
-		</div> #}
+		
 		<div class="col-md-12 devis btn-group">
 			<div class="col-md-12 haut">Devis </div>
 			<div class="col-md-12 milieu">
@@ -101,8 +97,8 @@
 								<span class="sr-only">Toggle Dropdown</span>
 							</button>
 							<ul class="dropdown-menu" role="menu">
-								<li><a href="">Generer la facture</a></li>
-								<li><a href="">Editer</a></li>
+								<li><a href="{{ path('new_devis', { 'idclient': client.id, 'iddocument': devis.id }) }}">Voir le Devis</a></li>
+								<li><a href="{{ path('new_devis', { 'idclient': client.id, 'iddocument': devis.id }) }}">Generer la facture</a></li>
 								<li><a href="{{ path('reglement', { 'idclient': client.id }) }}" onclick="return(prompt('merci de justifier le refus'))";>Refusé</a></li>
 								<li class="divider"></li>
 								<li><a href="">Supprimer</a></li>
@@ -127,8 +123,8 @@
 								<span class="sr-only">Toggle Dropdown</span>
 							</button>
 							<ul class="dropdown-menu" role="menu">
+								<li><a href="{{ path('new_devis', { 'idclient': client.id, 'iddocument': facture.id }) }}">Voir la Facture</a></li>
 								<li><a href="{{ path('reglement', { 'idclient': client.id }) }}">Emettre un avoir</a></li>
-								<li><a href="{{ path('reglement', { 'idclient': client.id }) }}">Editer</a></li>
 								<li><a href="{{ path('reglement', { 'idclient': client.id }) }}">Classée comme envoyée</a></li>
 								<li><a href="{{ path('reglement', { 'idclient': client.id }) }}" onclick="return(prompt('Vous allez supprimer cette facture'))";>Supprimer</a></li>
 								<li class="divider"></li>
