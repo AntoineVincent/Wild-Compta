@@ -28,12 +28,12 @@
 				<input name="ecole" id="ecole" type="string">	
 			</div>
 		</div>
-		<div hidden class="row champ-log">
+		<div class="row champ-log">
 			<div class="col-md-6">
 				<label>Adresse email :</label>
 			</div>
-			<div hidden class="col-md-6">
-				{{ form_widget(form.email, {'value':'alttt@gmail.com'}) }}
+			<div class="col-md-6">
+				{{ form_widget(form.email) }}
 				{{ form_errors(form.email) }}	
 			</div>
 		</div>
