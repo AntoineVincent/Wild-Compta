@@ -94,8 +94,8 @@
 								<span class="sr-only">Toggle Dropdown</span>
 							</button>
 							<ul class="dropdown-menu" role="menu">
-								<li><a href="">Generer la facture</a></li>
-								<li><a href="">Editer</a></li>
+								<li><a href="{{ path('new_devis', { 'idclient': client.id, 'iddocument': devis.id }) }}">Voir le Devis</a></li>
+								<li><a href="{{ path('new_devis', { 'idclient': client.id, 'iddocument': devis.id }) }}">Generer la facture</a></li>
 								<li><a href="{{ path('reglement', { 'idclient': client.id }) }}" onclick="return(prompt('merci de justifier le refus'))";>Refusé</a></li>
 								<li class="divider"></li>
 								<li><a href="">Supprimer</a></li>
@@ -120,8 +120,8 @@
 								<span class="sr-only">Toggle Dropdown</span>
 							</button>
 							<ul class="dropdown-menu" role="menu">
+								<li><a href="{{ path('new_devis', { 'idclient': client.id, 'iddocument': facture.id }) }}">Voir la Facture</a></li>
 								<li><a href="{{ path('reglement', { 'idclient': client.id }) }}">Emettre un avoir</a></li>
-								<li><a href="{{ path('reglement', { 'idclient': client.id }) }}">Editer</a></li>
 								<li><a href="{{ path('reglement', { 'idclient': client.id }) }}">Classée comme envoyée</a></li>
 								<li><a href="{{ path('reglement', { 'idclient': client.id }) }}" onclick="return(prompt('Vous allez supprimer cette facture'))";>Supprimer</a></li>
 								<li class="divider"></li>

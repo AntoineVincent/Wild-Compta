@@ -66,6 +66,10 @@ new_pdf:
     path:    /new/pdf/{idclient}
     defaults: { _controller: DocumentBundle:Document:pdf }
 
+new_devis:
+    path:    /new/devis/{idclient}/{iddocument}
+    defaults: { _controller: DocumentBundle:Document:newdevis }
+
 # ---------------------> ORGANISME <---------------------
 new_organisme:
     path:    /new/organisme

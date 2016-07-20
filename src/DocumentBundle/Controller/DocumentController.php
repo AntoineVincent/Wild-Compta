@@ -11,6 +11,7 @@ use DocumentBundle\Entity\Counter;
 use ClientBundle\Entity\Client;
 use Html2Pdf_Html2Pdf;
 use DocumentBundle\Form\DocumentType;
+use DocumentBundle\Form\DevisType;
 
 
 
@@ -98,6 +99,76 @@ class DocumentController extends Controller
             'products' => $products,
             'reference' => $reference,
             'value' => $value,
+        ));
+    }
+
+    public function newDevisAction(Request $request, $idclient, $iddocument)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $user = $this->container->get('security.context')->getToken()->getUser();
+
+        $client = $request->request->get('nom');
+        $product = $request->request->get('produit');
+        $type = $request->request->get('type');
+        $reference = $request->request->get('reference');
+        $date = $request->request->get('datecreation');
+        $valeur = $request->request->get('valeur');
+        $tva = $request->request->get('tva');
+
+        $hidden = $request->request->get('hidden');
+
+        $client = $em->getRepository('ClientBundle:Client')->findOneById($idclient);
+
+        $document = $em->getRepository('DocumentBundle:Documents')->findOneById($iddocument);
+        
+        $produits = $em->getRepository('DocumentBundle:Product')->findOneById($document->getIdproduct());
+
+       
+        
+
+        
+
+        if ($hidden == 1){
+            if (!empty($nom)) {
+                $document->setNom($client);
+            }
+            if (!empty($produit)) {
+                $document->setType($produit);
+            }
+            if (!empty($type)) {
+                $document->setType($type);
+            }
+            if (!empty($datecreation)) {
+                $document->setType($datecreation);
+            }
+            if (!empty($valeur)) {
+                $document->setType($valeur);
+            }
+            if (!empty($tva)) {
+                $document->setType($tva);
+            }
+
+            $request->getSession()
+            ->getFlashBag()
+            ->add('success', 'Modification enregistrée !')
+            ;
+
+            $em->persist($document);
+            $em->flush();
+        }
+
+        $devis = new Documents();
+        $form = $this->createForm('DocumentBundle\Form\DevisType', $devis);
+
+        $form->handleRequest($request);
+
+        return $this->render('default/newdevis.html.twig', array(
+            'form' => $form->createView(),
+            'document' => $document,
+            'client' => $client,
+            'produits' => $produits,
+            
+            
         ));
     }
 
