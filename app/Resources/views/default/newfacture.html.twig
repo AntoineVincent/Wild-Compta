@@ -11,7 +11,7 @@
             {% endfor %}
         {% endfor %}
     </div>
-    <form action="{{ path('new_devis', { 'iddocument':document.id, 'idclient':client.id }) }}" method="post">
+    <form action="{{ path('new_facture', { 'iddocument':document.id, 'idclient':client.id }) }}" method="post">
 		<div class="col-md-12">
 			
 			<div class="col-md-6">
@@ -21,9 +21,9 @@
 			
 			<div class="col-md-5 entete" >
 				<p><input type="string" id="type" name="type" value="{{ document.type }}"><br/>
-					Réf. : <input type="string" id="reference" name="reference" value="{{ document.reference }}"/><br/>
+					Réf. : <input type="string" id="newreference" name="newreference" value="{{ document.reference }}"/><br/>
 					Date : <input type="string" id="datecreation" name="datecreation" value="{{ document.datecreation }}"><br/>
-					Date de fin de validité : {{ "now"|date_modify("+1 month")|date("d/m/Y") }}<br/>
+					
 				</p>
 					<br/><br/>
 			</div>
@@ -69,7 +69,7 @@
 							</tr> 
 							<tr height=500px valign="baseline">
 								<td align="left"><textarea name="designation" style="width: 500px; height: 500px">{{ produits.type }} {{ produits.nom }} </textarea></td> 
-								<td align="right"><textarea name="tva" style="width: 100px; height: 500px">{{ document.tva }}</textarea></td> 
+								<td ><textarea  name="tva" style="width: 100px; height: 500px; text-align="center"">{{ document.tva }}</textarea></td> 
 								<td align="right"><textarea name="p.u" style="width: 100px; height: 500px"></textarea></td> 
 								<td align="right"><textarea name="qte" style="width: 100px; height: 500px"></textarea></td>
 								<td align="right"></td>
@@ -77,7 +77,7 @@
 						</table>
 						<div class="col-md-12 ligne">
 							<div class="col-md-6">Conditions de reglements : Payée au vue des heures réalisées</div>
-							<div class="col-md-3">Total HT<br/>TVA<br/>Total TTC</div>
+							<div class="col-md-3">Total HT<br/>Total TTC</div>
 							<div class="col-md-3"><br/></div>
 						</div>
 					</div>
@@ -91,7 +91,7 @@
 				
 			</div>
 			<div class="col-md-2">
-		       	<a href="{{ path('fiche_client', { 'idclient': client.id }) }}"><input type="button" class="btn btn-primary" value="Retour"/></a>
+		       	<a href="{{ path('new_pdf',{ 'idclient': client.id, 'iddocument': document.id }) }}" class="btn-danger btn-lg">PDF</a>
 		   	</div>
 		    <div class="col-md-1">
 		    	
