@@ -204,7 +204,7 @@ class DocumentController extends Controller
         
         $valeur = $request->request->get('valeur');
         $tva = $request->request->get('tva');
-        $reference = "";
+        /*$reference = "";*/
         $month = $request->request->get('month');
         $year = $request->request->get('year');
         $refdate = $year.'-'.$month;
@@ -220,11 +220,6 @@ class DocumentController extends Controller
         
         $produits = $em->getRepository('DocumentBundle:Product')->findOneById($document->getIdproduct());
 
-        $reference = $document->getReference();
-        $type = $document->getType();
-        $newreference = $document->getReference();
-        
-
         $alldoc = $em->getRepository('DocumentBundle:Documents')->findAll();
         $counter = count($alldoc);
 
@@ -235,12 +230,21 @@ class DocumentController extends Controller
             $count = '0'.$counter;
         }
 
-        if ($type == 'devis') {
+        $type = $document->getType();
+            if ($type == 'devis') {
                 $document->setType('facture');
-                $newreference = 'FA-'.$refdate.'-'.$count;
-        }
-        
+            }
+        $newreference = $document->getReference();
+        $newreference = 'FA-'.$refdate.'-'.$count;
         $document->setReference($newreference);
+
+        
+
+        
+                
+        
+        
+        
         
         if ($hidden == 1){
 

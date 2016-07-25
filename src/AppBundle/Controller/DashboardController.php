@@ -18,12 +18,15 @@ class DashboardController extends Controller
         $user = $this->container->get('security.context')->getToken()->getUser();
 
         $ca = "";
+        
+
 
         $reglements = $em->getRepository('ComptaBundle:Reglement')->findAll();
 
         foreach ($reglements as $reglement) {
             $value = $reglement->getMontant();
             $ca += $value;
+            $ca = number_format((float)($ca), 2, ',', ' ');
         }
 
         return $this->render('default/dashboard.html.twig', array(

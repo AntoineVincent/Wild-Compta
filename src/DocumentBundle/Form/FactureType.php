@@ -26,6 +26,7 @@ class FactureType extends AbstractType
             ->add('reference')
             ->add('datecreation')
             ->add('tva');
+            
     }
 
     public function configureOptions(OptionsResolver $resolver)
