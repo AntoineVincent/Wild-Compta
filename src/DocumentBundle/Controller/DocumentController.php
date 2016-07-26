@@ -225,6 +225,28 @@ class DocumentController extends Controller
         )));
     }
 
+    public function envdocAction(Request $request, $iddocument, $idclient)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $user = $this->container->get('security.context')->getToken()->getUser();
+
+        $senddoc = $em->getRepository('DocumentBundle:Documents')->findOneById($iddocument);
+        $client = $em->getRepository('ClientBundle:Client')->findOneById($idclient);
+        
+        $senddoc->setEtat('envoyer');
+
+        $em->persist($senddoc);
+        $em->flush();
+        
+        $request->getSession()
+        ->getFlashBag()
+        ->add('warning', 'Document Refusé/Classé !')
+    ;
+        return $this->redirect($this->generateUrl('fiche_client', array(
+                'idclient' => $idclient
+        )));
+    }
+
     public function newFactureAction(Request $request, $idclient, $iddocument)
     {
         $em = $this->getDoctrine()->getManager();
