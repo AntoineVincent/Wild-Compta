@@ -63,12 +63,32 @@ new_document:
     defaults: { _controller: DocumentBundle:Document:newdocument }
 
 new_pdf:
-    path:    /new/pdf/{idclient}
+    path:    /new/pdf/{idclient}/{iddocument}
     defaults: { _controller: DocumentBundle:Document:pdf }
 
 new_devis:
     path:    /new/devis/{idclient}/{iddocument}
     defaults: { _controller: DocumentBundle:Document:newdevis }
+
+supr_devis:
+    path:    /supr/devis/{idclient}/{iddocument}
+    defaults: { _controller: DocumentBundle:Document:suprdevis }
+
+new_facture:
+    path:    /new/facture/{idclient}/{iddocument}
+    defaults: { _controller: DocumentBundle:Document:newfacture }
+
+supr_facture:
+    path:    /supr/facture/{idclient}/{iddocument}
+    defaults: { _controller: DocumentBundle:Document:suprfacture }
+
+new_avoir:
+    path:    /new/avoir/{idclient}/{iddocument}
+    defaults: { _controller: DocumentBundle:Document:newavoir }
+
+supr_avoir:
+    path:    /supr/avoir/{idclient}/{iddocument}
+    defaults: { _controller: DocumentBundle:Document:supravoir }
 
 # ---------------------> ORGANISME <---------------------
 new_organisme:
@@ -109,6 +129,7 @@ reglement:
     path:    /reglement/{idclient}
     defaults: { _controller: ComptaBundle:Compta:reglement }
 
+# ---------------------> ADD CAMPUS MANAGER <---------------------
 new_user:
     path:    /new/user
     defaults: { _controller: AppBundle:Registration:newuser }

@@ -20,6 +20,7 @@ class ComptaController extends Controller
 
         $client = $em->getRepository('ClientBundle:Client')->findOneById($idclient);
         $document = $em->getRepository('DocumentBundle:Documents')->findOneByIdclient($idclient);
+        $ecoles = $em->getRepository('ClientBundle:Ecole')->findAll();
 
         $reglement = new Reglement();
         $form = $this->createForm('ComptaBundle\Form\ReglementType', $reglement);
@@ -33,9 +34,12 @@ class ComptaController extends Controller
             $scanDir = $this->container->getParameter('kernel.root_dir').'/../web/uploads/scan';
             $scan->move($scanDir, $scanName);
 
+            $date = $request->request->get('date');
+
             $reglement->setUploadscan($scanName);
             $reglement->setIddocument($document->getId());
             $reglement->setIdclient($idclient);
+            $reglement->setDatereg($date);
 
             $request->getSession()
             ->getFlashBag()
@@ -48,6 +52,7 @@ class ComptaController extends Controller
 
         return $this->render('default/reglement.html.twig', array(
         	'client' => $client,
+            'ecoles' => $ecoles,
             'document' => $document,
             'form' => $form->createView()
         ));
