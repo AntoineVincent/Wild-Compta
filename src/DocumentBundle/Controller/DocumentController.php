@@ -167,17 +167,234 @@ class DocumentController extends Controller
             'document' => $document,
             'client' => $client,
             'produits' => $produits,
+            'devis' => $devis,
             
             
         ));
     }
 
-    public function pdfAction(Request $request, $idclient)
+    public function suprdevisAction(Request $request, $iddocument, $idclient)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $user = $this->container->get('security.context')->getToken()->getUser();
+
+        $deleting = $em->getRepository('DocumentBundle:Documents')->findOneById($iddocument);
+        $client = $em->getRepository('ClientBundle:Client')->findOneById($idclient);
+        
+        $em->remove($deleting);
+        $em->flush();
+        
+        $request->getSession()
+        ->getFlashBag()
+        ->add('warning', 'Devis Supprimé !')
+    ;
+        return $this->redirect($this->generateUrl('fiche_client', array(
+                'idclient' => $idclient
+        )));
+    }
+
+    public function newFactureAction(Request $request, $idclient, $iddocument)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $user = $this->container->get('security.context')->getToken()->getUser();
+
+        $client = $request->request->get('nom');
+        $product = $request->request->get('produit');
+        $type = $request->request->get('type');
+        
+        $valeur = $request->request->get('valeur');
+        $tva = $request->request->get('tva');
+        /*$reference = "";*/
+        $month = $request->request->get('month');
+        $year = $request->request->get('year');
+        $refdate = $year.'-'.$month;
+
+
+        $document = $em->getRepository('DocumentBundle:Documents')->findOneById($iddocument);
+        
+        $hidden = $request->request->get('hidden');
+
+        $client = $em->getRepository('ClientBundle:Client')->findOneById($idclient);
+
+        $document = $em->getRepository('DocumentBundle:Documents')->findOneById($iddocument);
+        
+        $produits = $em->getRepository('DocumentBundle:Product')->findOneById($document->getIdproduct());
+
+        $alldoc = $em->getRepository('DocumentBundle:Documents')->findAll();
+        $counter = count($alldoc);
+
+        if ($counter < 10) {
+            $count = '0'.'0'.$counter;
+        }
+        if ($counter < 100 && $counter > 9) {
+            $count = '0'.$counter;
+        }
+
+        $type = $document->getType();
+            if ($type == 'devis') {
+                $document->setType('facture');
+            }
+        $newreference = $document->getReference();
+        $newreference = 'FA-'.$refdate.'-'.$count;
+        $document->setReference($newreference);
+
+        
+
+        
+                
+        
+        
+        
+        
+        if ($hidden == 1){
+
+            
+            }
+
+            $em->persist($document);
+            $em->flush();
+        
+
+        $facture = new Documents();
+        $form = $this->createForm('DocumentBundle\Form\FactureType', $facture);
+
+        $form->handleRequest($request);
+
+        return $this->render('default/newfacture.html.twig', array(
+            'form' => $form->createView(),
+            'document' => $document,
+            'client' => $client,
+            'produits' => $produits,
+            'reference' => $newreference,
+            'type' => $type,
+            
+        ));
+
+    }
+
+    public function suprfactureAction(Request $request, $iddocument, $idclient)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $user = $this->container->get('security.context')->getToken()->getUser();
+
+        $deleting = $em->getRepository('DocumentBundle:Documents')->findOneById($iddocument);
+        
+        $em->remove($deleting);
+        $em->flush();
+        
+        $request->getSession()
+        ->getFlashBag()
+        ->add('warning', 'Facture Supprimée !')
+    ;
+        return $this->redirect($this->generateUrl('fiche_client', array(
+                'idclient' => $idclient
+        )));
+        
+    }
+
+    public function newAvoirAction(Request $request, $idclient, $iddocument)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $user = $this->container->get('security.context')->getToken()->getUser();
+
+        $client = $request->request->get('nom');
+        $product = $request->request->get('produit');
+        $type = $request->request->get('type');
+        
+        $valeur = $request->request->get('valeur');
+        $tva = $request->request->get('tva');
+        $reference = "";
+        $month = $request->request->get('month');
+        $year = $request->request->get('year');
+        $refdate = $year.'-'.$month;
+
+
+        $document = $em->getRepository('DocumentBundle:Documents')->findOneById($iddocument);
+        
+        $hidden = $request->request->get('hidden');
+
+        $client = $em->getRepository('ClientBundle:Client')->findOneById($idclient);
+
+        $document = $em->getRepository('DocumentBundle:Documents')->findOneById($iddocument);
+        
+        $produits = $em->getRepository('DocumentBundle:Product')->findOneById($document->getIdproduct());
+
+        $reference = $document->getReference();
+        $type = $document->getType();
+        $newreference = $document->getReference();
+        
+
+        $alldoc = $em->getRepository('DocumentBundle:Documents')->findAll();
+        $counter = count($alldoc);
+
+        if ($counter < 10) {
+            $count = '0'.'0'.$counter;
+        }
+        if ($counter < 100 && $counter > 9) {
+            $count = '0'.$counter;
+        }
+
+        if ($type == 'facture') {
+                $document->setType('avoir');
+                $newreference = 'AV-'.$refdate.'-'.$count;
+        }
+        
+        $document->setReference($newreference);
+        
+        if ($hidden == 1){
+
+            
+            }
+
+            $em->persist($document);
+            $em->flush();
+        
+
+        /*$avoir = new Documents();
+        $form = $this->createForm('DocumentBundle\Form\FactureType', $facture);
+
+        $form->handleRequest($request);*/
+
+        return $this->render('default/newavoir.html.twig', array(
+            /*'form' => $form->createView(),*/
+            'document' => $document,
+            'client' => $client,
+            'produits' => $produits,
+            'reference' => $newreference,
+            'type' => $type,
+            
+        ));
+
+    }
+
+    public function suprAvoirAction(Request $request, $iddocument, $idclient)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $user = $this->container->get('security.context')->getToken()->getUser();
+
+        $deleting = $em->getRepository('DocumentBundle:Documents')->findOneById($iddocument);
+        
+        $em->remove($deleting);
+        $em->flush();
+        
+        $request->getSession()
+        ->getFlashBag()
+        ->add('warning', 'Avoir Supprimé !')
+    ;
+        return $this->redirect($this->generateUrl('fiche_client', array(
+                'idclient' => $idclient
+        )));
+        
+    }
+
+    public function pdfAction(Request $request, $idclient, $iddocument)
     {
         $em = $this->getDoctrine()->getManager();
         $client = $em->getRepository('ClientBundle:Client')->findOneById($idclient);
+        $document = $em->getRepository('DocumentBundle:Documents')->findOneById($iddocument);
+
         //on stocke la vue à convertir en PDF, en n'oubliant pas les paramètres twig si la vue comporte des données dynamiques
-        $html = $this->renderView('default/newdevis.html.twig', array('client' => $client));
+        $html = $this->renderView('default/newfacture.html.twig', array('client' => $client, 'document'=> $document));
 
         
          

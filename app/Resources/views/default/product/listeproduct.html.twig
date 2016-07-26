@@ -42,7 +42,7 @@
 			   		<td class="type-line">{{ product.type }}</td>
 			   		<td>{{ product.nom }}</td>
 			    	<td class="contenu-tab">{{ product.contenu }}</td>
-			       	<td> <a href="{{ path('edit_product', { 'idproduct': product.id }) }}">Editer</a> </td>
+			       	<td> <a href="{{ path('edit_product', { 'idproduct': product.id }) }}">Modifier</a> </td>
 			       	<td> <a href="{{ path('supr_product', { 'idproduct': product.id }) }}">Supprimer</a> </td>
 			   	</tr>
 			{% endfor %}

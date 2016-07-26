@@ -93,13 +93,14 @@
 					<div class="col-md-7">
 						<input type="submit" class="btn btn-primary" value="Enregistrer"/>
 					</div>
+					<div class="col-md-5">
+						<a href="{{ path('fiche_client', { 'idclient': client.id }) }}"><input type="button" class="btn btn-primary" value="Retour"/></a>	
+					</div>
 				</div>
 				{{ form_end(form) }}
 					
-					<div class="col-md-5">
-						{# <a href="{{ path('new_devis') }}"><input type="submit" class="btn btn-primary" value="Ouvrir"/></a>	 #}
-					</div>
-				</div>
+					
+				
 
 	</div>
 </div>

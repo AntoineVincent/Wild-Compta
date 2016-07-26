@@ -97,6 +97,8 @@ class Documents
      * @param integer $id
      * @return Document
      */
+    private $quantite;
+
     public function setId($id)
     {
         $this->id = $id;
@@ -342,4 +344,5 @@ class Documents
     {
         return $this->tva;
     }
+    
 }
