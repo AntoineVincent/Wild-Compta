@@ -38,6 +38,8 @@ class DocumentController extends Controller
         $idproduct = $request->request->get('produit');
         $date = $request->request->get('date');
         $tva = $request->request->get('tva');
+        $quantite = $request->request->get('quantite');
+        $valuetotale = $request->request->get('valuetotale');
 
 
         // ALGORYTHME CALCUL REFERENCE DOCUMENT
@@ -76,7 +78,7 @@ class DocumentController extends Controller
             ->getFlashBag()
             ->add('success', 'Document Créé !')
             ;
-
+            
 
             // ATTRIBUTION DES VALEURS A LOBJET
             $document->setIdclient($idclient);
@@ -87,6 +89,12 @@ class DocumentController extends Controller
             $document->setValue($value);
             $document->setTva($tva);
             $document->setReference($reference);
+            $document->setQuantite($quantite);
+            $document->setValuetotale($valuetotale);
+
+
+            
+
 
             $em->persist($document);
             $em->flush();
@@ -113,8 +121,9 @@ class DocumentController extends Controller
         $reference = $request->request->get('reference');
         $date = $request->request->get('datecreation');
         $valeur = $request->request->get('valeur');
-        $tva = $request->request->get('tva');
-
+        $tva = $request->request->get('tva');        
+        $quantite = $request->request->get('quantite');
+        
         $hidden = $request->request->get('hidden');
 
         $client = $em->getRepository('ClientBundle:Client')->findOneById($idclient);
@@ -125,6 +134,12 @@ class DocumentController extends Controller
 
        
         
+        // ALGORYTHME POUR QUANTITÉ
+            if ($quantite != 1) {
+
+                $valuetotale = $document->getValue() * $document->getQuantite();
+
+            }
 
         
 
@@ -156,7 +171,6 @@ class DocumentController extends Controller
             $em->persist($document);
             $em->flush();
         }
-
         $devis = new Documents();
         $form = $this->createForm('DocumentBundle\Form\DevisType', $devis);
 
@@ -167,6 +181,7 @@ class DocumentController extends Controller
             'document' => $document,
             'client' => $client,
             'produits' => $produits,
+            'valuetotale' => $valuetotale,
             
             
         ));

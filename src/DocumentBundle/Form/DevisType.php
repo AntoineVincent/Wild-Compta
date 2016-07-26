@@ -25,7 +25,8 @@ class DevisType extends AbstractType
             ->add('type')
             ->add('reference')
             ->add('datecreation')
-            ->add('tva');
+            ->add('tva')
+            ->add('quantite');
     }
 
     public function configureOptions(OptionsResolver $resolver)
