@@ -5,22 +5,38 @@
 	<div class="col-md-12">
 		<div class="col-md-3"></div>
 		<div class="col-md-3 annuel">
-			<table border=1 width=100% height=100>
+			<table border=1 width=100% height=150>
 				<tr>
-					<td  BGCOLOR="#58c4b8">CA Annuel</td>
+					<td  BGCOLOR="#58c4b8">CA Annuel
+						<select name="ecole" id="ecole">
+							<option selected>Total</option>
+							{% for ecole in ecoles %}
+ 		        				<option value="{{ ecole.ville }}">{{ ecole.ville }}</option>
+ 		         			{% endfor %}
+						</select>
+					</td>
 				</tr>
 				<tr>
-					<td>{{ ca }} € TTC</td>
+					<td>{{ ca }} € TTC<br/>{{ caht }} € HT</td>
+					
 				</tr>
 			</table>
 		</div>
 		<div class="col-md-3 mensuel">
-			<table border=1 width=100% height=100>
+			<table border=1 width=100% height=150>
 				<tr>
-					<td  BGCOLOR="#58c4b8">CA Mensuel</td>
+					<td  BGCOLOR="#58c4b8">CA Mensuel
+						<select name="ecole" id="ecole">
+							<option selected>Total</option>
+							{% for ecole in ecoles %}
+ 		        				<option value="{{ ecole.ville }}">{{ ecole.ville }}</option>
+ 		         			{% endfor %}
+						</select>
+					</td>
 				</tr>
 				<tr>
-					<td>{{ ca }} € TTC</td>
+					<td>{{ ca }} € TTC<br/>{{ caht }} € HT</td>
+					
 				</tr>
 			</table>
 		</div>
@@ -30,7 +46,7 @@
 	<div class="col-md-12">
 		<div class="col-md-3"></div>
 		<div class="col-md-6 retard">
-			<table border=1 width=100% height=100>
+			<table border=1 width=100% height=150>
 				<tr>
 					<td  BGCOLOR="#b9184d">Paiements en retard</td>
 				</tr>

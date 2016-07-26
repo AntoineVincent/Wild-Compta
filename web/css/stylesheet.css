@@ -27,7 +27,8 @@
 
 .retard, .annuel, .mensuel {
 	text-align: center;
-
+	border-radius: 5px;
+	line-height: 30px;
 
 }
 .vide {
