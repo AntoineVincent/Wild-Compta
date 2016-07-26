@@ -91,13 +91,19 @@ class Documents
      */
     private $tva;
 
+    
     /**
-     * Set id
+     * @var int
      *
-     * @param integer $id
-     * @return Document
+     * @ORM\Column(name="quantite", type="integer", nullable=true)
      */
     private $quantite;
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="valuetotale", type="integer", nullable=true)
+     */
+    private $valuetotale;
 
     public function setId($id)
     {
@@ -344,5 +350,48 @@ class Documents
     {
         return $this->tva;
     }
-    
+    /**
+     * Set quantite
+     *
+     * @param integer $quantite
+     * @return Document
+     */
+    public function setQuantite($quantite)
+    {
+        $this->quantite = $quantite;
+
+        return $this;
+    }
+
+    /**
+     * Get quantite
+     *
+     * @return integer 
+     */
+    public function getQuantite()
+    {
+        return $this->quantite;
+    }
+    /**
+     * Set valuetotale
+     *
+     * @param integer $valuetotale
+     * @return Document
+     */
+    public function setValuetotale($valuetotale)
+    {
+        $this->valuetotale = $valuetotale;
+
+        return $this;
+    }
+
+    /**
+     * Get valuetotale
+     *
+     * @return integer 
+     */
+    public function getValuetotale()
+    {
+        return $this->valuetotale;
+    }
 }

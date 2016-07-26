@@ -14,7 +14,6 @@ class DocumentType extends AbstractType
     {
         $builder
             ->add('nbreecheance');
-            
     }
 
     public function configureOptions(OptionsResolver $resolver)
