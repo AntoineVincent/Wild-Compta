@@ -1,7 +1,9 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-	<div class="col-md-12 vide"></div>
+	<div class="col-md-12 vide"><p>
+					Mois en cours : {{ "now"|date("m/Y") }}<br/>
+				</p></div>
 	<div class="col-md-12">
 		<div class="col-md-3"></div>
 		<div class="col-md-3 annuel">
@@ -35,7 +37,7 @@
 					</td>
 				</tr>
 				<tr>
-					<td>{{ ca }} € TTC<br/>{{ caht }} € HT</td>
+					<td>{{ camois }} € TTC<br/>{{ camoisht }} € HT</td>
 					
 				</tr>
 			</table>
