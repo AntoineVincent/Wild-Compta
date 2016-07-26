@@ -94,7 +94,7 @@
 				{% else %}
 					{% for devis in tabde %}
 						{% if devis.etat != 'delete' %}
-							<div class="col-md-9">{{ devis.reference }} | {{ devis.datecreation }}
+							<div class="col-md-9">DE  {{ devis.reference }} | {{ devis.datecreation }}
 								{% if devis.etat == 'refuse' %}
 									<img src="{{ asset('../web/img/tick.png') }}"  alt="tick" class="" />
 								{% endif %}
@@ -127,7 +127,7 @@
 				{% else %}
 					{% for facture in tabfa %}
 						{% if facture.etat != 'delete' %}
-							<div class="col-md-9">{{ facture.reference }} | {{ facture.datecreation }}
+							<div class="col-md-9">FA  {{ facture.reference }} | {{ facture.datecreation }}
 								{% if facture.etat == 'envoyer' %}
 									<img src="{{ asset('../web/img/tack.jpg') }}"  alt="tack" class="" />
 								{% endif %}
@@ -161,7 +161,7 @@
 				{% else %}
 					{% for avoir in tabav %}
 						{% if avoir.etat != 'delete' %}
-							<div class="col-md-9">{{ avoir.reference }} | {{ avoir.datecreation }}</div>
+							<div class="col-md-9">AV  {{ avoir.reference }} | {{ avoir.datecreation }}</div>
 							<div class="col-md-3">
 								<button type="button" class="btn btn-xs btn-info">Action</button>
 								<button type="button" class="btn btn-xs btn-info 	dropdown-toggle" data-toggle="dropdown">

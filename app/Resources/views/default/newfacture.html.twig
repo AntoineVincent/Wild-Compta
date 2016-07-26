@@ -21,7 +21,7 @@
 			
 			<div class="col-md-5 entete" >
 				<p><input type="string" id="type" name="type" value="{{ document.type }}"><br/>
-					Réf. : <input type="string" id="newreference" name="newreference" value="{{ document.reference }}"/><br/>
+					Réf. : FA<input type="string" id="newreference" name="newreference" value="{{ document.reference }}"/><br/>
 					Date : <input type="string" id="datecreation" name="datecreation" value="{{ document.datecreation }}"><br/>
 					
 				</p>
@@ -80,7 +80,7 @@
 						</table>
 						<div class="col-md-12 ligne">
 							<div class="col-md-6">Conditions de reglements : Payée au vue des heures réalisées</div>
-							<div class="col-md-3">Total HT<br/>Total TTC</div>
+							<div class="col-md-3">Total HT<br/>Total TVA</br>Total TTC</div>
 							<div class="col-md-3"><br/></div>
 						</div>
 					</div>
@@ -90,13 +90,12 @@
 			</div>
 		</div>		
 		<div class="col-md-12 bouton">
-			
-		</div>
-		<div class="col-md-2">
-		    <a href="{{ path('new_pdf',{ 'idclient': client.id, 'iddocument': document.id }) }}" class="btn-danger btn-lg">PDF</a>
-		</div>
-		    <div class="col-md-1">
-		    	
+			<div class="col-md-4"></div>
+			<div class="col-md-4">
+		    	<a href="{{ path('new_pdf',{ 'idclient': client.id, 'iddocument': document.id }) }}"><input type="button" class="btn-lg btn-danger" value="PDF"/></a>
+			</div>
+		    <div class="col-md-4">
+		    	<a href="{{ path('fiche_client', { 'idclient': client.id }) }}"><input type="button" class="btn-lg btn-primary" value="Retour"/></a>
 		    </div>
 		</div>
 	</form>

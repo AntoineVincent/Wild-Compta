@@ -21,7 +21,7 @@
 			
 			<div class="col-md-5 entete" >
 				<p><input type="string" id="type" name="type" value="{{ document.type }}"><br/>
-					Réf. : <input type="string" id="reference" name="reference" value="{{ document.reference }}"/><br/>
+					Réf. : DE<input type="string" id="reference" name="reference" value="{{ document.reference }}"/><br/>
 					Date : <input type="string" id="datecreation" name="datecreation" value="{{ document.datecreation }}"><br/>
 					Date de fin de validité : {{ "now"|date_modify("+1 month")|date("d/m/Y") }}<br/>
 				</p>

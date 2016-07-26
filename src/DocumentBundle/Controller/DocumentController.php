@@ -56,13 +56,13 @@ class DocumentController extends Controller
         }
 
         if ($type == 'devis') {
-            $reference = 'DE-'.$refdate.'-'.$count;
+            $reference = /*'DE-'.*/$refdate.'-'.$count;
         }
         elseif ($type == 'facture') {
-            $reference = 'FA-'.$refdate.'-'.$count;
+            $reference = /*'FA-'.*/$refdate.'-'.$count;
         }
         else {
-            $reference = 'AV-'.$refdate.'-'.$count;
+            $reference = /*'AV-'.*/$refdate.'-'.$count;
         }
 
         // ALGORYTHME POUR SAVOIR SI VALUE EXISTE OU SI A REMPLIR
@@ -258,7 +258,7 @@ class DocumentController extends Controller
         
         $valeur = $request->request->get('valeur');
         $tva = $request->request->get('tva');
-        /*$reference = "";*/
+        $reference = $request->request->get('reference');
         $month = $request->request->get('month');
         $year = $request->request->get('year');
         $refdate = $year.'-'.$month;
@@ -274,7 +274,7 @@ class DocumentController extends Controller
         
         $produits = $em->getRepository('DocumentBundle:Product')->findOneById($document->getIdproduct());
 
-        $alldoc = $em->getRepository('DocumentBundle:Documents')->findAll();
+        /*$alldoc = $em->getRepository('DocumentBundle:Documents')->findAll();
         $counter = count($alldoc);
 
         if ($counter < 10) {
@@ -282,15 +282,15 @@ class DocumentController extends Controller
         }
         if ($counter < 100 && $counter > 9) {
             $count = '0'.$counter;
-        }
+        }*/
 
         $type = $document->getType();
             if ($type == 'devis') {
                 $document->setType('facture');
             }
-        $newreference = $document->getReference();
+        /*$newreference = $document->getReference();
         $newreference = 'FA-'.$refdate.'-'.$count;
-        $document->setReference($newreference);
+        $document->setReference($newreference);*/
         
         if ($hidden == 1){
 
@@ -311,7 +311,7 @@ class DocumentController extends Controller
             'document' => $document,
             'client' => $client,
             'produits' => $produits,
-            'reference' => $newreference,
+            /*'reference' => $newreference,*/
             'type' => $type,
             
         ));
@@ -347,7 +347,7 @@ class DocumentController extends Controller
 
         $reference = $document->getReference();
         $type = $document->getType();
-        $newreference = $document->getReference();
+        /*$newreference = $document->getReference();
         
 
         $alldoc = $em->getRepository('DocumentBundle:Documents')->findAll();
@@ -358,14 +358,14 @@ class DocumentController extends Controller
         }
         if ($counter < 100 && $counter > 9) {
             $count = '0'.$counter;
-        }
+        }*/
 
         if ($type == 'facture') {
                 $document->setType('avoir');
-                $newreference = 'AV-'.$refdate.'-'.$count;
+                /*$newreference = 'AV-'.$refdate.'-'.$count;*/
         }
         
-        $document->setReference($newreference);
+        /*$document->setReference($newreference);*/
         
         if ($hidden == 1){
 
@@ -386,7 +386,7 @@ class DocumentController extends Controller
             'document' => $document,
             'client' => $client,
             'produits' => $produits,
-            'reference' => $newreference,
+            /*'reference' => $newreference,*/
             'type' => $type,
             
         ));

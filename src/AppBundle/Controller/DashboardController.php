@@ -6,6 +6,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use ComptaBundle\Entity\Reglement;
+use Doctrine\ORM\QueryBuilder;
 
 class DashboardController extends Controller
 {
@@ -35,11 +36,12 @@ class DashboardController extends Controller
             $caht += $value / 1.2;
             $caht = number_format((float)($caht), 2, ',', ' ');    
         }
-
+        
         $camois = "";
         $camoisht = "";
 
         $reglementsmois = $em->getRepository('ComptaBundle:Reglement')->findByDatereg( "now"|date("m/Y"));
+        
 
         foreach ($reglementsmois as $reglementmois) {
             $valuemois = $reglementmois->getMontant();
@@ -56,13 +58,5 @@ class DashboardController extends Controller
             'camoisht' => $camoisht,
             'ecoles' => $ecoles
         ));
-    }
-    public function whereCurrentMonth(QueryBuilder $qb)
-    {
-    $qb
-      ->andWhere('a.date BETWEEN :start AND :end')
-      ->setParameter('start', new \Datetime(date('m/Y').'-01'))  // Date entre le 1er du mois en cours
-      ->setParameter('end',   new \Datetime(date('d/m/Y')))     // Et la date du jour
-    ;
     }
 }
