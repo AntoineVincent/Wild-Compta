@@ -94,7 +94,11 @@
 				{% else %}
 					{% for devis in tabde %}
 						{% if devis.etat != 'delete' %}
-							<div class="col-md-9">{{ devis.reference }} | {{ devis.datecreation }} <img src="{{ asset('../web/img/tick.png') }}"  alt="tick" class="" /></div>
+							<div class="col-md-9">{{ devis.reference }} | {{ devis.datecreation }}
+								{% if devis.etat == 'refuse' %}
+									<img src="{{ asset('../web/img/tick.png') }}"  alt="tick" class="" />
+								{% endif %}
+							</div>
 							<div class="col-md-3">
 								<button type="button" class="btn btn-xs btn-info">Action</button>
 								<button type="button" class="btn btn-xs btn-info 	dropdown-toggle" data-toggle="dropdown">
@@ -104,8 +108,9 @@
 								<ul class="dropdown-menu" role="menu">
 									<li><a href="{{ path('new_devis', { 'idclient': client.id, 'iddocument': devis.id }) }}">Voir le Devis</a></li>
 									<li><a href="{{ path('new_facture', { 'idclient': client.id, 'iddocument': devis.id }) }}">Générer la facture</a></li>
-									<li><a href="{{ path('fiche_client', { 'idclient': client.id }) }}" onclick="return(prompt('merci de justifier le refus'))";>Refusé</a></li>
+									<li><a href="{{ path('refus_doc', { 'idclient': client.id, 'iddocument': devis.id  }) }}" onclick="return(prompt('merci de justifier le refus'))";>Refusé</a></li>
 									<li class="divider"></li>
+
 									<li><a href="{{ path('supr_doc', { 'idclient': client.id, 'iddocument': devis.id  }) }}">Supprimer</a></li>
 								</ul><br/>
 							</div>

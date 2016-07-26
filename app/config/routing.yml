@@ -82,6 +82,10 @@ supr_doc:
     path:    /supr/document/{idclient}/{iddocument}
     defaults: { _controller: DocumentBundle:Document:suprdoc }
 
+refus_doc:
+    path:    /refus/document/{idclient}/{iddocument}
+    defaults: { _controller: DocumentBundle:Document:refusdoc }
+
 # ---------------------> ORGANISME <---------------------
 new_organisme:
     path:    /new/organisme

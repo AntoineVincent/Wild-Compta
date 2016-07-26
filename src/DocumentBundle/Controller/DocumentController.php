@@ -92,10 +92,6 @@ class DocumentController extends Controller
             $document->setQuantite($quantite);
             $document->setValuetotale($valuetotale);
 
-
-            
-
-
             $em->persist($document);
             $em->flush();
         }
@@ -132,8 +128,6 @@ class DocumentController extends Controller
         
         $produits = $em->getRepository('DocumentBundle:Product')->findOneById($document->getIdproduct());
 
-       
-        
         // ALGORYTHME POUR QUANTITÉ
             if ($quantite != 1) {
 
@@ -184,8 +178,6 @@ class DocumentController extends Controller
             'valuetotale' => $valuetotale,
             'devis' => $devis,
 
-            
-            
         ));
     }
 
@@ -205,6 +197,28 @@ class DocumentController extends Controller
         $request->getSession()
         ->getFlashBag()
         ->add('warning', 'Document Supprimé !')
+    ;
+        return $this->redirect($this->generateUrl('fiche_client', array(
+                'idclient' => $idclient
+        )));
+    }
+
+    public function refusdocAction(Request $request, $iddocument, $idclient)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $user = $this->container->get('security.context')->getToken()->getUser();
+
+        $refusing = $em->getRepository('DocumentBundle:Documents')->findOneById($iddocument);
+        $client = $em->getRepository('ClientBundle:Client')->findOneById($idclient);
+        
+        $refusing->setEtat('refuse');
+
+        $em->persist($refusing);
+        $em->flush();
+        
+        $request->getSession()
+        ->getFlashBag()
+        ->add('warning', 'Document Refusé/Classé !')
     ;
         return $this->redirect($this->generateUrl('fiche_client', array(
                 'idclient' => $idclient
@@ -255,14 +269,6 @@ class DocumentController extends Controller
         $newreference = $document->getReference();
         $newreference = 'FA-'.$refdate.'-'.$count;
         $document->setReference($newreference);
-
-        
-
-        
-                
-        
-        
-        
         
         if ($hidden == 1){
 
