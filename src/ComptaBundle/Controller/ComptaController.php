@@ -33,9 +33,12 @@ class ComptaController extends Controller
             $scanDir = $this->container->getParameter('kernel.root_dir').'/../web/uploads/scan';
             $scan->move($scanDir, $scanName);
 
+            $date = $request->request->get('date');
+
             $reglement->setUploadscan($scanName);
             $reglement->setIddocument($document->getId());
             $reglement->setIdclient($idclient);
+            $reglement->setDatereg($date);
 
             $request->getSession()
             ->getFlashBag()

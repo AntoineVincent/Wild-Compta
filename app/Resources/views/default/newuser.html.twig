@@ -25,7 +25,11 @@
 				<label>Ecole</label>
 			</div>
 			<div class="col-md-6">
-				<input name="ecole" id="ecole" type="string">	
+				<select name="ecole" id="ecole">
+					{% for ecole in ecoles %}
+						<option value="{{ ecole.ville }}">{{ ecole.ville }}</option>
+					{% endfor %}
+				</select>	
 			</div>
 		</div>
 		<div class="row champ-log">

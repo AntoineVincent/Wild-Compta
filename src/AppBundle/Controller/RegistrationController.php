@@ -48,20 +48,21 @@ class RegistrationController extends Controller
         if (null !== $event->getResponse()) {
             return $event->getResponse();
         }
+        $em = $this->getDoctrine()->getManager();
+        $ecoles = $em->getRepository('ClientBundle:Ecole')->findAll();
 
         $form = $formFactory->createForm();
         $form->setData($user);
 
         $form->handleRequest($request);
 
-        $ecole = $request->request->get('ecole');
-
         if ($form->isValid()) {
             $event = new FormEvent($form, $request);
             $dispatcher->dispatch(FOSUserEvents::REGISTRATION_SUCCESS, $event);
-
-            $user->setEcole($ecole);
-            $userManager->updateUser($user);
+            $school = $request->request->get('ecole');
+            $user->setEcole($school);
+            $em->persist($user);
+            $em->flush();
 
             $request->getSession()
             ->getFlashBag()
@@ -80,6 +81,7 @@ class RegistrationController extends Controller
 
         return $this->render('default/newuser.html.twig', array(
             'form' => $form->createView(),
+            'ecoles' => $ecoles,
         ));
     }
 
