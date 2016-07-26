@@ -173,7 +173,7 @@ class DocumentController extends Controller
         ));
     }
 
-    public function suprdevisAction(Request $request, $iddocument, $idclient)
+    public function suprdocAction(Request $request, $iddocument, $idclient)
     {
         $em = $this->getDoctrine()->getManager();
         $user = $this->container->get('security.context')->getToken()->getUser();
@@ -181,12 +181,14 @@ class DocumentController extends Controller
         $deleting = $em->getRepository('DocumentBundle:Documents')->findOneById($iddocument);
         $client = $em->getRepository('ClientBundle:Client')->findOneById($idclient);
         
-        $em->remove($deleting);
+        $deleting->setEtat('delete');
+
+        $em->persist($deleting);
         $em->flush();
         
         $request->getSession()
         ->getFlashBag()
-        ->add('warning', 'Devis Supprimé !')
+        ->add('warning', 'Document Supprimé !')
     ;
         return $this->redirect($this->generateUrl('fiche_client', array(
                 'idclient' => $idclient
@@ -272,26 +274,6 @@ class DocumentController extends Controller
 
     }
 
-    public function suprfactureAction(Request $request, $iddocument, $idclient)
-    {
-        $em = $this->getDoctrine()->getManager();
-        $user = $this->container->get('security.context')->getToken()->getUser();
-
-        $deleting = $em->getRepository('DocumentBundle:Documents')->findOneById($iddocument);
-        
-        $em->remove($deleting);
-        $em->flush();
-        
-        $request->getSession()
-        ->getFlashBag()
-        ->add('warning', 'Facture Supprimée !')
-    ;
-        return $this->redirect($this->generateUrl('fiche_client', array(
-                'idclient' => $idclient
-        )));
-        
-    }
-
     public function newAvoirAction(Request $request, $idclient, $iddocument)
     {
         $em = $this->getDoctrine()->getManager();
@@ -365,26 +347,6 @@ class DocumentController extends Controller
             
         ));
 
-    }
-
-    public function suprAvoirAction(Request $request, $iddocument, $idclient)
-    {
-        $em = $this->getDoctrine()->getManager();
-        $user = $this->container->get('security.context')->getToken()->getUser();
-
-        $deleting = $em->getRepository('DocumentBundle:Documents')->findOneById($iddocument);
-        
-        $em->remove($deleting);
-        $em->flush();
-        
-        $request->getSession()
-        ->getFlashBag()
-        ->add('warning', 'Avoir Supprimé !')
-    ;
-        return $this->redirect($this->generateUrl('fiche_client', array(
-                'idclient' => $idclient
-        )));
-        
     }
 
     public function pdfAction(Request $request, $idclient, $iddocument)

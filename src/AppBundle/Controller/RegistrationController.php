@@ -70,7 +70,7 @@ class RegistrationController extends Controller
             ;
     
             if (null === $response = $event->getResponse()) {
-                $url = $this->generateUrl('dashboard');
+                $url = $this->generateUrl('new_user');
                 $response = new RedirectResponse($url);
             }
 
