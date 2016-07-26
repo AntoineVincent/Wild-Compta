@@ -70,25 +70,21 @@ new_devis:
     path:    /new/devis/{idclient}/{iddocument}
     defaults: { _controller: DocumentBundle:Document:newdevis }
 
-supr_devis:
-    path:    /supr/devis/{idclient}/{iddocument}
-    defaults: { _controller: DocumentBundle:Document:suprdevis }
-
 new_facture:
     path:    /new/facture/{idclient}/{iddocument}
     defaults: { _controller: DocumentBundle:Document:newfacture }
-
-supr_facture:
-    path:    /supr/facture/{idclient}/{iddocument}
-    defaults: { _controller: DocumentBundle:Document:suprfacture }
 
 new_avoir:
     path:    /new/avoir/{idclient}/{iddocument}
     defaults: { _controller: DocumentBundle:Document:newavoir }
 
-supr_avoir:
-    path:    /supr/avoir/{idclient}/{iddocument}
-    defaults: { _controller: DocumentBundle:Document:supravoir }
+supr_doc:
+    path:    /supr/document/{idclient}/{iddocument}
+    defaults: { _controller: DocumentBundle:Document:suprdoc }
+
+refus_doc:
+    path:    /refus/document/{idclient}/{iddocument}
+    defaults: { _controller: DocumentBundle:Document:refusdoc }
 
 # ---------------------> ORGANISME <---------------------
 new_organisme:

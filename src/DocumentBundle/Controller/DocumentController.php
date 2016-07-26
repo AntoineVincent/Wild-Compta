@@ -38,6 +38,8 @@ class DocumentController extends Controller
         $idproduct = $request->request->get('produit');
         $date = $request->request->get('date');
         $tva = $request->request->get('tva');
+        $quantite = $request->request->get('quantite');
+        $valuetotale = $request->request->get('valuetotale');
 
 
         // ALGORYTHME CALCUL REFERENCE DOCUMENT
@@ -76,7 +78,7 @@ class DocumentController extends Controller
             ->getFlashBag()
             ->add('success', 'Document Créé !')
             ;
-
+            
 
             // ATTRIBUTION DES VALEURS A LOBJET
             $document->setIdclient($idclient);
@@ -87,6 +89,8 @@ class DocumentController extends Controller
             $document->setValue($value);
             $document->setTva($tva);
             $document->setReference($reference);
+            $document->setQuantite($quantite);
+            $document->setValuetotale($valuetotale);
 
             $em->persist($document);
             $em->flush();
@@ -113,8 +117,9 @@ class DocumentController extends Controller
         $reference = $request->request->get('reference');
         $date = $request->request->get('datecreation');
         $valeur = $request->request->get('valeur');
-        $tva = $request->request->get('tva');
-
+        $tva = $request->request->get('tva');        
+        $quantite = $request->request->get('quantite');
+        
         $hidden = $request->request->get('hidden');
 
         $client = $em->getRepository('ClientBundle:Client')->findOneById($idclient);
@@ -123,8 +128,12 @@ class DocumentController extends Controller
         
         $produits = $em->getRepository('DocumentBundle:Product')->findOneById($document->getIdproduct());
 
-       
-        
+        // ALGORYTHME POUR QUANTITÉ
+            if ($quantite != 1) {
+
+                $valuetotale = $document->getValue() * $document->getQuantite();
+
+            }
 
         
 
@@ -156,7 +165,6 @@ class DocumentController extends Controller
             $em->persist($document);
             $em->flush();
         }
-
         $devis = new Documents();
         $form = $this->createForm('DocumentBundle\Form\DevisType', $devis);
 
@@ -167,13 +175,13 @@ class DocumentController extends Controller
             'document' => $document,
             'client' => $client,
             'produits' => $produits,
+            'valuetotale' => $valuetotale,
             'devis' => $devis,
-            
-            
+
         ));
     }
 
-    public function suprdevisAction(Request $request, $iddocument, $idclient)
+    public function suprdocAction(Request $request, $iddocument, $idclient)
     {
         $em = $this->getDoctrine()->getManager();
         $user = $this->container->get('security.context')->getToken()->getUser();
@@ -181,12 +189,36 @@ class DocumentController extends Controller
         $deleting = $em->getRepository('DocumentBundle:Documents')->findOneById($iddocument);
         $client = $em->getRepository('ClientBundle:Client')->findOneById($idclient);
         
-        $em->remove($deleting);
+        $deleting->setEtat('delete');
+
+        $em->persist($deleting);
         $em->flush();
         
         $request->getSession()
         ->getFlashBag()
-        ->add('warning', 'Devis Supprimé !')
+        ->add('warning', 'Document Supprimé !')
+    ;
+        return $this->redirect($this->generateUrl('fiche_client', array(
+                'idclient' => $idclient
+        )));
+    }
+
+    public function refusdocAction(Request $request, $iddocument, $idclient)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $user = $this->container->get('security.context')->getToken()->getUser();
+
+        $refusing = $em->getRepository('DocumentBundle:Documents')->findOneById($iddocument);
+        $client = $em->getRepository('ClientBundle:Client')->findOneById($idclient);
+        
+        $refusing->setEtat('refuse');
+
+        $em->persist($refusing);
+        $em->flush();
+        
+        $request->getSession()
+        ->getFlashBag()
+        ->add('warning', 'Document Refusé/Classé !')
     ;
         return $this->redirect($this->generateUrl('fiche_client', array(
                 'idclient' => $idclient
@@ -237,14 +269,6 @@ class DocumentController extends Controller
         $newreference = $document->getReference();
         $newreference = 'FA-'.$refdate.'-'.$count;
         $document->setReference($newreference);
-
-        
-
-        
-                
-        
-        
-        
         
         if ($hidden == 1){
 
@@ -270,26 +294,6 @@ class DocumentController extends Controller
             
         ));
 
-    }
-
-    public function suprfactureAction(Request $request, $iddocument, $idclient)
-    {
-        $em = $this->getDoctrine()->getManager();
-        $user = $this->container->get('security.context')->getToken()->getUser();
-
-        $deleting = $em->getRepository('DocumentBundle:Documents')->findOneById($iddocument);
-        
-        $em->remove($deleting);
-        $em->flush();
-        
-        $request->getSession()
-        ->getFlashBag()
-        ->add('warning', 'Facture Supprimée !')
-    ;
-        return $this->redirect($this->generateUrl('fiche_client', array(
-                'idclient' => $idclient
-        )));
-        
     }
 
     public function newAvoirAction(Request $request, $idclient, $iddocument)
@@ -365,26 +369,6 @@ class DocumentController extends Controller
             
         ));
 
-    }
-
-    public function suprAvoirAction(Request $request, $iddocument, $idclient)
-    {
-        $em = $this->getDoctrine()->getManager();
-        $user = $this->container->get('security.context')->getToken()->getUser();
-
-        $deleting = $em->getRepository('DocumentBundle:Documents')->findOneById($iddocument);
-        
-        $em->remove($deleting);
-        $em->flush();
-        
-        $request->getSession()
-        ->getFlashBag()
-        ->add('warning', 'Avoir Supprimé !')
-    ;
-        return $this->redirect($this->generateUrl('fiche_client', array(
-                'idclient' => $idclient
-        )));
-        
     }
 
     public function pdfAction(Request $request, $idclient, $iddocument)
