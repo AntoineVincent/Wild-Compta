@@ -22,6 +22,8 @@ class DashboardController extends Controller
 
         $ca = "";
         $caht = "";
+        /*$camois = "";
+        $camoisht = "";*/
 
         $reglements = $em->getRepository('ComptaBundle:Reglement')->findAll();
 
@@ -31,6 +33,7 @@ class DashboardController extends Controller
             $ca = number_format((float)($ca), 2, ',', ' ');
             $caht += $value / 1.2;
             $caht = number_format((float)($caht), 2, ',', ' ');
+            /*$camois += $value;*/
             
         }
 
