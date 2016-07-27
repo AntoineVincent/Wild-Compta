@@ -38,8 +38,13 @@ class ClientController extends Controller
 
             if ($client->getType() == 'élève') {
                 $client->setValue(6000);
-            }
 
+            }
+            if ($client->getType() != 'élève') {
+                $client->setTva(20);
+
+            }
+            ;
             $client->setEcole($ecolerslt);
             $client->setOrgapayeur($orgarslt);
 

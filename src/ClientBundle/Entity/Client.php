@@ -106,6 +106,13 @@ class Client
     private $value;
 
     /**
+     * @var int
+     *
+     * @ORM\Column(name="tva", type="integer", nullable=true)
+     */
+    private $tva;
+
+    /**
      * Set id
      *
      * @param integer $id
@@ -401,5 +408,27 @@ class Client
     public function getValue()
     {
         return $this->value;
+    }
+    /**
+     * Set tva
+     *
+     * @param integer $tva
+     * @return Client
+     */
+    public function setTva($tva)
+    {
+        $this->tva = $tva;
+
+        return $this;
+    }
+
+    /**
+     * Get tva
+     *
+     * @return integer 
+     */
+    public function getTva()
+    {
+        return $this->tva;
     }
 }

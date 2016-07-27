@@ -88,7 +88,12 @@
 						<p><label for="tva">TVA</label>
 					</div> 
 					<div class="col-md-7">
-						<input type="float "name="tva" value=""/>%
+						{% if client.tva is empty %}
+							<input name="value" value=""/>
+						{% else %}
+						{{ client.tva }} %
+						{% endif %}
+						
 					</div>
 				</div>
 				<div class="col-md-12">

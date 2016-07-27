@@ -34,6 +34,7 @@ class DocumentController extends Controller
         $form->handleRequest($request);
 
 
+
         // RECUPERATION CHAMPS FORMULAIRE MAIN
         $idproduct = $request->request->get('produit');
         $date = $request->request->get('date');
@@ -72,6 +73,15 @@ class DocumentController extends Controller
         else {
             $value = $request->request->get('value');
         }
+        // ALGORYTHME POUR SAVOIR SI TVA EXISTE OU SI A REMPLIR
+        if ($typeclient != 'élève') {
+            $tva = $client->getTva();
+        }
+        else {
+            $tva = $request->request->get('tva');
+        }
+
+
 
         if ($form->isValid()) {
             $request->getSession()
@@ -177,7 +187,7 @@ class DocumentController extends Controller
             'produits' => $produits,
             'valuetotale' => $valuetotale,
             'devis' => $devis,
-
+            
         ));
     }
 
