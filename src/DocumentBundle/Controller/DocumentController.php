@@ -398,9 +398,11 @@ class DocumentController extends Controller
         $em = $this->getDoctrine()->getManager();
         $client = $em->getRepository('ClientBundle:Client')->findOneById($idclient);
         $document = $em->getRepository('DocumentBundle:Documents')->findOneById($iddocument);
+        $produits = $em->getRepository('DocumentBundle:Product')->findOneById($document->getIdproduct());
+
 
         //on stocke la vue à convertir en PDF, en n'oubliant pas les paramètres twig si la vue comporte des données dynamiques
-        $html = $this->renderView('default/newfacture.html.twig', array('client' => $client, 'document'=> $document));
+        $html = $this->renderView('default/newpdf.html.twig', array('client' => $client, 'document'=> $document, 'produits'=> $produits));
 
         
          
@@ -408,7 +410,7 @@ class DocumentController extends Controller
         //le sens de la page "portrait" => p ou "paysage" => l
         //le format A4,A5...
         //la langue du document fr,en,it...
-        $html2pdf = new Html2Pdf_Html2Pdf('P','A4','fr');
+        $html2pdf = new \Html2Pdf_Html2Pdf('P','A4','fr');
  
         //SetDisplayMode définit la manière dont le document PDF va être affiché par l’utilisateur
         //fullpage : affiche la page entière sur l'écran
@@ -420,9 +422,10 @@ class DocumentController extends Controller
         $html2pdf->writeHTML($html);
  
         //Output envoit le document PDF au navigateur internet avec un nom spécifique qui aura un rapport avec le contenu à convertir (exemple : Facture, Règlement…)
-        $html2pdf->Output('document.pdf', array(
-            /*'client' => $client*/
-            ));
+        $html2pdf->Output('Facture.pdf'/*, array(
+            'client' => $client,
+            'produits' => $produits,
+            )*/);
         exit;
          
      

@@ -77,8 +77,8 @@
 							</tr> 
 						</table>
 						<div class="col-md-12 ligne">
-							<div class="col-md-6">Conditions de reglements : Payée au vue des heures réalisées</div>
-							<div class="col-md-3">Total HT<br/>TVA<br/>Total TTC</div>
+							<div class="col-md-6">Conditions de reglements : <textarea name="conditions"></textarea></div>
+							<div class="col-md-3">Total HT :<br/>Total TVA :<br/>Total TTC :</div>
 							<div class="col-md-3"><br/></div>
 						</div>
 					</div>
@@ -88,15 +88,13 @@
 			</div>
 		</div>		
 		<div class="col-md-12 bouton">
-			<div class="col-md-9">
-				
+			<div class="col-md-4"></div>
+			<div class="col-md-4">
+				<a href="{{ path('new_pdf',{ 'idclient': client.id, 'iddocument': document.id }) }}"><input type="button" class="btn-lg btn-danger" value="PDF"/></a>
 			</div>
-			<div class="col-md-2">
-		       	<a href="{{ path('fiche_client', { 'idclient': client.id }) }}"><input type="button" class="btn btn-primary" value="Retour"/></a>
+			<div class="col-md-4">
+		       	<a href="{{ path('fiche_client', { 'idclient': client.id }) }}"><input type="button" class="btn-lg btn-primary" value="Retour"/></a>
 		   	</div>
-		    <div class="col-md-1">
-		    	
-		    </div>
 		</div>
 	</form>
 	<div class="col-md-12 vide">AJOUTER ICI LES PENALITES DE RETARD</div>

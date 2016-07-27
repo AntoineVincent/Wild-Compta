@@ -2,13 +2,13 @@
 	table{ vertical-align:top;width:100%;font-family:helvetica;line-height:3mm; }
 	img{
 		width:50px;
-		height:50px;
+		height:60px;
 	}
 	td.right_haut {text-align: right;}
 	td.right_bas {border:1px solid #CFD1D2;}
 	table.border td{border:1px solid #CFD1D2; padding:3mm 1mm 1mm 2mm;height:400px;}
 	table.border th{ background: #E7E7E7; color:#000; font-weight:normal; border:solid 1px #CFD1D2; padding:3mm 1mm 1mm 2mm; text-align: left; }
-	table.total td{border:1px solid #CFD1D2; padding:3mm 1mm;}
+	table.total td{border:1px solid #CFD1D2; padding:2mm 1mm;}
 	td.noborder {border:none;}
 	hr {color: #E5A047}
 </style>
@@ -26,11 +26,11 @@
 
 			</td>
 			<td class="right_haut" style="width:50%; ">
-				<p>DEVIS<br/>
-				Réf. : numéro devis<br/>
-				Date : {{ "now"|date("d/m/Y") }}<br/>
-				Date de fin de validité : {{ "now"|date_modify("+1 month")|date("d/m/Y") }}<br/>
-				Code client : CU1509-0052
+				<p><strong>{{ document.type }}</strong><br/>
+				<strong>Réf. : {{ document.reference }}</strong><br/>
+				Date : {{ document.datecreation }}<br/>
+				Validité : 1 Mois<br/>
+				
 				</p>
 
 
@@ -41,52 +41,52 @@
 		<tr>
 			<td style="width:50%; ">
 				<p>Emetteur : <br/><br/>
-				INNOV'EDUC<br/>
+				<strong>INNOV'EDUC</strong><br/>
 				18, rue de la gare<br/>
 				28240 LA LOUPE<br/><br/>
 				Téléphone : 09-72-52-63-94<br/>
 				Email : contact@wildcodeschool.fr<br/>
-				web : http://wildcodeschool.fr
+				Web : http://wildcodeschool.fr
 				</p>
 
 			</td>
 			<td class="right_bas" style="width:50%; ">
 				<p>Destinataire :<br/>
-				{# <h5>{{ client.nom }}</h5>
-				<h5>{{ client.adresse }}</h5></p> #}
-				<br/>
+				<h5>{{ client.nom }}</h5>
+				<h5>{{ client.adresse }}</h5></p>
 			</td>
 		</tr>
 	</table>
 	<table style="text-align:right; width:100%; margin-top:4mm;">
 		<tr>
 			<td style="width:50%;"></td>
-			<td style="text-align:right; width:50%;">Montants exprimés en euros</td>
+			<td style="text-align:right; width:50%;">Montants exprimés en Euros</td>
 		</tr>
 	</table>
 	<table class="border" style="margin-top:2mm;">
 		<thead >
 			<tr>
-				<th style="width:60%; " align:"left">Désignation</th> 
+				<th style="width:55%; " align:"left">Désignation</th> 
 				<th style="width:10%; ">TVA</th> 
 				<th style="width:10%; ">P.U HT</th>
-				<th style="width:7%; "> Qté</th>
-				<th style="width:13%; "> Total HT</th>
+				<th style="width:10%; "> Qté</th>
+				<th style="width:15%; "> Total HT</th>
 			</tr>
 		</thead> 
 		<tr>
-			<td align="left">test</td> 
-			<td align="center">20.6</td> 
-			<td align="center">3 </td> 
-			<td align="center">1</td>
-			<td align="center">3 </td>
+			<td align="left">{{ produits.type }} {{ produits.nom }}</td> 
+			<td align="center">{{ document.tva }}</td> 
+			<td align="center">{{ document.value }}</td> 
+			<td align="center">{{ document.quantite }}</td>
+			<td align="center"> </td>
 		</tr>
 	</table>
 	<table class="total"> 
 		<tr>
-			<td class="noborder" style="width:35%">Conditions de reglements</td> 
-			<td class="noborder" style="width:35%">Payée au vue des heures réalisées</td> 
-			<td style="width:15%">Total HT :</td> 
+			<td class="noborder" style="width:25%"><strong>Conditions de reglements :</strong></td> 
+			<td class="noborder" style="width:30%"></td> 
+			<td style="width:15%">Total HT :</td>
+			<td style="width:15%">Total TVA :</td> 
 			<td style="width:15%">Total TTC :</td>
 		</tr> 
 	</table>

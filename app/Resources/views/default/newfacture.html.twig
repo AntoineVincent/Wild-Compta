@@ -17,15 +17,15 @@
 			<div class="col-md-6">
 				<img src="{{ asset('../web/img/big_logo_text.png') }}" width="45%" alt="grand logo Wild Code School" class="logo-brand" />
 			</div>
-				<br/>
+				<br />
 			
 			<div class="col-md-5 entete" >
-				<p><input type="string" id="type" name="type" value="{{ document.type }}"><br/>
-					Réf. : FA<input type="string" id="newreference" name="newreference" value="{{ document.reference }}"/><br/>
-					Date : <input type="string" id="datecreation" name="datecreation" value="{{ document.datecreation }}"><br/>
+				<p><input type="string" id="type" name="type" value="{{ document.type }}"><br />
+					Réf. : FA<input type="string" id="newreference" name="newreference" value="{{ document.reference }}"/><br />
+					Date : <input type="string" id="datecreation" name="datecreation" value="{{ document.datecreation }}"><br />
 					
 				</p>
-					<br/><br/>
+					<br /><br />
 			</div>
 			<div class="col-md-1">
 				<input type="hidden" name="month" value="{{ "now"|date("m") }}"/>
@@ -35,13 +35,13 @@
 		<div class="col-md-12 entete2">
 			<div class="col-md-1"></div>
 			<div class="col-md-5">
-				<p>Emetteur : <br/><br/>
-					INNOV'EDUC<br/>
-					18, rue de la gare<br/>
-					28240 LA LOUPE<br/><br/>
-					Téléphone : 09-72-52-63-94<br/>
-					Email : contact@wildcodeschool.fr<br/>
-					web : http://wildcodeschool.fr<br/>
+				<p>Emetteur : <br /><br />
+					INNOV'EDUC<br />
+					18, rue de la gare<br />
+					28240 LA LOUPE<br /><br />
+					Téléphone : 09-72-52-63-94<br />
+					Email : contact@wildcodeschool.fr<br />
+					web : http://wildcodeschool.fr<br />
 				</p>
 			</div>
 			<p>Adressé à :</p>
@@ -50,7 +50,7 @@
 				<h5>{{ client.adresse }}</h5>
 			</div>
 			<div class="col-md-1"></div>
-			<br/>
+			<br />
 		</div>
 		<div class="phrase">
 			<p>Montants exprimés en euros</p>
@@ -60,7 +60,7 @@
 				
 			</div>
 			<div class="col-md-10 tableau">
-				<br/><br/>
+				<br /><br />
 					<div align="CENTER"> 
 						<table width=1000px cellpadding=3 border="1">
 							<tr valign="baseline">
@@ -79,9 +79,10 @@
 							</tr> 
 						</table>
 						<div class="col-md-12 ligne">
-							<div class="col-md-6">Conditions de reglements : Payée au vue des heures réalisées</div>
-							<div class="col-md-3">Total HT<br/>Total TVA</br>Total TTC</div>
-							<div class="col-md-3"><br/></div>
+							<div class="col-md-5">Conditions de reglements : <textarea name="conditions"></textarea></div>
+							<div class="col-md-2"></div>
+							<div class="col-md-5">Total HT :<br />Total TVA :<br />Total TTC :</div>
+							
 						</div>
 					</div>
 			</div>
@@ -101,7 +102,7 @@
 	</form>
 	<div class="col-md-12 vide">AJOUTER ICI LES PENALITES DE RETARD</div>
 	<div class="col-md-12 pied"> 
-		<p>Société par actions simplifiée (SAS) - Capital de 7000€ - SIRET 794 925 063 00023<br/>NAF-APE: 8560Z + Num. TVA: FR 27 794 926 063</p>
+		<p>Société par actions simplifiée (SAS) - Capital de 7000€ - SIRET 794 925 063 00023<br />NAF-APE: 8560Z + Num. TVA: FR 27 794 926 063</p>
 	</div>	
 
 {% endblock %}
