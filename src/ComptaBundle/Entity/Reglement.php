@@ -45,6 +45,13 @@ class Reglement
     /**
      * @var string
      *
+     * @ORM\Column(name="datemois", type="string", length=255, nullable=true)
+     */
+    private $datemois;
+
+    /**
+     * @var string
+     *
      * @ORM\Column(name="modereg", type="string", length=255, nullable=true)
      */
     private $modereg;
@@ -164,6 +171,29 @@ class Reglement
     public function getDatereg()
     {
         return $this->datereg;
+    }
+
+    /**
+     * Set datemois
+     *
+     * @param string $datemois
+     * @return Reglement
+     */
+    public function setDatemois($datemois)
+    {
+        $this->datemois = $datemois;
+
+        return $this;
+    }
+
+    /**
+     * Get datemois
+     *
+     * @return string 
+     */
+    public function getDatemois()
+    {
+        return $this->datemois;
     }
 
     /**

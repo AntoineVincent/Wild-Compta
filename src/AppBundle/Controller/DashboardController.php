@@ -7,6 +7,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use ComptaBundle\Entity\Reglement;
 use Doctrine\ORM\QueryBuilder;
+use Symfony\Component\Validator\Constraints\DateTime;
 
 class DashboardController extends Controller
 {
@@ -33,22 +34,24 @@ class DashboardController extends Controller
             $value = $reglement->getMontant();
             $ca += $value;
             $ca = number_format((float)($ca), 2, ',', ' ');
-            $caht += $value / 1.2;
+            $caht += $value * 0.8;
             $caht = number_format((float)($caht), 2, ',', ' ');    
         }
         
         $camois = "";
         $camoisht = "";
+    
+        $datemois = new \DateTime();
 
-        $reglementsmois = $em->getRepository('ComptaBundle:Reglement')->findByDatereg( "now"|date("m/Y"));
+        $reglementsmois = $em->getRepository('ComptaBundle:Reglement')->findByDatemois($datemois->format('m/Y'));
         
 
         foreach ($reglementsmois as $reglementmois) {
             $valuemois = $reglementmois->getMontant();
-            $camois += $value;
-            $camois = number_format((float)($ca), 2, ',', ' ');
-            $camoisht += $value / 1.2;
-            $camoisht = number_format((float)($caht), 2, ',', ' ');  
+            $camois += $valuemois;
+            $camois = number_format((float)($camois), 2, ',', ' ');
+            $camoisht += $valuemois * 0.8;
+            $camoisht = number_format((float)($camoisht), 2, ',', ' ');  
         }
 
         return $this->render('default/dashboard.html.twig', array(
