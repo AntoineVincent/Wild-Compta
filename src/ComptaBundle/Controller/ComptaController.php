@@ -35,11 +35,14 @@ class ComptaController extends Controller
             $scan->move($scanDir, $scanName);
 
             $date = $request->request->get('date');
+            $datemois = $request->request->get('datemois');
+
 
             $reglement->setUploadscan($scanName);
             $reglement->setIddocument($document->getId());
             $reglement->setIdclient($idclient);
             $reglement->setDatereg($date);
+            $reglement->setDatemois($datemois);
 
             $request->getSession()
             ->getFlashBag()
