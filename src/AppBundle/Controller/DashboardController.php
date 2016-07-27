@@ -34,7 +34,7 @@ class DashboardController extends Controller
             $value = $reglement->getMontant();
             $ca += $value;
             $ca = number_format((float)($ca), 2, ',', ' ');
-            $caht += $value / 1.2;
+            $caht += $value * 0.8;
             $caht = number_format((float)($caht), 2, ',', ' ');    
         }
         
@@ -48,10 +48,10 @@ class DashboardController extends Controller
 
         foreach ($reglementsmois as $reglementmois) {
             $valuemois = $reglementmois->getMontant();
-            $camois += $value;
-            $camois = number_format((float)($ca), 2, ',', ' ');
-            $camoisht += $value / 1.2;
-            $camoisht = number_format((float)($caht), 2, ',', ' ');  
+            $camois += $valuemois;
+            $camois = number_format((float)($camois), 2, ',', ' ');
+            $camoisht += $valuemois * 0.8;
+            $camoisht = number_format((float)($camoisht), 2, ',', ' ');  
         }
 
         return $this->render('default/dashboard.html.twig', array(
