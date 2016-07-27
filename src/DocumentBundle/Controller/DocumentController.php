@@ -422,7 +422,7 @@ class DocumentController extends Controller
         $html2pdf->writeHTML($html);
  
         //Output envoit le document PDF au navigateur internet avec un nom spécifique qui aura un rapport avec le contenu à convertir (exemple : Facture, Règlement…)
-        $html2pdf->Output('Facture.pdf'/*, array(
+        $html2pdf->Output('Document.pdf'/*, array(
             'client' => $client,
             'produits' => $produits,
             )*/);
