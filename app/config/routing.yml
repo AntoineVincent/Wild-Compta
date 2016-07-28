@@ -22,6 +22,7 @@ dashboard:
 cabyecole:
     path:    /dashboard/cabyecole
     defaults: { _controller: AppBundle:Dashboard:cabyecole }
+
 # ---------------------> PRODUCT <---------------------
 new_product:
     path:    /new/product

@@ -72,13 +72,15 @@
 								<td align="right"><textarea name="tva" style="width: 100px; height: 500px">{{ document.tva }}%</textarea></td> 
 								<td align="right"><textarea name="valeur" value="{{ document.value }}" style="width: 100px; height: 500px"> {{ document.value }}</textarea></td> 
 								<td align="right"><textarea name="qte" style="width: 100px; height: 500px"> {{ document.quantite }}</textarea></td>
-								<td align="right"><textarea name="totaleht" style="width: 100px; height: 500px"> {{ valuetotale }}</textarea></td>
+								<td align="right"><textarea name="totaleht" style="width: 100px; height: 500px"> {{ valuetotaleHT }}</textarea></td>
 								
-							</tr> 
+							</tr>
 						</table>
 						<div class="col-md-12 ligne">
 							<div class="col-md-6">Conditions de reglements : <textarea name="conditions"></textarea></div>
-							<div class="col-md-3">Total HT : {{ valuetotale }}<br/>Total TVA :<br/>Total TTC :</div>
+							<div class="col-md-3">Total HT : {{ valuetotaleHT }}<br/>
+												  Valeur TVA : {{ valuetva }}<br/>
+												  Total TTC : {{ valueTTC }} </div>
 							<div class="col-md-3"><br/></div>
 						</div>
 					</div>
