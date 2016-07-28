@@ -1,0 +1,63 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+	<div class="col-md-12 vide"><p>
+					Mois en cours : {{ "now"|date("m/Y") }}<br/>
+				</p></div>
+	<div class="col-md-12">
+		<div class="col-md-3"></div>
+		<div class="col-md-3 annuel">
+			<table border=1 width=100% height=150>
+				<tr>
+					<td  BGCOLOR="#58c4b8">CA Annuel
+						<select name="ecole" id="ecole">
+							<option selected>Total</option>
+							{% for ecole in ecoles %}
+ 		        				<option value="{{ ecole.ville }}">{{ ecole.ville }}</option>
+ 		         			{% endfor %}
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<td>{{ ca }} € TTC<br/>{{ caht }} € HT</td>
+					
+				</tr>
+			</table>
+		</div>
+		<div class="col-md-3 mensuel">
+			<table border=1 width=100% height=150>
+				<tr>
+					<td  BGCOLOR="#58c4b8">CA Mensuel
+						<select name="ecole" id="ecole">
+							<option selected>Total</option>
+							{% for ecole in ecoles %}
+ 		        				<option value="{{ ecole.ville }}">{{ ecole.ville }}</option>
+ 		         			{% endfor %}
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<td>{{ camois }} € TTC<br/>{{ camoisht }} € HT</td>
+					
+				</tr>
+			</table>
+		</div>
+		<div class="col-md-3"></div>
+	</div>
+	<div class="col-md-12 vide"></div>
+	<div class="col-md-12">
+		<div class="col-md-3"></div>
+		<div class="col-md-6 retard">
+			<table border=1 width=100% height=150>
+				<tr>
+					<td  class="fond" BGCOLOR="#b9184d"><div class="blanc">Paiements en retard</div></td>
+				</tr>
+				<tr>
+					<td>liste des retards</br></br></td>
+				</tr>
+			</table>
+		</div>
+		<div class="col-md-3"></div>
+	</div>
+
+{% endblock %} 

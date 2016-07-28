@@ -62,4 +62,5 @@ class DashboardController extends Controller
             'ecoles' => $ecoles
         ));
     }
+    
 }
