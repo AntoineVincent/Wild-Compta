@@ -1,12 +1,28 @@
+@font-face
+{
+	font-family: 'AlwynBold';
+	src: url('font/AlwynBold.ttf');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face
+{
+	font-family: 'AlwynRegular';
+	src: url('font/AlwynRegular.ttf');
+	font-weight: normal;
+	font-style: normal;
+}
 /*------------->    NAVBAR   <------------*/
 .navbar-header img {
 	width: 30%;
 	height: 30%;
 	padding-top: 1px;
 	padding-bottom: 1px;
+
 }
 .navbar-collapse {
-	
+	font-size: 16px;
 }
 /* -------->     LOGIN PAGE      <--------- */
 
@@ -25,16 +41,69 @@
 }
 /* -------->     DASHBOARD      <--------- */
 
+*{
+	font-family: 'AlwynRegular';
+}
+.fond {
+	background-color: rgba(53,56,58,0.9);
+	margin-top: -20px;
+	position: relative;
+	height:100vh;
+}
+.pageca {
+	margin-top:40px;
+}
+.pagepaiement {
+	margin-top: -10px;
+}
+.retard {
+	height: 300px;
+}
 .retard, .annuel, .mensuel {
 	text-align: center;
-	border-radius: 5px;
 	line-height: 30px;
+	height: 250px;	
+}
+.annuel, .mensuel {
+	
 
 }
-.vide {
+.vide2 {
 	height: 100px;
+	color: rgba(238,162,83,1);
+	padding-top: 40px;
+	font-size: 35px;
+	text-align: center;
 }
+.vide3 {
+	height: 0px;
+}
+.titre {
+	background-color: #1fa597;
+	border-top-left-radius: 10px;
+	border-top-right-radius: 10px;
+	height: 50px;
+	padding-top: 8px;
+	color:#35383a;
+}
+.bandeau {
+	background-color: rgba(238,162,83,1);
+	text-align: center;
+	position: fixed; bottom: 0;
+	height: 50px;
+	font-size: 20px;
+	line-height: 50px;
 
+}
+.blanc {
+	background-color: #f1f1f1;
+	height: 120px;
+	border-bottom-left-radius: 10px;
+	border-bottom-right-radius: 10px;
+	padding-top: 15px;
+	font-size: 18px;
+	line-height: 40px;
+}
 /* -------->     NEW PRODUCT PAGE      <--------- */
 
 .new-prod-title {
