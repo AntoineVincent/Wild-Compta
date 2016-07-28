@@ -10,10 +10,10 @@
 			<table border=1 width=100% height=150>
 				<tr>
 					<td  BGCOLOR="#58c4b8">CA Annuel
-						<select name="ecole" id="ecole">
-							<option selected>Total</option>
+						<select name="caecole" id="caecole">
+							<option>Total</option>
 							{% for ecole in ecoles %}
- 		        				<option value="{{ ecole.ville }}">{{ ecole.ville }}</option>
+ 		        				<option id="selected" name="selected" value="{{ ecole.ville }}">{{ ecole.ville }}</option>
  		         			{% endfor %}
 						</select>
 					</td>
@@ -24,6 +24,31 @@
 				</tr>
 			</table>
 		</div>
+		<script>
+	        $('#caecole').change(function() {
+	            ecole = $(this).val();
+
+	            $.ajax({
+	              type: "POST",
+	              url: "{{ path('cabyecole') }}",
+	              dataType: "json",
+	              data: {ecole : ecole},
+	              success : function(response) {
+	              		console.log(response);
+	              },
+	              error : function(response) {
+	              		console.log('fail');
+	              }
+	            });
+	        });
+	    </script>
+
+
+
+
+
+
+
 		<div class="col-md-3 mensuel">
 			<table border=1 width=100% height=150>
 				<tr>
