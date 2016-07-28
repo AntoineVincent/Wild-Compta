@@ -105,6 +105,14 @@ class Documents
      */
     private $valuetotale;
 
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="valuettc", type="integer", nullable=true)
+     */
+    private $valuettc;
+
+
     public function setId($id)
     {
         $this->id = $id;
@@ -393,5 +401,27 @@ class Documents
     public function getValuetotale()
     {
         return $this->valuetotale;
+    }
+    /**
+     * Set valuettc
+     *
+     * @param integer $valuettc
+     * @return Document
+     */
+    public function setValuettc($valuettc)
+    {
+        $this->valuettc = $valuettc;
+
+        return $this;
+    }
+
+    /**
+     * Get valuettc
+     *
+     * @return integer 
+     */
+    public function getValuettc()
+    {
+        return $this->valuettc;
     }
 }
