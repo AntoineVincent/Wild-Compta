@@ -5,39 +5,60 @@
 		<div class="col-md-12 vide2">
             <p>Wild Code School</p>
         </div>
-		<div class="col-md-12 pageca">
-			<div class="col-md-2"></div>
-			<div class="col-md-4 annuel">
-				<div class="col-md-12 titre">
-					<h4>CA Annuel  <select name="ecole" id="ecole">
-						<option selected>Total</option>
-							{% for ecole in ecoles %}
-		        				<option value="{{ ecole.ville }}">{{ ecole.ville }}</option>
-		         		{% endfor %}
-					</select></h4>
-				</div>
-				<div class="col-md-12 blanc">
-					<p>{{ ca }} € TTC<br/>{{ caht }} € HT</p>
-				</div>
+	<div class="col-md-12 pageca">
+		<div class="col-md-2"></div>
+		<div class="col-md-4 annuel">
+			<div class="col-md-12 titre">
+				<h4>CA Annuel <select name="caecole" id="caecole">
+					<option>Total</option>
+						{% for ecole in ecoles %}
+ 		        			<option id="selected" name="selected" value="{{ ecole.ville }}">{{ ecole.ville }}</option>
+ 		         		{% endfor %}
+						</select>
+				</h4>
 			</div>
-			<div class="col-md-4 mensuel">
-				<div class="col-md-12 titre">
-					<h4>CA Mensuel  <select name="ecole" id="ecole">
+			<div class="col-md-12 blanc">
+				<p>{{ ca }} € TTC<br/>{{ caht }} € HT</p>
+			</div>
+		</div>
+		<script>
+	        $('#caecole').change(function() {
+	            ecole = $(this).val();
+
+	            $.ajax({
+	              type: "POST",
+	              url: "{{ path('cabyecole') }}",
+	              dataType: "json",
+	              data: {ecole : ecole},
+	              success : function(response) {
+	              		console.log(response);
+	              },
+	              error : function(response) {
+	              		console.log('fail');
+	              }
+	            });
+	        });
+	    </script>
+		<div class="col-md-4 mensuel">
+			<div class="col-md-12 titre">
+				<h4>CA Mensuel
+					<select name="ecole" id="ecole">
 						<option selected>Total</option>
 							{% for ecole in ecoles %}
 		        				<option value="{{ ecole.ville }}">{{ ecole.ville }}</option>
-		         		{% endfor %}
-					</select></h4>
-				</div>
-				<div class="col-md-12 blanc">
-					<p>{{ camois }} € TTC<br/>{{ camoisht }} € HT</p>
-				</div>
+		         			{% endfor %}
+					</select>
+				</h4>
+			</div>
+			<div class="col-md-12 blanc">
+				<p>{{ camois }} € TTC<br/>{{ camoisht }} € HT</p>
 			</div>
 			<div class="col-md-2"></div>
 		</div>
-		<div class="col-md-12 vide3"></div>
+	</div>
+	<div class="col-md-12 vide3"></div>
 						
-		<div class="col-md-12 pagepaiement">
+	<div class="col-md-12 pagepaiement">
 			<div class="col-md-2"></div>
 			<div class="col-md-8 retard">
 				<div class="col-md-12 titre">

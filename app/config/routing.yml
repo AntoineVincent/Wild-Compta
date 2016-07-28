@@ -19,9 +19,9 @@ dashboard:
     path:    /dashboard
     defaults: { _controller: AppBundle:Dashboard:dashboard }
 
-chartres:
-    path:    /Chartres
-    defaults: { _controller: AppBundle:Dashboard:chartres }
+cabyecole:
+    path:    /dashboard/cabyecole
+    defaults: { _controller: AppBundle:Dashboard:cabyecole }
 
 # ---------------------> PRODUCT <---------------------
 new_product:
