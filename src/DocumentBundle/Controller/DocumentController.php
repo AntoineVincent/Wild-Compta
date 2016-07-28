@@ -129,6 +129,7 @@ class DocumentController extends Controller
         $valeur = $request->request->get('valeur');
         $tva = $request->request->get('tva');        
         $quantite = $request->request->get('quantite');
+        $valuettc = $request->request->get('valuettc');
         
         $hidden = $request->request->get('hidden');
 
@@ -138,14 +139,21 @@ class DocumentController extends Controller
         
         $produits = $em->getRepository('DocumentBundle:Product')->findOneById($document->getIdproduct());
 
-        // ALGORYTHME POUR QUANTITÉ
+        $tvaa = $document->getTva();
+            // ALGORYTHME POUR QUANTITÉ
             if ($quantite != 1) {
 
-                $valuetotale = $document->getValue() * $document->getQuantite();
+                $valuetotaleHT = $document->getValue() * $document->getQuantite();
 
             }
+            // ALGORYTHME POUR TTC        
+            if ($tvaa != null) {
 
-        
+                $valuetva = $valuetotaleHT * 0.2;
+            }
+
+            // VALUE TTC
+            $valueTTC = $valuetotaleHT + $valuetva;
 
         if ($hidden == 1){
             if (!empty($nom)) {
@@ -185,8 +193,10 @@ class DocumentController extends Controller
             'document' => $document,
             'client' => $client,
             'produits' => $produits,
-            'valuetotale' => $valuetotale,
             'devis' => $devis,
+            'valuetotaleHT' => $valuetotaleHT,
+            'valuetva' => $valuetva,
+            'valueTTC' => $valueTTC,
             
         ));
     }
