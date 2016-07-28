@@ -18,7 +18,7 @@
 				</h4>
 			</div>
 			<div class="col-md-12 blanc">
-				<p>{{ ca }} € TTC<br/>{{ caht }} € HT</p>
+				<p>{{ ca|number_format(2, ',', ' ') }} € TTC<br/>{{ caht|number_format(2, ',', ' ') }} € HT</p>
 			</div>
 		</div>
 		<script>
@@ -51,7 +51,7 @@
 				</h4>
 			</div>
 			<div class="col-md-12 blanc">
-				<p>{{ camois }} € TTC<br/>{{ camoisht }} € HT</p>
+				<p>{{ camois|number_format(2, ',', ' ') }} € TTC<br/>{{ camoisht|number_format(2, ',', ' ') }} € HT</p>
 			</div>
 			<div class="col-md-2"></div>
 		</div>

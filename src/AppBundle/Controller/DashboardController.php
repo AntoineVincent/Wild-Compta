@@ -16,6 +16,7 @@ use Symfony\Component\Serializer\Normalizer\GetSetMethodNormalizer;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use ClientBundle\Entity\Ecole;
 
+
 class DashboardController extends Controller
 {
     /**
@@ -38,9 +39,9 @@ class DashboardController extends Controller
         foreach ($reglements as $reglement) {
             $value = $reglement->getMontant();
             $ca += $value;
-            $ca = number_format((float)($ca), 2, ',', ' ');
+            /*$ca = number_format($ca, 2, ',', ' ');*/
             $caht += $value * 0.8;
-            $caht = number_format((float)($caht), 2, ',', ' ');    
+            /*$caht = number_format((float)($caht), 2, ',', ' ');*/    
         }
         
         //DACLERATION VARABLES CA PAR MOIS
@@ -53,9 +54,9 @@ class DashboardController extends Controller
         foreach ($reglementsmois as $reglementmois) {
             $valuemois = $reglementmois->getMontant();
             $camois += $valuemois;
-            $camois = number_format((float)($camois), 2, ',', ' ');
+            /*$camois = number_format((float)($camois), 2, ',', ' ');*/
             $camoisht += $valuemois * 0.8;
-            $camoisht = number_format((float)($camoisht), 2, ',', ' ');  
+            /*$camoisht = number_format((float)($camoisht), 2, ',', ' ');*/  
         }
 
         return $this->render('default/dashboard.html.twig', array(
@@ -63,7 +64,8 @@ class DashboardController extends Controller
             'caht' => $caht,
             'camois' => $camois,
             'camoisht' => $camoisht,
-            'ecoles' => $ecoles
+            'ecoles' => $ecoles,
+            'value' => $value
         ));
     }
     /**
