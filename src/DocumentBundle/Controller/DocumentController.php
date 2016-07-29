@@ -133,6 +133,7 @@ class DocumentController extends Controller
         $tva = $request->request->get('tva');        
         $quantite = $request->request->get('quantite');
         $valuettc = $request->request->get('valuettc');
+        $valuetva = $request->request->get('valuetva');
         
         $hidden = $request->request->get('hidden');
 
