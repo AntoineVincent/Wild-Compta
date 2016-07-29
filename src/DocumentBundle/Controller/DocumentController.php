@@ -103,7 +103,7 @@ class DocumentController extends Controller
             $document->setTva($tva);
             $document->setReference($reference);
             $document->setQuantite($quantite);
-            $document->setValuetotale($valuetotale);
+            $document->setValuetva($valuetva);
 
             $em->persist($document);
             $em->flush();
@@ -133,8 +133,9 @@ class DocumentController extends Controller
         $tva = $request->request->get('tva');        
         $quantite = $request->request->get('quantite');
         $valuettc = $request->request->get('valuettc');
-        $valuetva = $request->request->get('valuetva');
-        
+        $valuetotale = $request->request->get('valuetotale');
+
+
         $hidden = $request->request->get('hidden');
 
         $client = $em->getRepository('ClientBundle:Client')->findOneById($idclient);
@@ -142,6 +143,7 @@ class DocumentController extends Controller
         $document = $em->getRepository('DocumentBundle:Documents')->findOneById($iddocument);
         
         $produits = $em->getRepository('DocumentBundle:Product')->findOneById($document->getIdproduct());
+        $typeclient = $client->getType();
 
         $tvaa = $document->getTva();
             // ALGORYTHME POUR QUANTITÉ
@@ -150,10 +152,17 @@ class DocumentController extends Controller
                 $valuetotaleHT = $document->getValue() * $document->getQuantite();
 
             }
+            if ($typeclient == 'élève') {
+                $valuetva = null;
+
+            }
+            
             // ALGORYTHME POUR TTC        
             if ($tvaa != null) {
 
                 $valuetva = $valuetotaleHT * 0.2;
+
+
             }
 
             // VALUE TTC
