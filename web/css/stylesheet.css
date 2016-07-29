@@ -237,9 +237,10 @@ h2{
 }
 #myTable {
 	width: 100%;
-
 }
-
+.top {
+	padding-top: 50px;
+}
 /* -------->     FICHE CLIENT      <--------- */
 
 .as {
