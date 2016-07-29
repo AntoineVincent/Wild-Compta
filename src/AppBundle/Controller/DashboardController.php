@@ -84,9 +84,7 @@ class DashboardController extends Controller
             foreach($reglements as $reglement) {
                 $value = $reglement->getMontant();
                 $caville += $value;
-                $caville = number_format((float)($caville), 2, ',', ' ');
                 $cavilleht += $value * 0.8;
-                $cavilleht = number_format((float)($cavilleht), 2, ',', ' ');
             }
             $tabcaville[]=array(
                 "cattc"=>$caville,
@@ -100,9 +98,60 @@ class DashboardController extends Controller
                 foreach($reglements as $reglement) {
                     $value = $reglement->getMontant();
                     $caville += $value;
-                    $caville = number_format((float)($caville), 2, ',', ' ');
                     $cavilleht += $value * 0.8;
-                    $cavilleht = number_format((float)($cavilleht), 2, ',', ' ');
+                }
+            }
+            $tabcaville[]=array(
+                "cattc"=>$caville,
+                "caht"=>$cavilleht,
+            );
+        }
+
+        $encoders = array(new XmlEncoder(), new JsonEncoder());
+        $normalizers = array(new GetSetMethodNormalizer());
+        $serializer = new Serializer($normalizers, $encoders);
+
+        $jsonContent = $serializer->serialize($tabcaville, 'json');
+
+        $response = new Response($jsonContent);
+        return $response;
+    }
+
+    /**
+     * @Route("/dashboard/camensubyecole", name="requestajaxtwo")
+     */
+    public function camensubyecole(Request $request)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $caville = 0;
+        $cavilleht = 0;
+        $tabcaville = [];
+        $ecole = $this->getRequest()->request->get('ecole');
+
+        $datemois = new \DateTime();
+            
+        if ($ecole == 'Total') {
+            $reglements = $em->getRepository('ComptaBundle:Reglement')->findByDatemois($datemois->format('m/Y'));
+            foreach($reglements as $reglement) {
+                $value = $reglement->getMontant();
+                $caville += $value;
+                $cavilleht += $value * 0.8;
+            }
+            $tabcaville[]=array(
+                "cattc"=>$caville,
+                "caht"=>$cavilleht,
+            );
+        }
+        else {
+            $clients = $em->getRepository('ClientBundle:Client')->findByEcole($ecole);
+            foreach ($clients as $client) {
+                $reglements = $em->getRepository('ComptaBundle:Reglement')->findBy(
+                    array('idclient' => $client->getId(), 'datemois' => $datemois->format('m/Y') )
+                );
+                foreach($reglements as $reglement) {
+                    $value = $reglement->getMontant();
+                    $caville += $value;
+                    $cavilleht += $value * 0.8;
                 }
             }
             $tabcaville[]=array(

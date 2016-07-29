@@ -19,10 +19,13 @@
 	height: 30%;
 	padding-top: 1px;
 	padding-bottom: 1px;
-
+	
 }
 .navbar-collapse {
 	font-size: 16px;
+}
+.bar {
+	margin-bottom: 60px;
 }
 /* -------->     LOGIN PAGE      <--------- */
 
@@ -45,10 +48,11 @@
 	font-family: 'AlwynRegular';
 }
 .fond {
-	background-color: rgba(53,56,58,0.9);
+	background-color: rgba(53,56,58,0.8);
 	margin-top: -20px;
 	position: relative;
 	height:100vh;
+
 }
 .pageca {
 	margin-top:40px;
@@ -190,6 +194,9 @@ h2{
 
 /* ------->    NEW DOCUMENT  PAGE      <--------- */
 
+.doc {
+	margin-top: 100px;
+}
 .entete {
 	text-align: right;
 }
@@ -230,11 +237,18 @@ h2{
 }
 #myTable {
 	width: 100%;
-
 }
-
+.top {
+	padding-top: 50px;
+}
 /* -------->     FICHE CLIENT      <--------- */
 
+.as {
+	height: 50px;
+	background-color: rgba(53,56,58,0.8);
+	margin-top: -20px;
+	margin-bottom: 20px;
+}
 .row1 {
 	height:200px;
 	
@@ -251,7 +265,7 @@ h2{
 	height:50px;
 }
 .col1 {
-	background-color: rgba(213,211,213,0.8);
+	background-color: #58c4b8;
 	border-radius: 5px;
 	/*border: solid #1fa597 2px;*/
 	padding: px;
@@ -262,14 +276,14 @@ h2{
 	line-height: 25px;
 }
 .devis {
-	background-color: rgba(213,211,213,0.8);
+	background-color: #58c4b8;
 	border-radius: 5px;
 	/*border: solid #1fa597 2px;*/
 	/*padding: 10px;*/
 	height:120px;
 }
 .facture {
-	background-color: rgba(213,211,213,0.8);
+	background-color: #58c4b8;
 	border-radius: 5px;
 	/*border: solid #1fa597 2px;*/
 	/*padding: 10px;*/
@@ -277,7 +291,7 @@ h2{
 	margin-top: 5px;
 }
 .avoir {
-	background-color: rgba(213,211,213,0.8);
+	background-color: #58c4b8;
 	border-radius: 5px;
 	/*border: solid #1fa597 2px;*/
 	/*padding: 10px;*/
@@ -285,7 +299,7 @@ h2{
 	margin-top: 5px;
 }
 .echeancier {
-	background-color: rgba(213,211,213,0.8);
+	background-color: #58c4b8;
 	border-radius: 5px;
 	/*border: solid #1fa597 2px;*/
 	height:120px;
@@ -376,4 +390,14 @@ h2{
 	height: 80%;
 	background-color: white;
 	border-radius: 5px;
+}
+
+/* -------->     LISTE CLIENTS      <--------- */
+
+.fond1 {
+	background-color: rgba(53,56,58,0.8);
+	margin-top: -20px;
+	position: relative;
+	margin-bottom: 20px;
+	padding-bottom: 40px;
 }

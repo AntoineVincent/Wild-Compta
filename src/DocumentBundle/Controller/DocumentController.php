@@ -135,6 +135,7 @@ class DocumentController extends Controller
         $valuettc = $request->request->get('valuettc');
         $valuetotale = $request->request->get('valuetotale');
 
+
         $hidden = $request->request->get('hidden');
 
         $client = $em->getRepository('ClientBundle:Client')->findOneById($idclient);
