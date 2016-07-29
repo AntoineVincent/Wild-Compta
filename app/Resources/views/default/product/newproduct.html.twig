@@ -2,9 +2,9 @@
 
 {% block body %}
 
-<div class="col-md-12">
+<div class="col-md-12 fond">
 	<div class="col-md-3"></div>
-	<div class="col-md-6 prod-form">
+	<div class="col-md-6 prod-form doc">
 		<div class="col-md-12">
 			{% for label, flashes in app.session.flashbag.all %}
 	    		{% for flash in flashes %}
@@ -45,7 +45,7 @@
 		<div class="col-md-12">
 			<div class="col-md-4"></div>
 			<div class="col-md-4">
-				<input type="submit" class="btn btn-primary" id="_submit" name="submit" value="Envoyer" />
+				<input type="submit" class="btn btn-warning" id="_submit" name="submit" value="Envoyer" />
 			</div>
 			<div class="col-md-4"></div>
 		</div>

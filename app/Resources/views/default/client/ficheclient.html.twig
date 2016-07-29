@@ -1,7 +1,8 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-<div class="col-md-12">
+<div class="col-md-12 as"></div>
+<div class="col-md-12 fond">
 	<div class="col-md-1"></div>
 	<div class="col-md-5 ">
 		<div class="col-md-12 col1">
@@ -100,8 +101,8 @@
 								{% endif %}
 							</div>
 							<div class="col-md-3">
-								<button type="button" class="btn btn-xs btn-info">Action</button>
-								<button type="button" class="btn btn-xs btn-info 	dropdown-toggle" data-toggle="dropdown">
+								<button type="button" class="btn btn-xs btn-warning">Action</button>
+								<button type="button" class="btn btn-xs btn-warning 	dropdown-toggle" data-toggle="dropdown">
 									<span class="caret"></span>
 									<span class="sr-only">Toggle Dropdown</span>
 								</button>
@@ -133,8 +134,8 @@
 								{% endif %}
 							</div>
 							<div class="col-md-3">
-								<button type="button" class="btn btn-xs btn-info">Action</button>
-								<button type="button" class="btn btn-xs btn-info 	dropdown-toggle" data-toggle="dropdown">
+								<button type="button" class="btn btn-xs btn-warning">Action</button>
+								<button type="button" class="btn btn-xs btn-warning 	dropdown-toggle" data-toggle="dropdown">
 									<span class="caret"></span>
 									<span class="sr-only">Toggle Dropdown</span>
 								</button>
@@ -163,8 +164,8 @@
 						{% if avoir.etat != 'delete' %}
 							<div class="col-md-9">AV  {{ avoir.reference }} | {{ avoir.datecreation }}</div>
 							<div class="col-md-3">
-								<button type="button" class="btn btn-xs btn-info">Action</button>
-								<button type="button" class="btn btn-xs btn-info 	dropdown-toggle" data-toggle="dropdown">
+								<button type="button" class="btn btn-xs btn-warning">Action</button>
+								<button type="button" class="btn btn-xs btn-warning 	dropdown-toggle" data-toggle="dropdown">
 									<span class="caret"></span>
 									<span class="sr-only">Toggle Dropdown</span>
 								</button>
@@ -181,11 +182,11 @@
 		<div class="col-md-12 bout">
 			<div class="col-md-8 ">
 
-				<a href="{{ path('new_document', { 'idclient': client.id, 'type': 'devis' }) }}"><input type="submit" class="btn-lg btn-info" value="créer devis"/>
+				<a href="{{ path('new_document', { 'idclient': client.id, 'type': 'devis' }) }}"><input type="submit" class="btn-lg btn-warning" value="créer devis"/>
 				</a>
 			</div>
 			<div class="col-md-4 ">
-				<a href="{{ path('new_document', { 'idclient': client.id, 'type': 'facture' }) }}"><input type="submit" class="btn-lg btn-info" value="créer facture"/>
+				<a href="{{ path('new_document', { 'idclient': client.id, 'type': 'facture' }) }}"><input type="submit" class="btn-lg btn-warning" value="créer facture"/>
 				</a>
 
 			</div>

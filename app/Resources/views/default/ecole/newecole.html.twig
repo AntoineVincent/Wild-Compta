@@ -2,10 +2,10 @@
 
 {% block body %}
 
-<div class="row">
-	<div class="col-md-12 ">
+
+	<div class="col-md-12 fond">
 		
-			<div class="col-md-offset-4 col-md-5 prod-form">
+			<div class="col-md-offset-4 col-md-5 prod-form doc">
 				{% for label, flashes in app.session.flashbag.all %}
 		    		{% for flash in flashes %}
 		        		<div class="alert alert-{{ label }}">
@@ -41,7 +41,7 @@
 							</div> 
 						
 								<div class="col-md-offset-6">
-									<input type="submit" class="btn btn-primary" id="_submit" value="Enregistrer"/>
+									<input type="submit" class="btn btn-warning" id="_submit" value="Enregistrer"/>
 								</div>	
 
 				     </form>
