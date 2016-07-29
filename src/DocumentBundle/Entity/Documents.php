@@ -91,7 +91,13 @@ class Documents
      */
     private $tva;
 
-    
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="datemois", type="string", length=255, nullable=true)
+     */
+    private $datemois;
+
     /**
      * @var int
      *
@@ -423,5 +429,28 @@ class Documents
     public function getValuettc()
     {
         return $this->valuettc;
+    }
+
+    /**
+     * Set datemois
+     *
+     * @param string $datemois
+     * @return Reglement
+     */
+    public function setDatemois($datemois)
+    {
+        $this->datemois = $datemois;
+
+        return $this;
+    }
+
+    /**
+     * Get datemois
+     *
+     * @return string 
+     */
+    public function getDatemois()
+    {
+        return $this->datemois;
     }
 }
