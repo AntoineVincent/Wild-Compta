@@ -39,9 +39,12 @@ class DocumentController extends Controller
         $idproduct = $request->request->get('produit');
         $date = $request->request->get('date');
         $tva = $request->request->get('tva');
-        $quantite = $request->request->get('quantite');
         $valuetotale = $request->request->get('valuetotale');
-
+        
+        if($typeclient=='kids'.'autres'){
+         $quantite = $request->request->get('quantite');
+        }
+        
 
         // ALGORYTHME CALCUL REFERENCE DOCUMENT
         $reference = "";
