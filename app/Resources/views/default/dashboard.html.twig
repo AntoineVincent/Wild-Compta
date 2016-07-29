@@ -10,7 +10,7 @@
 		<div class="col-md-4 annuel">
 			<div class="col-md-12 titre">
 				<h4>CA Annuel <select name="caecole" id="caecole">
-					<option>Total</option>
+					<option selected>Total</option>
 						{% for ecole in ecoles %}
  		        			<option id="selected" name="selected" value="{{ ecole.ville }}">{{ ecole.ville }}</option>
  		         		{% endfor %}
@@ -18,7 +18,10 @@
 				</h4>
 			</div>
 			<div class="col-md-12 blanc">
-				<p>{{ ca|number_format(2, ',', ' ') }} € TTC<br/>{{ caht|number_format(2, ',', ' ') }} € HT</p>
+				<p id="chiffre">
+					{{ ca|number_format(2, ',', ' ') }} € TTC<br/>
+					{{ caht|number_format(2, ',', ' ') }} € HT
+				</p>
 			</div>
 		</div>
 		<script>
@@ -31,8 +34,12 @@
 	              dataType: "json",
 	              data: {ecole : ecole},
 	              success : function(response) {
-	              		console.log(response);
-	              },
+	              		var result = response[0];
+
+	              		$( "#chiffre" ).empty();
+	              		$( "#chiffre" ).append(result.cattc+"€ TTC <br>"+result.caht+"€ HT");
+
+	              		},
 	              error : function(response) {
 	              		console.log('fail');
 	              }
@@ -42,17 +49,44 @@
 		<div class="col-md-4 mensuel">
 			<div class="col-md-12 titre">
 				<h4>CA Mensuel
-					<select name="ecole" id="ecole">
+					<select name="camensuecole" id="camensuecole">
 						<option selected>Total</option>
 							{% for ecole in ecoles %}
-		        				<option value="{{ ecole.ville }}">{{ ecole.ville }}</option>
+		        				<option id="selected" name="selected" value="{{ ecole.ville }}">{{ ecole.ville }}</option>
 		         			{% endfor %}
 					</select>
 				</h4>
 			</div>
 			<div class="col-md-12 blanc">
-				<p>{{ camois|number_format(2, ',', ' ') }} € TTC<br/>{{ camoisht|number_format(2, ',', ' ') }} € HT</p>
+				<p id="chiffremensu">
+					{{ camois|number_format(2, ',', ' ') }} € TTC<br/>
+				   	{{ camoisht|number_format(2, ',', ' ') }} € HT
+				</p>
 			</div>
+
+			<script>
+		        $('#camensuecole').change(function() {
+		            ecole = $(this).val();
+
+		            $.ajax({
+		              type: "POST",
+		              url: "{{ path('caMensubyecole') }}",
+		              dataType: "json",
+		              data: {ecole : ecole},
+		              success : function(response) {
+		              		var result = response[0];
+
+		              		$( "#chiffremensu" ).empty();
+		              		$( "#chiffremensu" ).append(result.cattc+"€ TTC <br>"+result.caht+"€ HT");
+
+		              		},
+		              error : function(response) {
+		              		console.log('fail');
+		              }
+		            });
+		        });
+		    </script>
+
 			<div class="col-md-2"></div>
 		</div>
 	</div>

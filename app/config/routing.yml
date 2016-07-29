@@ -23,6 +23,10 @@ cabyecole:
     path:    /dashboard/cabyecole
     defaults: { _controller: AppBundle:Dashboard:cabyecole }
 
+caMensubyecole:
+    path:    /dashboard/camensubyecole
+    defaults: { _controller: AppBundle:Dashboard:camensubyecole }
+
 # ---------------------> PRODUCT <---------------------
 new_product:
     path:    /new/product
