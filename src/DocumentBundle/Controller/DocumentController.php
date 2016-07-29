@@ -43,6 +43,7 @@ class DocumentController extends Controller
         
         if($typeclient=='kids'.'autres'){
          $quantite = $request->request->get('quantite');
+         
         }
         
 
@@ -102,8 +103,8 @@ class DocumentController extends Controller
             $document->setValue($value);
             $document->setTva($tva);
             $document->setReference($reference);
-            $document->setQuantite($quantite);
-            $document->setValuetva($valuetva);
+            // $document->setQuantite($quantite);
+            // $document->setValuetva($valuetva);
 
             $em->persist($document);
             $em->flush();
@@ -144,7 +145,6 @@ class DocumentController extends Controller
         
         $produits = $em->getRepository('DocumentBundle:Product')->findOneById($document->getIdproduct());
         $typeclient = $client->getType();
-
         $tvaa = $document->getTva();
             // ALGORYTHME POUR QUANTITÉ
             if ($quantite != 1) {
