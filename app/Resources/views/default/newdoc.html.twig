@@ -2,8 +2,8 @@
 
 {% block body %}
 
-<div class="row">
-	<div class="col-md-12">
+<div class="row fond">
+	<div class="col-md-12 doc">
 		<div class="col-md-3"></div> 
 		<div class="col-md-6 prod-form">
 			<div class="col-md-12">
@@ -103,11 +103,11 @@
 					</div> 
 				</div>
 				<div class="col-md-12">
-					<div class="col-md-7">
-						<input type="submit" class="btn btn-primary" value="Enregistrer"/>
+					<div class="col-md-10">
+						<input type="submit" class="btn btn-warning" value="Enregistrer"/>
 					</div>
-					<div class="col-md-5">
-						<a href="{{ path('fiche_client', { 'idclient': client.id }) }}"><input type="button" class="btn btn-primary" value="Retour"/></a>	
+					<div class="col-md-2">
+						<a href="{{ path('fiche_client', { 'idclient': client.id }) }}"><input type="button" class="btn btn-warning" value="Retour"/></a>	
 					</div>
 				</div>
 				{{ form_end(form) }}

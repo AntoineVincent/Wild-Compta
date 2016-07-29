@@ -2,52 +2,42 @@
 
 {% block body %}
 
-<div class="row">
-	<div class="col-md-12 ">
-		
-			<div class="col-md-offset-4 col-md-5 prod-form">
-				{% for label, flashes in app.session.flashbag.all %}
-		    		{% for flash in flashes %}
-		        		<div class="alert alert-{{ label }}">
-		            		{{ flash }}
-		        		</div>
-		    		{% endfor %}
-				{% endfor %}
-	    		<form method="post" action="{{ path("new_organisme")}}">
-					 <h2> Créer Organisme</h2>  
-						<div class="col-md-12">
-							<div class="col-md-4"> 
-								<p><label for="nom">Nom de l'organisme </label>
-							
-							</div>
-								
-								<div class="col-md-4">
-									<input type="text" id="nom" name="nom" /></p></br>
-								</div>
+
+	<div class="col-md-12 fond">
+		<div class="col-md-3"></div>
+		<div class="col-md-6 prod-form doc">
+			{% for label, flashes in app.session.flashbag.all %}
+	    		{% for flash in flashes %}
+	        		<div class="alert alert-{{ label }}">
+	            		{{ flash }}
+	        		</div>
+	    		{% endfor %}
+			{% endfor %}
+    		<form method="post" action="{{ path("new_organisme")}}">
+				 <h2> Créer Organisme</h2>  
+					<div class="col-md-12">
+						<div class="col-md-4"> 
+							<p><label for="nom">Nom de l'organisme </label></p>
 						</div>
-
-							
-
-
-							<div class="col-md-12">
-								<div class="col-md-4"> 
-									<p><label for="adresse">Adresse </label>
-							
-							</div>
-								
-								<div class="col-md-4">
-									<input type="text" id="adresse" name="adresse" /></p></br>
-								</div>
-							</div> 
-						
-								<div class="col-md-offset-6">
-									<input type="submit" class="btn btn-primary" id="_submit" value="Enregistrer"/>
-								</div>	
-
-				     </form>
-				</div>
-			</div>
+						<div class="col-md-4">
+							<input type="text" id="nom" name="nom" />
+						</div>
+					</div>
+					<div class="col-md-12">
+						<div class="col-md-4"> 
+							<p><label for="adresse">Adresse </label></p>
+						</div>
+						<div class="col-md-4">
+							<input type="text" id="adresse" name="adresse" />
+						</div>
+					</div> 
+					<div class="col-md-offset-6">
+						<input type="submit" class="btn btn-warning" id="_submit" value="Enregistrer"/>
+					</div>
+			</form>
 		</div>
+		<div class="col-md-3"></div>
+	</div>
 
 
 {% endblock %}
