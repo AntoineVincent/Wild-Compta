@@ -111,7 +111,6 @@ class DocumentController extends Controller
             $document->setQuantite($quantite);
             $document->setDatemois($datemois);
 
-
             $em->persist($document);
             $em->flush();
         }
