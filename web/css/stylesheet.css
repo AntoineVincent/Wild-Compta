@@ -24,8 +24,18 @@
 .navbar-collapse {
 	font-size: 16px;
 }
+.navbar-right {
+	padding-right: 20px;
+}
+
 .bar {
 	margin-bottom: 60px;
+
+
+}
+.barre {
+	border-bottom: solid #fba858 3px;
+	margin-bottom: -1px;
 }
 /* -------->     LOGIN PAGE      <--------- */
 
@@ -117,7 +127,7 @@
 .prod-form {
 	background-color: rgba(241,241,241,1);
 	border-radius: 5px;
-	border: solid #1fa597 2px;
+	border: solid #1fa597 3px;
 	padding: 10px;
 }
 
@@ -400,4 +410,7 @@ h2{
 	position: relative;
 	margin-bottom: 20px;
 	padding-bottom: 40px;
+}
+.display {
+	border: solid #1fa597 3px;
 }
