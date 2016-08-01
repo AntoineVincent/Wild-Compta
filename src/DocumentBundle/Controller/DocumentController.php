@@ -26,23 +26,26 @@ class DocumentController extends Controller
         $typeclient = $client->getType();
         $products = $em->getRepository('DocumentBundle:Product')->findAll();
 
-        $alldoc = $em->getRepository('DocumentBundle:Documents')->findAll();
-        $counter = count($alldoc);
+        $dateforcount = new \DateTime();
+        $alldoc = $em->getRepository('DocumentBundle:Documents')->findByDatemois($dateforcount->format('m/Y'));
+        $counter = count($alldoc)+1;
 
         $document = new Documents();
         $form = $this->createForm('DocumentBundle\Form\DocumentType', $document);
         $form->handleRequest($request);
-
-
 
         // RECUPERATION CHAMPS FORMULAIRE MAIN
         $idproduct = $request->request->get('produit');
         $date = $request->request->get('date');
         $tva = $request->request->get('tva');
         $valuetotale = $request->request->get('valuetotale');
+        $datemois = $request->request->get('datemois');
         
         if($typeclient=='kids'.'autres'){
-         $quantite = $request->request->get('quantite');
+            $quantite = $request->request->get('quantite');
+        }
+        else {
+            $quantite = 1;
         }
         
 
@@ -103,6 +106,7 @@ class DocumentController extends Controller
             $document->setTva($tva);
             $document->setReference($reference);
             $document->setQuantite($quantite);
+            $document->setDatemois($datemois);
             $document->setValuetva($valuetva);
 
             $em->persist($document);
