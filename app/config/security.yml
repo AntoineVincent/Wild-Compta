@@ -30,3 +30,31 @@ security:
         - { path: ^/register, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/admin/, role: ROLE_ADMIN }
+        - { path: /dashboard, role: ROLE_USER }
+        - { path: /new/product, role: ROLE_USER }
+        - { path: /liste/product, role: ROLE_USER }
+        - { path: /edit/product, role: ROLE_USER }
+        - { path: /supr/product, role: ROLE_USER }
+        - { path: /new/client, role: ROLE_USER }
+        - { path: /fiche/client, role: ROLE_USER }
+        - { path: /liste/client, role: ROLE_USER }
+        - { path: /edit/client, role: ROLE_USER }
+        - { path: /supr/client, role: ROLE_USER }
+        - { path: /new/document, role: ROLE_USER }
+        - { path: /new/pdf, role: ROLE_USER }
+        - { path: /new/devis, role: ROLE_USER }
+        - { path: /new/facture, role: ROLE_USER }
+        - { path: /new/avoir, role: ROLE_USER }
+        - { path: /supr/document, role: ROLE_USER }
+        - { path: /refus/document, role: ROLE_USER }
+        - { path: /envoyer/document, role: ROLE_USER }
+        - { path: /new/organisme, role: ROLE_USER }
+        - { path: /list/organisme, role: ROLE_USER }
+        - { path: /edit/organisme, role: ROLE_USER }
+        - { path: /supr/organisme, role: ROLE_USER }
+        - { path: /new/ecole, role: ROLE_USER }
+        - { path: /list/ecole, role: ROLE_USER }
+        - { path: /edit/ecole, role: ROLE_USER }
+        - { path: /supr/ecole, role: ROLE_USER }
+        - { path: /reglement, role: ROLE_USER }
+        - { path: /new/user, role: ROLE_USER }
