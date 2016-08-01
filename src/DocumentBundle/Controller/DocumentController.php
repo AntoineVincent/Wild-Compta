@@ -107,7 +107,7 @@ class DocumentController extends Controller
             $document->setReference($reference);
             $document->setQuantite($quantite);
             $document->setDatemois($datemois);
-            $document->setValuetva($valuetva);
+            $document->setTva($tva);
 
             $em->persist($document);
             $em->flush();
