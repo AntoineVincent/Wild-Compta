@@ -281,7 +281,6 @@ h2{
 	background-color: #58c4b8;
 	border-radius: 5px;
 	/*border: solid #1fa597 2px;*/
-	padding: px;
 	height:380px;
 	line-height: 30px;
 }
@@ -293,7 +292,7 @@ h2{
 	border-radius: 5px;
 	/*border: solid #1fa597 2px;*/
 	/*padding: 10px;*/
-	height:120px;
+	height:150px;
 	
 }
 .facture {
@@ -301,7 +300,7 @@ h2{
 	border-radius: 5px;
 	/*border: solid #1fa597 2px;*/
 	/*padding: 10px;*/
-	height:130px;
+	height:150px;
 	margin-top: 5px;
 }
 .avoir {
@@ -319,47 +318,8 @@ h2{
 	height:120px;
 	margin-top: 5px;
 }
-.onglet {
-	background-color: rgba(241,241,241,0.8);
-	border-radius: 5px;
-	border: solid #1fa597 2px;
-	padding: 0px;
-	height:200px;
-}
-.but {
-	cursor: pointer;
-}
-.pageother {
-	height: 150px;
-	overflow: auto;
-	border-radius: 5px;
-}
-.case1 {
-	background-color: rgb(246, 246, 246);
-}
-.case2 {
-	display:none;
-	background-color: rgb(220, 220, 220);
-}
-.case3 {
-	display:none;
-	background-color: rgb(200, 200, 200);
-}
-.but1 {
-	background-color: rgb(246, 246, 246);
-	color: #1fa597;
-	font-size: 15px;
-}
-.but2 {
-	background-color: rgb(220, 220, 220);
-	color: #1fa597;
-	font-size: 15px;
-}
-.but3 {
-	background-color: rgb(200, 200, 200);
-	color: #1fa597;
-	font-size: 15px;
-}
+
+
 .reglement {
 	text-align: center;
 
@@ -373,17 +333,9 @@ h2{
 	background-color: white;
 	border-radius: 5px;
 	padding-top: 5px;
-	overflow: scroll;
+	/*overflow: scroll;*/
 }
-.milieu > .open  {
-	position: fixed;
-	z-index: 9999;
-	
-	right:-48px;
-}
-.bas {
-	height: 25%;
-}
+
 
 .bout {
 	margin-top: 30px;

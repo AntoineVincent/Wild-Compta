@@ -102,11 +102,11 @@
 							</div>
 							<div class="col-md-3 dropdown">
 								<button type="button" class="btn btn-xs btn-warning">Action</button>
-								<button type="button" class="btn btn-xs btn-warning 	dropdown-toggle" data-toggle="dropdown">
+								<button type="button" class="btn btn-xs btn-warning dropdown-toggle" data-toggle="dropdown">
 									<span class="caret"></span>
 									<span class="sr-only">Toggle Dropdown</span>
 								</button>
-								<ul class="dropdown-menu dropdown-menu-left fred" role="menu">
+								<ul class="dropdown-menu dropdown-menu-left " role="menu">
 									<li><a href="{{ path('new_devis', { 'idclient': client.id, 'iddocument': devis.id }) }}">Voir le Devis</a></li>
 									<li><a href="{{ path('new_facture', { 'idclient': client.id, 'iddocument': devis.id }) }}">Générer la facture</a></li>
 									<li><a href="{{ path('refus_doc', { 'idclient': client.id, 'iddocument': devis.id  }) }}" onclick="return(prompt('merci de justifier le refus'))";>Refusé</a></li>
@@ -139,7 +139,7 @@
 									<span class="caret"></span>
 									<span class="sr-only">Toggle Dropdown</span>
 								</button>
-								<ul class="dropdown-menu fred" role="menu">
+								<ul class="dropdown-menu" role="menu">
 									<li><a href="{{ path('new_facture', { 'idclient': client.id, 'iddocument': facture.id }) }}">Voir la Facture</a></li>
 									<li><a href="{{ path('new_avoir', { 'idclient': client.id, 'iddocument':facture.id }) }}">Emettre un avoir</a></li>
 									<li><a href="{{ path('env_doc', { 'idclient': client.id, 'iddocument': facture.id  }) }}">Classée comme envoyée</a></li>
