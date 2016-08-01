@@ -78,16 +78,16 @@
 			<td align="center">{{ document.tva }}</td> 
 			<td align="center">{{ document.value }}</td> 
 			<td align="center">{{ document.quantite }}</td>
-			<td align="center"> </td>
+			<td align="center">{{ valuetotaleHT }} </td>
 		</tr>
 	</table>
 	<table class="total"> 
 		<tr>
 			<td class="noborder" style="width:25%"><strong>Conditions de reglements :</strong></td> 
 			<td class="noborder" style="width:30%"></td> 
-			<td style="width:15%">Total HT :</td>
-			<td style="width:15%">Total TVA :</td> 
-			<td style="width:15%">Total TTC :</td>
+			<td style="width:15%">Total HT :{{ valuetotaleHT }}</td>
+			<td style="width:15%">Total TVA :{{ valuetva }}</td> 
+			<td style="width:15%">Total TTC :{{ valueTTC }}</td>
 		</tr> 
 	</table>
 </page>
