@@ -138,6 +138,7 @@ class DocumentController extends Controller
         $valeur = $request->request->get('valeur');
         $tva = $request->request->get('tva');        
         $quantite = $request->request->get('quantite');
+        
         $valuettc = $request->request->get('valuettc');
         $valuetotale = $request->request->get('valuetotale');
 
@@ -438,9 +439,14 @@ class DocumentController extends Controller
         $document = $em->getRepository('DocumentBundle:Documents')->findOneById($iddocument);
         $produits = $em->getRepository('DocumentBundle:Product')->findOneById($document->getIdproduct());
 
+        $valuetotaleHT = $document->getValue() * $document->getQuantite();
+        $valuetva = $valuetotaleHT * 0.2;
+        $valueTTC = $request->request->get('valueTTC');
+
+
 
         //on stocke la vue à convertir en PDF, en n'oubliant pas les paramètres twig si la vue comporte des données dynamiques
-        $html = $this->renderView('default/newpdf.html.twig', array('client' => $client, 'document'=> $document, 'produits'=> $produits));
+        $html = $this->renderView('default/newpdf.html.twig', array('client' => $client, 'document'=> $document, 'produits'=> $produits, 'valuetotaleHT' => $valuetotaleHT, 'valuetva' => $valuetva, 'valueTTC' => $valueTTC));
 
         
          

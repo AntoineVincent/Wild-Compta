@@ -95,18 +95,18 @@
 				{% else %}
 					{% for devis in tabde %}
 						{% if devis.etat != 'delete' %}
-							<div class="col-md-9">DE  {{ devis.reference }} | {{ devis.datecreation }}
+							<div class="col-md-9 ">DE  {{ devis.reference }} | {{ devis.datecreation }}
 								{% if devis.etat == 'refuse' %}
 									<img src="{{ asset('../web/img/tick.png') }}"  alt="tick" class="" />
 								{% endif %}
 							</div>
-							<div class="col-md-3">
+							<div class="col-md-3 dropdown">
 								<button type="button" class="btn btn-xs btn-warning">Action</button>
 								<button type="button" class="btn btn-xs btn-warning 	dropdown-toggle" data-toggle="dropdown">
 									<span class="caret"></span>
 									<span class="sr-only">Toggle Dropdown</span>
 								</button>
-								<ul class="dropdown-menu" role="menu">
+								<ul class="dropdown-menu dropdown-menu-left fred" role="menu">
 									<li><a href="{{ path('new_devis', { 'idclient': client.id, 'iddocument': devis.id }) }}">Voir le Devis</a></li>
 									<li><a href="{{ path('new_facture', { 'idclient': client.id, 'iddocument': devis.id }) }}">Générer la facture</a></li>
 									<li><a href="{{ path('refus_doc', { 'idclient': client.id, 'iddocument': devis.id  }) }}" onclick="return(prompt('merci de justifier le refus'))";>Refusé</a></li>
@@ -133,13 +133,13 @@
 									<img src="{{ asset('../web/img/tack.jpg') }}"  alt="tack" class="" />
 								{% endif %}
 							</div>
-							<div class="col-md-3">
+							<div class="col-md-3 test">
 								<button type="button" class="btn btn-xs btn-warning">Action</button>
 								<button type="button" class="btn btn-xs btn-warning 	dropdown-toggle" data-toggle="dropdown">
 									<span class="caret"></span>
 									<span class="sr-only">Toggle Dropdown</span>
 								</button>
-								<ul class="dropdown-menu" role="menu">
+								<ul class="dropdown-menu fred" role="menu">
 									<li><a href="{{ path('new_facture', { 'idclient': client.id, 'iddocument': facture.id }) }}">Voir la Facture</a></li>
 									<li><a href="{{ path('new_avoir', { 'idclient': client.id, 'iddocument':facture.id }) }}">Emettre un avoir</a></li>
 									<li><a href="{{ path('env_doc', { 'idclient': client.id, 'iddocument': facture.id  }) }}">Classée comme envoyée</a></li>
@@ -163,13 +163,13 @@
 					{% for avoir in tabav %}
 						{% if avoir.etat != 'delete' %}
 							<div class="col-md-9">AV  {{ avoir.reference }} | {{ avoir.datecreation }}</div>
-							<div class="col-md-3">
+							<div class="col-md-3 test">
 								<button type="button" class="btn btn-xs btn-warning">Action</button>
 								<button type="button" class="btn btn-xs btn-warning 	dropdown-toggle" data-toggle="dropdown">
 									<span class="caret"></span>
 									<span class="sr-only">Toggle Dropdown</span>
 								</button>
-								<ul class="dropdown-menu" role="menu">
+								<ul class="dropdown-menu fred" role="menu">
 									<li><a href="{{ path('new_avoir', { 'idclient': client.id, 'iddocument': avoir.id }) }}">Voir l'Avoir</a></li>
 									<li><a href="{{ path('supr_doc', { 'idclient': client.id, 'iddocument': avoir.id  }) }}" onclick="return(confirm('Vous allez supprimer cet avoir !'))";>Supprimer</a></li>
 								</ul><br/>
