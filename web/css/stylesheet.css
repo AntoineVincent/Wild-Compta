@@ -372,7 +372,7 @@ h2{
 	background-color: white;
 	border-radius: 5px;
 	padding-top: 5px;
-	
+	overflow:scroll;
 }
 .bas {
 	height: 25%;
