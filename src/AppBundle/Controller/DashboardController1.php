@@ -15,7 +15,6 @@ use Symfony\Component\Serializer\Encoder\JsonEncoder;
 use Symfony\Component\Serializer\Normalizer\GetSetMethodNormalizer;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use ClientBundle\Entity\Ecole;
-use DocumentBundle\Entity\Documents;
 
 
 class DashboardController extends Controller
@@ -36,9 +35,9 @@ class DashboardController extends Controller
         $caht = "";
         
         // CALCUL POUR CHAQUE REGLEMENT DU CA ET DU CA HT A L'ANNEE
-        $factures = $em->getRepository('DocumentBundle:Documents')->findByType("facture");
-        foreach ($factures as $facture) {
-            $value = $facture->getValue();
+        $reglements = $em->getRepository('ComptaBundle:Reglement')->findAll();
+        foreach ($reglements as $reglement) {
+            $value = $reglement->getMontant();
             $ca += $value;
             $caht += $value * 0.8;   
         }
@@ -48,10 +47,10 @@ class DashboardController extends Controller
         $camoisht = "";
         // CALCUL POUR CHAQUE REGLEMENT DU CA ET DU CA HT AU MOIS EN COURS
         $datemois = new \DateTime();
-        $facturesmois = $em->getRepository('DocumentBundle:Documents')->findByType("facture");
+        $reglementsmois = $em->getRepository('ComptaBundle:Reglement')->findByDatemois($datemois->format('m/Y'));
         
-        foreach ($facturesmois as $facturemois) {
-            $valuemois = $facturemois->getValue();
+        foreach ($reglementsmois as $reglementmois) {
+            $valuemois = $reglementmois->getMontant();
             $camois += $valuemois;
             $camoisht += $valuemois * 0.8;  
         }
