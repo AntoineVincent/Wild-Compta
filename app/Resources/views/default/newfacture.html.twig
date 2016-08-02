@@ -73,15 +73,17 @@
 							<tr height=500px valign="baseline">
 								<td align="left"><textarea name="designation" style="width: 500px; height: 500px">{{ produits.type }} {{ produits.nom }} </textarea></td> 
 								<td align="right"><textarea  name="tva" style="width: 100px; height: 500px;">{{ document.tva }}</textarea></td> 
-								<td align="right"><textarea name="p.u" style="width: 100px; height: 500px">{{ document.value }}</textarea></td> 
-								<td align="right"><textarea name="qte" style="width: 100px; height: 500px"></textarea></td>
-								<td align="right"></td>
+								<td align="right"><textarea name="valeur" value="{{ document.value }}" style="width: 100px; height: 500px"> {{ document.value }}</textarea></td> 
+								<td align="right"><textarea name="qte" style="width: 100px; height: 500px"> {{ document.quantite }}</textarea></td>
+								<td align="right"><textarea name="totaleht" style="width: 100px; height: 500px"> {{ valuetotaleHT }}</textarea></td>
 							</tr> 
 						</table>
 						<div class="col-md-12 ligne">
-							<div class="col-md-5">Conditions de reglements : <textarea name="conditions"></textarea></div>
-							<div class="col-md-2"></div>
-							<div class="col-md-5">Total HT :<br />Total TVA :<br />Total TTC :</div>
+							<div class="col-md-9">Conditions de reglements : <textarea name="conditions"></textarea></div>
+							<div class="col-md-2">Total HT : {{ valuetotaleHT }}<br/>
+												  Valeur TVA : {{ valuetva }}<br/>
+												  Total TTC : {{ valueTTC }} </div>
+							<div class="col-md-1"><br/></div>
 							
 						</div>
 					</div>

@@ -301,6 +301,8 @@ class DocumentController extends Controller
         $month = $request->request->get('month');
         $year = $request->request->get('year');
         $refdate = $year.'-'.$month;
+        $valuettc = $request->request->get('valuettc');
+        $valuetotale = $request->request->get('valuetotale');
 
 
         $document = $em->getRepository('DocumentBundle:Documents')->findOneById($iddocument);
@@ -312,6 +314,12 @@ class DocumentController extends Controller
         $document = $em->getRepository('DocumentBundle:Documents')->findOneById($iddocument);
         
         $produits = $em->getRepository('DocumentBundle:Product')->findOneById($document->getIdproduct());
+
+        $valuetotaleHT = $document->getValue() * $document->getQuantite();
+
+        $valuetva = $valuetotaleHT * 0.2;
+
+        $valueTTC = $valuetotaleHT + $valuetva;
 
         /*$alldoc = $em->getRepository('DocumentBundle:Documents')->findAll();
         $counter = count($alldoc);
@@ -352,6 +360,9 @@ class DocumentController extends Controller
             'produits' => $produits,
             /*'reference' => $newreference,*/
             'type' => $type,
+            'valuetotaleHT' => $valuetotaleHT,
+            'valuetva' => $valuetva,
+            'valueTTC' => $valueTTC,
             
         ));
 
@@ -372,6 +383,8 @@ class DocumentController extends Controller
         $month = $request->request->get('month');
         $year = $request->request->get('year');
         $refdate = $year.'-'.$month;
+        $valuettc = $request->request->get('valuettc');
+        $valuetotale = $request->request->get('valuetotale');
 
 
         $document = $em->getRepository('DocumentBundle:Documents')->findOneById($iddocument);
@@ -386,6 +399,12 @@ class DocumentController extends Controller
 
         $reference = $document->getReference();
         $type = $document->getType();
+
+        $valuetotaleHT = $document->getValue() * $document->getQuantite();
+
+        $valuetva = $valuetotaleHT * 0.2;
+
+        $valueTTC = $valuetotaleHT + $valuetva;
         /*$newreference = $document->getReference();
         
 
@@ -427,6 +446,9 @@ class DocumentController extends Controller
             'produits' => $produits,
             /*'reference' => $newreference,*/
             'type' => $type,
+            'valuetotaleHT' => $valuetotaleHT,
+            'valuetva' => $valuetva,
+            'valueTTC' => $valueTTC,
             
         ));
 
@@ -441,7 +463,8 @@ class DocumentController extends Controller
 
         $valuetotaleHT = $document->getValue() * $document->getQuantite();
         $valuetva = $valuetotaleHT * 0.2;
-        $valueTTC = $request->request->get('valueTTC');
+        $valuettc = $request->request->get('valuettc');
+        $valueTTC = $valuetotaleHT + $valuetva;
 
 
 
