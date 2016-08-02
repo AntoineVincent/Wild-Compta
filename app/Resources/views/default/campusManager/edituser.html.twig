@@ -1,0 +1,59 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+
+<div class="col-md-3"></div>
+<div class="col-md-6 edit-orga-form">
+    <div class="col-md-12">
+        {% for label, flashes in app.session.flashbag.all %}
+            {% for flash in flashes %}
+                <div class="alert alert-{{ label }}">
+                    {{ flash }}
+                </div>
+            {% endfor %}
+        {% endfor %}
+    </div>
+	<form action="{{ path('edit_user', { 'iduser': user.id }) }}" method="post">
+		<div class="col-md-12">
+			<h2 class="list-organisme-title"> Editer Un Campus Manager </h2>
+		</div>
+        <div class="col-md-12 edit-line">
+            <div class="col-md-4">
+                <label for="nom">nom :</label>
+            </div>
+            <div class="col-md-8">
+                <input type="string" id="nom" name="nom" value="{{ user.username }}"/>
+            </div>
+        </div>
+        <div class="col-md-12 edit-line">
+            <div class="col-md-4">
+                <label for="email">email :</label>
+            </div>
+            <div class="col-md-8">
+                <input type="string" id="email" name="email" value="{{ user.email }}"/>
+            </div>
+        </div>
+        <div class="col-md-12 edit-line">
+            <div class="col-md-4">
+                <label for="ecole">ecole:</label>
+            </div>
+            <div class="col-md-8">
+                <textarea class="ecole-input" type="text"  id="ecole" name="ecole" value="{{ user.ecole }}">{{ user.ecole }}</textarea>
+            </div>
+        </div>
+        <div class="col-md-12">
+            <input type="hidden" name="hidden" value="1"/>
+        </div>
+        <div class="col-md-12">
+        	<div class="col-md-5"></div>
+        	<div class="col-md-2">
+            	<input type="submit" class="btn btn-primary" id="_submit" name="submit" value="Envoyer" />
+            </div>
+            <div class="col-md-5"></div>
+        </div>
+    </form>
+</div>
+<div class="col-md-3"></div>
+
+{% endblock %}

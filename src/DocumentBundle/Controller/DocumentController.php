@@ -12,7 +12,7 @@ use ClientBundle\Entity\Client;
 use Html2Pdf_Html2Pdf;
 use DocumentBundle\Form\DocumentType;
 use DocumentBundle\Form\DevisType;
-
+use ComptaBundle\Entity\Echeance;
 
 
 class DocumentController extends Controller
@@ -113,6 +113,20 @@ class DocumentController extends Controller
 
             $em->persist($document);
             $em->flush();
+
+            $echeances = $document->getNbreecheance();
+            for ($i = 1; $i <= $echeances; $i++) {
+                $echeance = new Echeance();
+                $echeance->setNumeroecheance($i);
+                $echeance->setIddocument($document->getId());
+                $echeance->setIdclient($idclient);
+                $echeance->setEtat(true);
+                $echeance->setDate($document->getDatecreation());
+                $echeance->setMontant($value);
+
+                $em->persist($echeance);
+                $em->flush();
+            }
         }
 
         return $this->render('default/newdoc.html.twig', array(
@@ -305,7 +319,25 @@ class DocumentController extends Controller
         $valuetotale = $request->request->get('valuetotale');
 
 
-        $document = $em->getRepository('DocumentBundle:Documents')->findOneById($iddocument);
+        $devis = $em->getRepository('DocumentBundle:Documents')->findOneById($iddocument);
+
+        $fact = new Documents();
+        $fact->setType('facture');
+        $fact->setIdproduct($devis->getIdproduct());
+        $fact->setIdclient($devis->getIdclient());
+        $fact->setJustif($devis->getJustif());
+        $fact->setReference($devis->getReference());
+        $fact->setDatecreation($devis->getDatecreation());
+        $fact->setEtat($devis->getEtat());
+        $fact->setNbreecheance($devis->getNbreecheance());
+        $fact->setValue($devis->getValue());
+        $fact->setTva($devis->getTva());
+        $fact->setDatemois($devis->getDatemois());
+        $fact->setQuantite($devis->getQuantite());
+        $fact->setValuetotale($devis->getValuetotale());
+        $fact->setValuettc($devis->getValuettc());
+
+
         
         $hidden = $request->request->get('hidden');
 
@@ -321,18 +353,7 @@ class DocumentController extends Controller
 
         $valueTTC = $valuetotaleHT + $valuetva;
 
-        
-        $type = $document->getType();
-            if ($type == 'devis') {
-                $document->setType('facture');
-            }
-        
-        if ($hidden == 1){
-
-            
-            }
-
-            $em->persist($document);
+            $em->persist($fact);
             $em->flush();
         
 

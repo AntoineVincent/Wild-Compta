@@ -9,6 +9,7 @@ use ClientBundle\Entity\Client;
 use ClientBundle\Entity\Ecole;
 use ClientBundle\Entity\Organisme;
 use DocumentBundle\Entity\Documents;
+use ComptaBundle\Entity\Echeance;
 use ClientBundle\Form\ClientType;
 
 
@@ -79,6 +80,7 @@ class ClientController extends Controller
 
         $client = $em->getRepository('ClientBundle:Client')->findOneById($idclient);
         $documents = $em->getRepository('DocumentBundle:Documents')->findByIdclient($idclient);
+        $echeances = $em->getRepository('ComptaBundle:Echeance')->findByIdclient($idclient);
 
         $tabde = [];
         $tabfa = [];
@@ -102,6 +104,7 @@ class ClientController extends Controller
             'tabde' => $tabde,
             'tabfa' => $tabfa,
             'tabav' => $tabav,
+            'echeances' => $echeances,
         ));
     }
 

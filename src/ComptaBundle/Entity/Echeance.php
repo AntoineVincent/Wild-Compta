@@ -43,9 +43,9 @@ class Echeance
     private $numeroecheance;
 
     /**
-     * @var \DateTime
+     * @var \string
      *
-     * @ORM\Column(name="date", type="datetime", nullable=true)
+     * @ORM\Column(name="date", type="string", nullable=true)
      */
     private $date;
 
@@ -146,7 +146,7 @@ class Echeance
     /**
      * Set date
      *
-     * @param \DateTime $date
+     * @param \string $date
      * @return Echeance
      */
     public function setDate($date)
@@ -159,7 +159,7 @@ class Echeance
     /**
      * Get date
      *
-     * @return \DateTime 
+     * @return \string 
      */
     public function getDate()
     {

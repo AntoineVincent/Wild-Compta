@@ -79,7 +79,7 @@ class RegistrationController extends Controller
             return $response;
         }
 
-        return $this->render('default/newuser.html.twig', array(
+        return $this->render('default/campusManager/newuser.html.twig', array(
             'form' => $form->createView(),
             'ecoles' => $ecoles,
         ));

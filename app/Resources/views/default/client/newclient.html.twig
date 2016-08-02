@@ -107,12 +107,13 @@
 			</div>
 		</div>
 		<div class="col-md-12">
-			<div class="col-md-4"></div>
-			<div class="col-md-4">
-				<input type="submit" class="btn btn-warning" id="_submit" name="submit" value="Envoyer" />
-			</div>
-			<div class="col-md-4"></div>
-		</div>
+							<div class="col-md-10">
+								<a href="{{ path('liste_client')}}"><input type="button" class="btn btn-warning" value="Retour"/></a>
+								
+							</div>
+							<div class="col-md-2">
+								<input type="submit" class="btn btn-danger" value="Enregistrer"/>					</div>
+						</div>
 		{{ form_end(form) }}
 	</div>
 	<div class="col-md-3"></div>

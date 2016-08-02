@@ -72,9 +72,22 @@
 				Echeancier 
 			</div>
 			<div class="col-md-12 milieu">
-				echeancier1
-				<br/>
-				echeancier2
+				{% if echeances is empty %}
+					<p>Aucunes echeances en cours</p>
+				{% else %}
+						<div class="col-md-12">
+							<div class="col-md-4">N° Echeance </div>
+							<div class="col-md-4">Date </div>
+							<div class="col-md-4">Montant</div>
+						</div>
+					{% for echeance in echeances %}
+						<div class="col-md-12">
+							<div class="col-md-4">{{ echeance.numeroecheance }} </div>
+							<div class="col-md-4">{{ echeance.date }} </div>
+							<div class="col-md-4">{{ echeance.montant }}</div>
+						</div>
+					{% endfor %}	
+				{% endif %}
 			</div>
 		</div>
 	</div>

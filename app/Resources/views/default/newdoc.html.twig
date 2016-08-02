@@ -106,11 +106,11 @@
 				</div>
 				<div class="col-md-12">
 					<div class="col-md-10">
-						<input type="submit" class="btn btn-warning" value="Enregistrer"/>
+						<a href="{{ path('fiche_client', { 'idclient': client.id }) }}"><input type="button" class="btn btn-warning" value="Retour"/></a>
+						
 					</div>
 					<div class="col-md-2">
-						<a href="{{ path('fiche_client', { 'idclient': client.id }) }}"><input type="button" class="btn btn-warning" value="Retour"/></a>	
-					</div>
+						<input type="submit" class="btn btn-danger" value="Enregistrer"/>					</div>
 				</div>
 				{{ form_end(form) }}
 					
