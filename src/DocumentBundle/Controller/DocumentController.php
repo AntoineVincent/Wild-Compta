@@ -305,7 +305,25 @@ class DocumentController extends Controller
         $valuetotale = $request->request->get('valuetotale');
 
 
-        $document = $em->getRepository('DocumentBundle:Documents')->findOneById($iddocument);
+        $devis = $em->getRepository('DocumentBundle:Documents')->findOneById($iddocument);
+
+        $fact = new Documents();
+        $fact->setType('facture');
+        $fact->setIdproduct($devis->getIdproduct());
+        $fact->setIdclient($devis->getIdclient());
+        $fact->setJustif($devis->getJustif());
+        $fact->setReference($devis->getReference());
+        $fact->setDatecreation($devis->getDatecreation());
+        $fact->setEtat($devis->getEtat());
+        $fact->setNbreecheance($devis->getNbreecheance());
+        $fact->setValue($devis->getValue());
+        $fact->setTva($devis->getTva());
+        $fact->setDatemois($devis->getDatemois());
+        $fact->setQuantite($devis->getQuantite());
+        $fact->setValuetotale($devis->getValuetotale());
+        $fact->setValuettc($devis->getValuettc());
+
+
         
         $hidden = $request->request->get('hidden');
 
@@ -321,18 +339,7 @@ class DocumentController extends Controller
 
         $valueTTC = $valuetotaleHT + $valuetva;
 
-        
-        $type = $document->getType();
-            if ($type == 'devis') {
-                $document->setType('facture');
-            }
-        
-        if ($hidden == 1){
-
-            
-            }
-
-            $em->persist($document);
+            $em->persist($fact);
             $em->flush();
         
 
