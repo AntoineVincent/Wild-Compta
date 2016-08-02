@@ -321,23 +321,11 @@ class DocumentController extends Controller
 
         $valueTTC = $valuetotaleHT + $valuetva;
 
-        /*$alldoc = $em->getRepository('DocumentBundle:Documents')->findAll();
-        $counter = count($alldoc);
-
-        if ($counter < 10) {
-            $count = '0'.'0'.$counter;
-        }
-        if ($counter < 100 && $counter > 9) {
-            $count = '0'.$counter;
-        }*/
-
+        
         $type = $document->getType();
             if ($type == 'devis') {
                 $document->setType('facture');
             }
-        /*$newreference = $document->getReference();
-        $newreference = 'FA-'.$refdate.'-'.$count;
-        $document->setReference($newreference);*/
         
         if ($hidden == 1){
 
@@ -358,7 +346,6 @@ class DocumentController extends Controller
             'document' => $document,
             'client' => $client,
             'produits' => $produits,
-            /*'reference' => $newreference,*/
             'type' => $type,
             'valuetotaleHT' => $valuetotaleHT,
             'valuetva' => $valuetva,
@@ -405,46 +392,22 @@ class DocumentController extends Controller
         $valuetva = $valuetotaleHT * 0.2;
 
         $valueTTC = $valuetotaleHT + $valuetva;
-        /*$newreference = $document->getReference();
-        
-
-        $alldoc = $em->getRepository('DocumentBundle:Documents')->findAll();
-        $counter = count($alldoc);
-
-        if ($counter < 10) {
-            $count = '0'.'0'.$counter;
-        }
-        if ($counter < 100 && $counter > 9) {
-            $count = '0'.$counter;
-        }*/
 
         if ($type == 'facture') {
                 $document->setType('avoir');
-                /*$newreference = 'AV-'.$refdate.'-'.$count;*/
         }
         
-        /*$document->setReference($newreference);*/
-        
         if ($hidden == 1){
-
-            
             }
 
             $em->persist($document);
             $em->flush();
         
 
-        /*$avoir = new Documents();
-        $form = $this->createForm('DocumentBundle\Form\FactureType', $facture);
-
-        $form->handleRequest($request);*/
-
         return $this->render('default/newavoir.html.twig', array(
-            /*'form' => $form->createView(),*/
             'document' => $document,
             'client' => $client,
             'produits' => $produits,
-            /*'reference' => $newreference,*/
             'type' => $type,
             'valuetotaleHT' => $valuetotaleHT,
             'valuetva' => $valuetva,

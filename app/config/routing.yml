@@ -137,9 +137,21 @@ reglement:
     path:    /reglement/{idclient}
     defaults: { _controller: ComptaBundle:Compta:reglement }
 
-# ---------------------> ADD CAMPUS MANAGER <---------------------
+# ---------------------> CAMPUS MANAGER <---------------------
 new_user:
     path:    /new/user
     defaults: { _controller: AppBundle:Registration:newuser }
+
+edit_user:
+    path:    /edit/user/{iduser}
+    defaults: { _controller: AppBundle:Default:edituser }
+
+list_user:
+    path:    /list/user
+    defaults: { _controller: AppBundle:Default:listuser }
+
+supr_user:
+    path:    /supr/user/{iduser}
+    defaults: { _controller: AppBundle:Default:supruser }
 
 
