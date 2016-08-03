@@ -293,7 +293,7 @@ class DocumentController extends Controller
         
         $request->getSession()
         ->getFlashBag()
-        ->add('warning', 'Document Refusé/Classé !')
+        ->add('warning', 'Document Envoyé !')
     ;
         return $this->redirect($this->generateUrl('fiche_client', array(
                 'idclient' => $idclient
@@ -304,11 +304,10 @@ class DocumentController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
         $user = $this->container->get('security.context')->getToken()->getUser();
-
         $client = $request->request->get('nom');
         $product = $request->request->get('produit');
         $type = $request->request->get('type');
-        
+        $quantite = $request->request->get('quantite');
         $valeur = $request->request->get('valeur');
         $tva = $request->request->get('tva');
         $reference = $request->request->get('reference');
@@ -317,10 +316,7 @@ class DocumentController extends Controller
         $refdate = $year.'-'.$month;
         $valuettc = $request->request->get('valuettc');
         $valuetotale = $request->request->get('valuetotale');
-
-
         $devis = $em->getRepository('DocumentBundle:Documents')->findOneById($iddocument);
-
         $fact = new Documents();
         $fact->setType('facture');
         $fact->setIdproduct($devis->getIdproduct());
@@ -336,32 +332,43 @@ class DocumentController extends Controller
         $fact->setQuantite($devis->getQuantite());
         $fact->setValuetotale($devis->getValuetotale());
         $fact->setValuettc($devis->getValuettc());
-
-
         
         $hidden = $request->request->get('hidden');
-
         $client = $em->getRepository('ClientBundle:Client')->findOneById($idclient);
-
         $document = $em->getRepository('DocumentBundle:Documents')->findOneById($iddocument);
         
         $produits = $em->getRepository('DocumentBundle:Product')->findOneById($document->getIdproduct());
 
-        $valuetotaleHT = $document->getValue() * $document->getQuantite();
+        $typeclient = $client->getType();
+        $tvaa = $document->getTva();
+            // ALGORYTHME POUR QUANTITÉ
+            if ($quantite != 1) {
 
-        $valuetva = $valuetotaleHT * 0.2;
+                $valuetotaleHT = $document->getValue() * $document->getQuantite();
 
-        $valueTTC = $valuetotaleHT + $valuetva;
+            }
+            if ($typeclient == 'élève') {
+                $valuetva = null;
+
+            }
+            
+            // ALGORYTHME POUR TTC        
+            if ($tvaa != null) {
+
+                $valuetva = $valuetotaleHT * 0.2;
+
+
+            }
+
+            // VALUE TTC
+            $valueTTC = $valuetotaleHT + $valuetva;
 
             $em->persist($fact);
             $em->flush();
         
-
         $facture = new Documents();
         $form = $this->createForm('DocumentBundle\Form\FactureType', $facture);
-
         $form->handleRequest($request);
-
         return $this->render('default/newfacture.html.twig', array(
             'form' => $form->createView(),
             'document' => $document,
@@ -373,18 +380,16 @@ class DocumentController extends Controller
             'valueTTC' => $valueTTC,
             
         ));
-
     }
 
     public function newAvoirAction(Request $request, $idclient, $iddocument)
     {
         $em = $this->getDoctrine()->getManager();
         $user = $this->container->get('security.context')->getToken()->getUser();
-
         $client = $request->request->get('nom');
         $product = $request->request->get('produit');
         $type = $request->request->get('type');
-        
+        $quantite = $request->request->get('quantite');
         $valeur = $request->request->get('valeur');
         $tva = $request->request->get('tva');
         $reference = "";
@@ -393,38 +398,48 @@ class DocumentController extends Controller
         $refdate = $year.'-'.$month;
         $valuettc = $request->request->get('valuettc');
         $valuetotale = $request->request->get('valuetotale');
-
-
         $document = $em->getRepository('DocumentBundle:Documents')->findOneById($iddocument);
         
         $hidden = $request->request->get('hidden');
-
         $client = $em->getRepository('ClientBundle:Client')->findOneById($idclient);
-
         $document = $em->getRepository('DocumentBundle:Documents')->findOneById($iddocument);
         
         $produits = $em->getRepository('DocumentBundle:Product')->findOneById($document->getIdproduct());
-
         $reference = $document->getReference();
         $type = $document->getType();
+        $typeclient = $client->getType();
+        $tvaa = $document->getTva();
+            // ALGORYTHME POUR QUANTITÉ
+            if ($quantite != 1) {
 
-        $valuetotaleHT = $document->getValue() * $document->getQuantite();
+                $valuetotaleHT = $document->getValue() * $document->getQuantite();
 
-        $valuetva = $valuetotaleHT * 0.2;
+            }
+            if ($typeclient == 'élève') {
+                $valuetva = null;
 
+            }
+            
+            // ALGORYTHME POUR TTC        
+            if ($tvaa != null) {
+
+                $valuetva = $valuetotaleHT * 0.2;
+
+
+            }
+
+            // VALUE TTC
         $valueTTC = $valuetotaleHT + $valuetva;
-
+        
         if ($type == 'facture') {
                 $document->setType('avoir');
         }
         
         if ($hidden == 1){
             }
-
             $em->persist($document);
             $em->flush();
         
-
         return $this->render('default/newavoir.html.twig', array(
             'document' => $document,
             'client' => $client,
@@ -435,7 +450,6 @@ class DocumentController extends Controller
             'valueTTC' => $valueTTC,
             
         ));
-
     }
 
     public function pdfAction(Request $request, $idclient, $iddocument)
@@ -444,10 +458,25 @@ class DocumentController extends Controller
         $client = $em->getRepository('ClientBundle:Client')->findOneById($idclient);
         $document = $em->getRepository('DocumentBundle:Documents')->findOneById($iddocument);
         $produits = $em->getRepository('DocumentBundle:Product')->findOneById($document->getIdproduct());
+        $typeclient = $client->getType();
 
         $valuetotaleHT = $document->getValue() * $document->getQuantite();
+
+        $tvaa = $document->getTva();
+
         $valuetva = $valuetotaleHT * 0.2;
-        $valuettc = $request->request->get('valuettc');
+
+            if ($typeclient == 'élève') {
+                $valuetva = null;
+
+            }
+            
+            // ALGORYTHME POUR TTC        
+            if ($tvaa != null) {
+
+                $valuetva = $valuetotaleHT * 0.2;
+            }
+
         $valueTTC = $valuetotaleHT + $valuetva;
 
 
