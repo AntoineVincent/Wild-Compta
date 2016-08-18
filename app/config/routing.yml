@@ -98,6 +98,10 @@ env_doc:
     path:    /envoyer/document/{idclient}/{iddocument}
     defaults: { _controller: DocumentBundle:Document:envdoc }
 
+show_doc:
+    path:    /show/document/{idclient}/{iddocument}
+    defaults: { _controller: DocumentBundle:Document:show }
+
 # ---------------------> ORGANISME <---------------------
 new_organisme:
     path:    /new/organisme

@@ -77,9 +77,9 @@ class DashboardController extends Controller
         $ecole = $this->getRequest()->request->get('ecole');
 
         if ($ecole == 'Total') {
-            $reglements = $em->getRepository('ComptaBundle:Reglement')->findAll();
-            foreach($reglements as $reglement) {
-                $value = $reglement->getMontant();
+            $factures = $em->getRepository('DocumentBundle:Documents')->findByType("facture");
+            foreach($factures as $facture) {
+                $value = $facture->getMontant();
                 $caville += $value;
                 $cavilleht += $value * 0.8;
             }
@@ -91,9 +91,9 @@ class DashboardController extends Controller
         else {
             $clients = $em->getRepository('ClientBundle:Client')->findByEcole($ecole);
             foreach ($clients as $client) {
-                $reglements = $em->getRepository('ComptaBundle:Reglement')->findByIdclient($client->getId());
-                foreach($reglements as $reglement) {
-                    $value = $reglement->getMontant();
+                $factures = $em->getRepository('DocumentBundle:Documents')->findByType("facture")->findByIdclient($client->getId());
+                foreach($factures as $facture) {
+                    $value = $facture->getMontant();
                     $caville += $value;
                     $cavilleht += $value * 0.8;
                 }
@@ -128,9 +128,9 @@ class DashboardController extends Controller
         $datemois = new \DateTime();
             
         if ($ecole == 'Total') {
-            $reglements = $em->getRepository('ComptaBundle:Reglement')->findByDatemois($datemois->format('m/Y'));
-            foreach($reglements as $reglement) {
-                $value = $reglement->getMontant();
+            $factures = $em->getRepository('DocumentBundle:Documents')->findByType("facture")->findByDatemois($datemois->format('m/Y'));
+            foreach($factures as $facture) {
+                $value = $facture->getMontant();
                 $caville += $value;
                 $cavilleht += $value * 0.8;
             }
@@ -142,11 +142,11 @@ class DashboardController extends Controller
         else {
             $clients = $em->getRepository('ClientBundle:Client')->findByEcole($ecole);
             foreach ($clients as $client) {
-                $reglements = $em->getRepository('ComptaBundle:Reglement')->findBy(
+                $factures = $em->getRepository('DocumentBundle:Documents')->findByType("facture")->findBy(
                     array('idclient' => $client->getId(), 'datemois' => $datemois->format('m/Y') )
                 );
-                foreach($reglements as $reglement) {
-                    $value = $reglement->getMontant();
+                foreach($factures as $facture) {
+                    $value = $facture->getMontant();
                     $caville += $value;
                     $cavilleht += $value * 0.8;
                 }

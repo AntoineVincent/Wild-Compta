@@ -511,4 +511,84 @@ class DocumentController extends Controller
      
         return new Response();
     }
+
+    public function showAction(Request $request, $idclient, $iddocument)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $user = $this->container->get('security.context')->getToken()->getUser();
+        $client = $request->request->get('nom');
+        $product = $request->request->get('produit');
+        $type = $request->request->get('type');
+        $quantite = $request->request->get('quantite');
+        $valeur = $request->request->get('valeur');
+        $tva = $request->request->get('tva');
+        $reference = $request->request->get('reference');
+        $month = $request->request->get('month');
+        $year = $request->request->get('year');
+        $refdate = $year.'-'.$month;
+        $valuettc = $request->request->get('valuettc');
+        $valuetotale = $request->request->get('valuetotale');
+        $devis = $em->getRepository('DocumentBundle:Documents')->findOneById($iddocument);
+        $fact = new Documents();
+        $fact->setType('facture');
+        $fact->setIdproduct($devis->getIdproduct());
+        $fact->setIdclient($devis->getIdclient());
+        $fact->setJustif($devis->getJustif());
+        $fact->setReference($devis->getReference());
+        $fact->setDatecreation($devis->getDatecreation());
+        $fact->setEtat($devis->getEtat());
+        $fact->setNbreecheance($devis->getNbreecheance());
+        $fact->setValue($devis->getValue());
+        $fact->setTva($devis->getTva());
+        $fact->setDatemois($devis->getDatemois());
+        $fact->setQuantite($devis->getQuantite());
+        $fact->setValuetotale($devis->getValuetotale());
+        $fact->setValuettc($devis->getValuettc());
+        
+        $hidden = $request->request->get('hidden');
+        $client = $em->getRepository('ClientBundle:Client')->findOneById($idclient);
+        $document = $em->getRepository('DocumentBundle:Documents')->findOneById($iddocument);
+        
+        $produits = $em->getRepository('DocumentBundle:Product')->findOneById($document->getIdproduct());
+
+        $typeclient = $client->getType();
+        $tvaa = $document->getTva();
+            // ALGORYTHME POUR QUANTITÉ
+            if ($quantite != 1) {
+
+                $valuetotaleHT = $document->getValue() * $document->getQuantite();
+
+            }
+            if ($typeclient == 'élève') {
+                $valuetva = null;
+
+            }
+            
+            // ALGORYTHME POUR TTC        
+            if ($tvaa != null) {
+
+                $valuetva = $valuetotaleHT * 0.2;
+
+
+            }
+
+            // VALUE TTC
+            $valueTTC = $valuetotaleHT + $valuetva;
+
+        
+        $facture = new Documents();
+        $form = $this->createForm('DocumentBundle\Form\FactureType', $facture);
+        $form->handleRequest($request);
+        return $this->render('default/newfacture.html.twig', array(
+            'form' => $form->createView(),
+            'document' => $document,
+            'client' => $client,
+            'produits' => $produits,
+            'type' => $type,
+            'valuetotaleHT' => $valuetotaleHT,
+            'valuetva' => $valuetva,
+            'valueTTC' => $valueTTC,
+            
+        ));
+    }
 }

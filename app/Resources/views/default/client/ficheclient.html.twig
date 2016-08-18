@@ -153,7 +153,7 @@
 									<span class="sr-only">Toggle Dropdown</span>
 								</button>
 								<ul class="dropdown-menu" role="menu">
-									<li><a href="{{ path('new_facture', { 'idclient': client.id, 'iddocument': facture.id }) }}">Voir la Facture</a></li>
+									<li><a href="{{ path('show_doc', { 'idclient': client.id, 'iddocument': facture.id }) }}">Voir la Facture</a></li>
 									<li><a href="{{ path('new_avoir', { 'idclient': client.id, 'iddocument':facture.id }) }}">Emettre un avoir</a></li>
 									<li><a href="{{ path('env_doc', { 'idclient': client.id, 'iddocument': facture.id  }) }}">Classée comme envoyée</a></li>
 									<li><a href="{{ path('supr_doc', { 'idclient': client.id, 'iddocument': facture.id  }) }}" onclick="return(confirm('Vous allez supprimer cette facture !'))";>Supprimer</a></li>
