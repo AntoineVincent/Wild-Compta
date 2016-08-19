@@ -38,9 +38,10 @@ class DashboardController extends Controller
         // CALCUL POUR CHAQUE REGLEMENT DU CA ET DU CA HT A L'ANNEE
         $factures = $em->getRepository('DocumentBundle:Documents')->findByType("facture");
         foreach ($factures as $facture) {
-            $value = $facture->getValue();
+            $client = $em->getRepository('ClientBundle:Client')->findOneById($facture->getIdclient());
+            $value = $client->getValue();
             $ca += $value;
-            $caht += $value * 0.8;   
+            $caht += $value * 0.8;  
         }
         
         //DACLERATION VARABLES CA PAR MOIS
@@ -48,10 +49,14 @@ class DashboardController extends Controller
         $camoisht = "";
         // CALCUL POUR CHAQUE REGLEMENT DU CA ET DU CA HT AU MOIS EN COURS
         $datemois = new \DateTime();
-        $facturesmois = $em->getRepository('DocumentBundle:Documents')->findByType("facture");
+        $facturesmois = $em->getRepository('DocumentBundle:Documents')->findBy(array(
+                'type' => "facture",
+                'datemois' => $datemois->format('m/Y') 
+                ));
         
         foreach ($facturesmois as $facturemois) {
-            $valuemois = $facturemois->getValue();
+            $client = $em->getRepository('ClientBundle:Client')->findOneById($facturemois->getIdclient());
+            $valuemois = $client->getValue();
             $camois += $valuemois;
             $camoisht += $valuemois * 0.8;  
         }
@@ -74,12 +79,14 @@ class DashboardController extends Controller
         $caville = 0;
         $cavilleht = 0;
         $tabcaville = [];
+        $tabfacture = [];
         $ecole = $this->getRequest()->request->get('ecole');
 
         if ($ecole == 'Total') {
             $factures = $em->getRepository('DocumentBundle:Documents')->findByType("facture");
             foreach($factures as $facture) {
-                $value = $facture->getMontant();
+                $client = $em->getRepository('ClientBundle:Client')->findOneById($facture->getIdclient());
+                $value = $client->getValue();
                 $caville += $value;
                 $cavilleht += $value * 0.8;
             }
@@ -91,9 +98,13 @@ class DashboardController extends Controller
         else {
             $clients = $em->getRepository('ClientBundle:Client')->findByEcole($ecole);
             foreach ($clients as $client) {
-                $factures = $em->getRepository('DocumentBundle:Documents')->findByType("facture")->findByIdclient($client->getId());
+                $factures = $em->getRepository('DocumentBundle:Documents')->findBy(array(
+                    'idclient' => $client->getId(),
+                    'type' => "facture"
+                    ));
                 foreach($factures as $facture) {
-                    $value = $facture->getMontant();
+                    $client = $em->getRepository('ClientBundle:Client')->findOneById($facture->getIdclient());
+                    $value = $client->getValue();
                     $caville += $value;
                     $cavilleht += $value * 0.8;
                 }
@@ -128,9 +139,13 @@ class DashboardController extends Controller
         $datemois = new \DateTime();
             
         if ($ecole == 'Total') {
-            $factures = $em->getRepository('DocumentBundle:Documents')->findByType("facture")->findByDatemois($datemois->format('m/Y'));
+            $factures = $em->getRepository('DocumentBundle:Documents')->findBy(array(
+                    'type' => "facture",
+                    'datemois' => $datemois->format('m/Y') 
+                ));
             foreach($factures as $facture) {
-                $value = $facture->getMontant();
+                $client = $em->getRepository('ClientBundle:Client')->findOneById($facture->getIdclient());
+                $value = $client->getValue();
                 $caville += $value;
                 $cavilleht += $value * 0.8;
             }
@@ -142,11 +157,14 @@ class DashboardController extends Controller
         else {
             $clients = $em->getRepository('ClientBundle:Client')->findByEcole($ecole);
             foreach ($clients as $client) {
-                $factures = $em->getRepository('DocumentBundle:Documents')->findByType("facture")->findBy(
-                    array('idclient' => $client->getId(), 'datemois' => $datemois->format('m/Y') )
-                );
+                $factures = $em->getRepository('DocumentBundle:Documents')->findBy(array(
+                    'type' => "facture",
+                    'idclient' => $client->getId(),
+                    'datemois' => $datemois->format('m/Y') 
+                ));
                 foreach($factures as $facture) {
-                    $value = $facture->getMontant();
+                    $client = $em->getRepository('ClientBundle:Client')->findOneById($facture->getIdclient());
+                    $value = $client->getValue();
                     $caville += $value;
                     $cavilleht += $value * 0.8;
                 }
